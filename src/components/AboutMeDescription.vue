@@ -17,17 +17,14 @@
             applications that make a real difference.
         </p> -->
     <div class="flex flex-wrap gap-3 my-6">
-      <span
-        v-for="skill in skills"
-        :key="skill"
+      <span v-for="skill in skills" :key="skill"
         class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm font-medium transition-transform hover:scale-110 cursor-pointer"
-        @click="highlightSkill(skill)"
-      >
+        @click="highlightSkill(skill)">
         {{ skill }}
       </span>
     </div>
     <div class="flex flex-wrap gap-4 mt-8">
-      <a href="#" @click.prevent="downloadCV" class="btn-primary">
+      <a href="javascript:void(0)" @click.prevent="downloadCV" class="btn-primary">
         <i class="fas fa-download mr-2"></i> Download CV
       </a>
       <a href="#projects" class="btn-secondary">
@@ -38,6 +35,7 @@
 </template>
 
 <script setup>
+import cv from '@/assets/Carlos_Veizaga_Resume.pdf'
 const skills = [
   'JavaScript',
   'Vue.js',
@@ -57,9 +55,11 @@ const skills = [
 ]
 
 const downloadCV = () => {
-  // Implement CV download functionality
   console.log('Downloading CV...')
-  // You could trigger a file download here or open a new tab with the CV
+  const link = document.createElement('a');
+  link.href = cv;
+  link.download = 'carlos-veizaga-cv.pdf';
+  link.click();
 }
 
 const highlightSkill = (skill) => {
