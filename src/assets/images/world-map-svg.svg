@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+  <!-- Fondo azul para los océanos -->
+  <rect width="1000" height="500" fill="#4289f4"/>
+  
+  <!-- Continentes simplificados -->
+  <path d="M250,60 Q300,30 350,60 T450,60 T550,60 T650,60 T750,60 L750,440 Q700,470 650,440 T550,440 T450,440 T350,440 T250,440 Z" fill="#57ba57"/>
+  
+  <!-- América del Norte -->
+  <path d="M50,80 Q100,50 150,80 L150,200 Q100,230 50,200 Z" fill="#57ba57"/>
+  
+  <!-- América del Sur -->
+  <path d="M150,250 Q200,220 250,250 L250,400 Q200,430 150,400 Z" fill="#57ba57"/>
+  
+  <!-- África -->
+  <path d="M450,150 Q500,120 550,150 L550,350 Q500,380 450,350 Z" fill="#57ba57"/>
+  
+  <!-- Australia -->
+  <path d="M750,300 Q800,270 850,300 L850,400 Q800,430 750,400 Z" fill="#57ba57"/>
+</svg>
