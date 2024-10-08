@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import ConnectWithMe from './ConnectWithMe.vue';
-import GetInTouch from './GetInTouch.vue';
-
+import ConnectWithMe from './ConnectWithMe.vue'
+import GetInTouch from './GetInTouch.vue'
 </script>

@@ -1,6 +1,8 @@
 <template>
-  <section id="skills"
-    class="py-20 transition-colors duration-300 bg-gradient-to-br from-gray-100 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 text-gray-800 dark:text-white">
+  <section
+    id="skills"
+    class="py-20 transition-colors duration-300 bg-gradient-to-br from-gray-100 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 text-gray-800 dark:text-white"
+  >
     <div class="container mx-auto px-4">
       <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Skills & Expertise</h2>
 
@@ -21,9 +23,9 @@
 </template>
 
 <script setup>
-import SkillSphere from './3DSkillSphere.vue';
-import SkillCategory from './SkillCategory.vue';
-import ToolsTechnologies from './ToolsTechnologies.vue';
+import SkillSphere from './3DSkillSphere.vue'
+import SkillCategory from './SkillCategory.vue'
+import ToolsTechnologies from './ToolsTechnologies.vue'
 </script>
 
 <style scoped>

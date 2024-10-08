@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'dark': theme === 'dark' }">
+  <div :class="{ dark: theme === 'dark' }">
     <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
       <NavBar></NavBar>
       <MyHeader></MyHeader>
@@ -8,7 +8,10 @@
       <SkillSection></SkillSection>
       <ContactSection></ContactSection>
 
-      <button @click="toggleTheme" class="fixed bottom-4 right-4 p-2 rounded-full bg-gray-700 dark:bg-white">
+      <button
+        @click="toggleTheme"
+        class="fixed bottom-4 right-4 p-2 rounded-full bg-gray-700 dark:bg-white"
+      >
         {{ theme === 'light' ? '🌙' : '☀️' }}
       </button>
     </div>
@@ -16,15 +19,15 @@
 </template>
 
 <script setup>
-import NavBar from './components/NavBar.vue';
-import MyHeader from './components/MyHeader.vue';
-import AboutMe from './components/AboutMe.vue';
-import ProjectSection from './components/ProjectSection.vue';
-import SkillSection from './components/SkillSection.vue';
-import ContactSection from './components/ContactSection.vue';
-import { useThemeStore } from './store/useThemeStore';
+import NavBar from './components/NavBar.vue'
+import MyHeader from './components/MyHeader.vue'
+import AboutMe from './components/AboutMe.vue'
+import ProjectSection from './components/ProjectSection.vue'
+import SkillSection from './components/SkillSection.vue'
+import ContactSection from './components/ContactSection.vue'
+import { useThemeStore } from './store/useThemeStore'
 
-const { theme, toggleTheme } = useThemeStore();
+const { theme, toggleTheme } = useThemeStore()
 </script>
 
 <style>
@@ -45,7 +48,7 @@ const { theme, toggleTheme } = useThemeStore();
 .skill-bar {
   height: 10px;
   border-radius: 5px;
-  background: linear-gradient(90deg, #6366F1, #3B82F6, #2DD4BF);
+  background: linear-gradient(90deg, #6366f1, #3b82f6, #2dd4bf);
   background-size: 300% 300%;
   animation: gradient-shift 5s ease infinite;
 }
