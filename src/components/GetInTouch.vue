@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Get in Touch</h2>
+  <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-white">{{ $t('contact.title') }}</h2>
   <form @submit.prevent="handleSubmit" class="space-y-6">
     <div v-for="field in formFields" :key="field.name" class="relative">
       <input
@@ -8,7 +8,7 @@
         :type="field.type"
         :id="field.name"
         v-model="form[field.name]"
-        :placeholder="field.placeholder"
+        :placeholder="field.placeholder.value"
         :class="{ 'border-red-500': v$[field.name].$error }"
         class="w-full p-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 text-gray-800 dark:text-white transition duration-300"
       />
@@ -17,7 +17,7 @@
         :id="field.name"
         v-model="form[field.name]"
         @input="validateField(field.name)"
-        :placeholder="field.placeholder"
+        :placeholder="field.placeholder.value"
         :class="{ 'border-red-500': v$[field.name].$error }"
         class="w-full p-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 text-gray-800 dark:text-white transition duration-300"
         rows="4"
@@ -41,7 +41,7 @@
         class="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
       />
       <label for="terms" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-        I agree to the terms and privacy policy
+        {{ $t('contact.terms') }}
       </label>
     </div>
     <p v-if="v$.terms.$error" class="mt-1 text-sm text-red-600">
@@ -75,19 +75,22 @@
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           ></path>
         </svg>
-        Sending...
+        {{ $t('contact.sending') }}...
       </span>
-      <span v-else>Send Message</span>
+      <span v-else> {{ $t('contact.send') }}</span>
     </button>
   </form>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, minLength } from '@vuelidate/validators'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const toast = useToast()
 
@@ -99,12 +102,32 @@ const form = reactive({
   terms: false
 })
 
-const formFields = [
-  { name: 'name', type: 'text', label: 'Name', placeholder: 'Your full name' },
-  { name: 'email', type: 'email', label: 'Email', placeholder: 'your.email@example.com' },
-  { name: 'subject', type: 'text', label: 'Subject', placeholder: 'What is this regarding?' },
-  { name: 'message', type: 'textarea', label: 'Message', placeholder: 'Your message here...' }
-]
+const formFields = computed(() => [
+  {
+    name: 'name',
+    type: 'text',
+    label: computed(() => t('contact.form.name.label')),
+    placeholder: computed(() => t('contact.form.name.placeholder'))
+  },
+  {
+    name: 'email',
+    type: 'email',
+    label: computed(() => t('contact.form.email.label')),
+    placeholder: 'your.email@example.com'
+  },
+  {
+    name: 'subject',
+    type: 'text',
+    label: computed(() => t('contact.form.subject.label')),
+    placeholder: computed(() => t('contact.form.subject.placeholder'))
+  },
+  {
+    name: 'message',
+    type: 'textarea',
+    label: computed(() => t('contact.form.message.label')),
+    placeholder: computed(() => t('contact.form.message.placeholder'))
+  }
+])
 
 const rules = {
   name: { required, minLength: minLength(3) },

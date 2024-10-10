@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "contact": "Contacto"
+  },
+  "header": {
+    "title": "{name} Desarrollador de Software",
+    "contact": "Contacta me"
+  },
+  "info": {
+    "about": "Acerca de Mi",
+    "introduction": "¡Hola! Soy {name}, un apasionado desarrollador full-stack con más de 7 años de experiencia, especializado en el desarrollo de aplicaciones web robustas utilizando tecnologías como Laravel, Vue, Angular y JavaScript, con una sólida formación en PHP, MySQL, JavaScript y API REST. Un historial comprobado de entrega de soluciones escalables de alta calidad. Experto en desarrollo front-end y back-end, con experiencia en la aplicación de principios de código limpio y patrones de diseño SOLID. Amplia experiencia en gestión de servidores, desarrollo móvil y colaboración con clientes de diversas industrias, ofreciendo soluciones versátiles y orientadas a resultados para desafíos complejos y contribuyendo a proyectos impactantes.",
+    "download": "Descargar CV",
+    "view_projects": "Ver Proyectos",
+    "philosophy": "Mi Filosofía de Desarrollo",
+    "principles": {
+      "innovative_solutions": {
+        "title": "Soluciones innovadoras",
+        "description": "Creo en pensar fuera de la caja para resolver problemas complejos con soluciones elegantes."
+      },
+      "user_centric_approach": {
+        "title": "Enfoque centrado en el usuario",
+        "description": "Cada línea de código que escribo está pensando en el usuario final, garantizando experiencias intuitivas y agradables."
+      },
+      "continuous_learning": {
+        "title": "Aprendizaje continuo",
+        "description": "En este campo en constante evolución, me comprometo a mantenerme a la vanguardia de las nuevas tecnologías y las mejores prácticas."
+      }
+    }
+  },
+  "projects": {
+    "title": "Presentación del proyecto",
+    "explore": "Explorar Projecto",
+    "live": "Demo en vivo",
+    "view": "Ver Código",
+    "featured": "Destacado",
+    "more_projects": "Descubra más proyectos",
+    "show_less": "Mostrar menos",
+    "list": {
+      "educertify": {
+        "title": "EduCertify",
+        "short_description": "Educertify es una plataforma para crear, personalizar y enviar certificados digitales con facilidad.",
+        "full_description": "Educertify es una plataforma de generación y distribución de certificados diseñada para una fácil personalización. Los usuarios pueden personalizar los certificados cambiando fuentes, colores y agregando firmas. La plataforma también permite cargar certificados previamente firmados o firmarlos digitalmente directamente. Una vez creados, los certificados se pueden enviar a los destinatarios por correo electrónico, lo que hace que el proceso de distribución sea eficiente. Educertify permite a los usuarios generar certificados profesionales con facilidad y flexibilidad, ofreciendo tanto personalización como entrega automatizada.",
+        "features": {
+          "template": "Plantillas de certificados personalizables",
+          "signature": "Opciones de firma digital y manual",
+          "customization": "Personalización de fuentes y colores",
+          "management": "Carga y gestión de certificados",
+          "delivery": "Entrega automática de certificados por correo electrónico",
+          "authentication": "Autenticación de usuarios y gestión de perfiles",
+          "dashboard": "Panel de administración para seguimiento y análisis de certificados"
+        }
+      },
+      "animehero": {
+        "title": "Anime Hero Challengue",
+        "short_description": "Anime Hero Challenge es un divertido y atractivo juego de adivinanzas de personajes con personajes de Dragon Ball y Pokémon.",
+        "full_description": "Anime Hero Challengue es un juego interactivo que desafía a los usuarios a identificar personajes de Dragon Ball o Pokémon. Los jugadores eligen entre las dos series y se muestra la silueta de un personaje. Los usuarios deben adivinar el personaje entre varias opciones y ganan puntos por las respuestas correctas. Si responden incorrectamente, la puntuación se reinicia y se les anima a intentarlo de nuevo. GuessMaster combina diversión y competencia, brindando entretenimiento sin fin para los fanáticos de estas franquicias icónicas.",
+        "features": {
+          "selection": "Selección de personajes de anime de Dragon Ball y Pokémon",
+          "silhouette": "Juego de adivinanzas de siluetas de personajes",
+          "multiple": "Opciones de selección múltiple para identificar personajes",
+          "scoring": "Sistema de puntuación basado en aciertos",
+          "reset": "Reinicio de puntuación en caso de respuestas incorrectas",
+          "series": "Opción para elegir entre diferentes series de anime",
+          "api": "Integración de API para información dinámica de personajes",
+          "progress": "Seguimiento del progreso de los jugadores",
+          "responsive": "Diseño responsivo para una experiencia fluida en todos los dispositivos",
+          "expansion": "Expansión futura con series de anime adicionales"
+        }
+      }
+    }
+  },
+  "modal": {
+    "key_features": "Características Principales",
+    "technologies_used": "Tecnologías Utilizadas",
+    "view_demo": "Ver Demo en Vivo",
+    "view_code": "Ver en GitHub"
+  },
+  "skills": {
+    "title": "Habilidades y Experiencia",
+    "sphere": {
+      "title": "Esfera de Habilidades 3D",
+      "proficiency": "Competencia",
+      "detail": "Pasa el cursor sobre la esfera para explorar las habilidades"
+    },
+    "categories": {
+      "title": "Categorías de Habilidades",
+      "proficiency": "Nivel de Competencia"
+    },
+    "technologies": "Herramientas y tecnologías"
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "title2": "Conéctate Conmigo",
+    "terms": "Acepto los términos y la política de privacidad",
+    "sending": "Enviando",
+    "send": "Enviar Mensaje",
+    "form": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Tu nombre completo"
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "tu.correo@ejemplo.com"
+      },
+      "subject": {
+        "label": "Asunto",
+        "placeholder": "¿Sobre qué trata?"
+      },
+      "message": {
+        "label": "Mensaje",
+        "placeholder": "Tu mensaje aquí..."
+      }
+    }
+  },
+  "message": {
+    "hello": "¡Hola Mundo!",
+    "welcome": "Bienvenido a {app}",
+    "language": "Idioma"
+  }
+}

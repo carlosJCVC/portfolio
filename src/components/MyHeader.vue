@@ -3,7 +3,7 @@
     <div ref="vantaContainer" id="vanta-background" class="absolute inset-0"></div>
     <div class="container mx-auto px-4 z-10 text-center">
       <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white" data-aos="fade-up">
-        Carlos Developer
+        {{ $t('header.title', { name: 'Carlos' }) }}
       </h1>
       <p class="text-xl md:text-2xl mb-8 text-indigo-200" data-aos="fade-up" data-aos-delay="200">
         Full Stack Developer
@@ -13,7 +13,7 @@
         class="bg-white text-indigo-600 py-3 px-8 rounded-full text-lg font-semibold hover:bg-indigo-100 transition duration-300 inline-block"
         data-aos="fade-up"
         data-aos-delay="400"
-        >Contact me</a
+        >{{ $t('header.contact') }}</a
       >
     </div>
     <div class="custom-shape-divider-bottom-1679213778">

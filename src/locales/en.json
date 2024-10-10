@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "header": {
+    "title": "{name} Software Developer",
+    "contact": "Contact Me"
+  },
+  "info": {
+    "about": "About Me",
+    "introduction": "Hello! I'm {name}, a passionate Full-Stack Developer with over 7 years of experience, specializing in developing robust web applications using technologies such as Laravel, Vue, Angular, and JavaScript, with a strong background in PHP, MySQL, JavaScript, and REST APIs. Proven track record of delivering high-quality, scalable solutions. Skilled in both front-end and back-end development, with expertise in applying clean code principles and SOLID design patterns. Extensive experience in server management, mobile development, and collaborating with clients across various industries, offering versatile and results- driven solutions to complex challenges and contributing to impactful projects.",
+    "download": "Download CV",
+    "view_projects": "View Projects",
+    "philosophy": "My Development Philosophy",
+    "principles": {
+      "innovative_solutions": {
+        "title": "Innovative Solutions",
+        "description": "I believe in thinking outside the box to solve complex problems with elegant solutions."
+      },
+      "user_centric_approach": {
+        "title": "User-Centric Approach",
+        "description": "Every line of code I write is with the end-user in mind, ensuring intuitive and enjoyable experiences."
+      },
+      "continuous_learning": {
+        "title": "Continuous Learning",
+        "description": "In this ever-evolving field, I'm committed to staying at the forefront of new technologies and best practices."
+      }
+    }
+  },
+  "projects": {
+    "title": "Project Showcase",
+    "explore": "Explore Project",
+    "live": "Live Demo",
+    "view": "View Code",
+    "featured": "Featured",
+    "more_projects": "Discover More Projects",
+    "show_less": "Show Less",
+    "list": {
+      "educertify": {
+        "title": "EduCertify",
+        "short_description": "Educertify is a platform for creating, customizing, and sending digital certificates with ease.",
+        "full_description": "Educertify is a certificate generation and distribution platform designed for easy customization. Users can personalize certificates by changing fonts, colors, and adding signatures. The platform also supports uploading pre-signed certificates or digitally signing them directly. Once created, certificates can be sent to recipients via email, making the distribution process efficient. Educertify enables users to generate professional certificates with ease and flexibility, offering both customization and automated delivery.",
+        "features": {
+          "template": "Customizable certificate templates",
+          "signature": "Digital and manual signature options",
+          "customization": "Font and color customization",
+          "management": "Certificate upload and management",
+          "delivery": "Automated email certificate delivery",
+          "authentication": "User authentication and profile management",
+          "dashboard": "Admin dashboard for certificate tracking and analytics"
+        }
+      },
+      "animehero": {
+        "title": "Anime Hero Challengue",
+        "short_description": "Anime Hero Challengue is a fun and engaging character guessing game featuring Dragon Ball and Pokémon characters.",
+        "full_description": "Anime Hero Challengue is an interactive game that challenges users to identify characters from Dragon Ball or Pokémon. Players select between the two series, and a character silhouette is displayed. Users must guess the character from multiple choices, earning points for correct guesses. If they answer incorrectly, the score resets, and they are encouraged to try again. GuessMaster combines fun with competition, providing endless entertainment for fans of these iconic franchises.",
+        "features": {
+          "selection": "Selection of Dragon Ball and Pokémon anime characters",
+          "silhouette": "Character silhouette guessing game",
+          "multiple": "Multiple-choice options for character identification",
+          "scoring": "Point-based scoring system for correct guesses",
+          "reset": "Score reset on incorrect guesses",
+          "series": "Option to choose between different anime series",
+          "api": "API integration for dynamic character information",
+          "progress": "Progress tracking for players",
+          "responsive": "Responsive design for a smooth experience on all devices",
+          "expansion": "Future expansion with additional anime series"
+        }
+      }
+    }
+  },
+  "modal": {
+    "key_features": "Key Features",
+    "technologies_used": "Technologies Used",
+    "view_demo": "View Live Demo",
+    "view_code": "View on GitHub"
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "sphere": {
+      "title": "3D Skills Sphere",
+      "proficiency": "Proficiency",
+      "detail": "Hover over the sphere to explore skills"
+    },
+    "categories": {
+      "title": "Skill Categories",
+      "proficiency": "Proficiency Level"
+    },
+    "technologies": "Tools & Technologies"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "title2": "Connect With Me",
+    "terms": "I agree to the terms and privacy policy",
+    "sending": "Sending",
+    "send": "Send Message",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your full name"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "What is this regarding?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Your message here..."
+      }
+    }
+  },
+  "message": {
+    "hello": "Hello World!",
+    "welcome": "Welcome to {app}",
+    "language": "Language"
+  }
+}

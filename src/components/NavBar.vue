@@ -30,6 +30,8 @@
           </div>
         </div>
 
+        <LanguageSelector></LanguageSelector>
+
         <div class="md:hidden">
           <button
             @click="toggleMobileMenu"
@@ -78,19 +80,23 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import LanguageSelector from './LanguageSelector.vue'
+
+const { t } = useI18n()
 
 const scrolled = ref(false)
 const mobileMenuOpen = ref(false)
 const isDarkMode = ref(false)
 
-const navItems = [
-  { href: '/', text: 'Home' },
-  { href: '#about-me', text: 'About me' },
-  { href: '#projects', text: 'Projects' },
-  { href: '#skills', text: 'Skills' },
-  { href: '#contact', text: 'Contact' }
-]
+const navItems = computed(() => [
+  { href: '/', text: t('nav.home') },
+  { href: '#about-me', text: t('nav.about') },
+  { href: '#projects', text: t('nav.projects') },
+  { href: '#skills', text: t('nav.skills') },
+  { href: '#contact', text: t('nav.contact') }
+])
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value

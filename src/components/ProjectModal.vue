@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <TransitionRoot as="template" :show="!!project">
-      <Dialog as="div" class="fixed inset-0 z-50 overflow-y-auto" @close="$emit('close')">
+      <Dialog as="div" class="fixed inset-0 z-50 overflow-y-auto" @close="CloseModal">
         <div
           class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
         >
@@ -63,17 +63,17 @@
                       :alt="project.title"
                       class="w-full h-64 object-cover rounded-lg mb-6"
                     />
-                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 text-justify">
                       {{ project.fullDescription }}
                     </p>
                     <h4 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                      Key Features:
+                      {{ $t('modal.key_features') }}:
                     </h4>
                     <ul class="list-disc list-inside mb-4 text-gray-600 dark:text-gray-400">
                       <li v-for="feature in project.features" :key="feature">{{ feature }}</li>
                     </ul>
                     <h4 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                      Technologies Used:
+                      {{ $t('modal.technologies_used') }}
                     </h4>
                     <div class="flex flex-wrap gap-2 mb-4">
                       <span
@@ -91,7 +91,7 @@
                         rel="noopener noreferrer"
                         class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
-                        View Live Demo
+                        {{ $t('modal.view_demo') }}
                       </a>
                       <a
                         :href="project.githubUrl"
@@ -99,7 +99,7 @@
                         rel="noopener noreferrer"
                         class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
-                        View on GitHub
+                        {{ $t('modal.view_code') }}
                       </a>
                     </div>
                   </div>
@@ -128,6 +128,12 @@ defineProps({
     default: null
   }
 })
+
+const emit = defineEmits(['close'])
+
+function CloseModal() {
+  emit('close')
+}
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-all duration-300 p-8">
     <h3 class="text-3xl font-semibold mb-8 text-center text-gray-800 dark:text-white">
-      Tools & Technologies
+      {{ $t('skills.technologies') }}
     </h3>
     <div class="flex flex-wrap justify-center gap-6">
       <div

@@ -5,8 +5,9 @@
   >
     <div class="container mx-auto px-4">
       <h2 class="text-5xl font-bold text-center mb-16 gradient-text" data-aos="fade-down">
-        About Me
+        {{ $t('info.about') }}
       </h2>
+
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
         <div class="lg:col-span-1" data-aos="fade-right">
           <AboutMeAvatar></AboutMeAvatar>

@@ -5,7 +5,7 @@
     <div class="absolute inset-0 bg-white dark:bg-gray-800 opacity-80 backdrop-blur-sm z-0"></div>
     <div class="relative z-10 p-8">
       <h3 class="text-3xl font-bold mb-6 text-center text-indigo-600 dark:text-indigo-300">
-        Skill Categories
+        {{ $t('skills.categories.title') }}
       </h3>
       <div
         class="bg-white bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-50 rounded-xl p-6 shadow-inner transition-colors duration-300"
@@ -13,7 +13,9 @@
         <div ref="radarChart" class="w-full h-[400px]"></div>
       </div>
       <div class="mt-6 flex justify-between items-center">
-        <span class="text-sm font-medium text-gray-600 dark:text-gray-300">Proficiency Level</span>
+        <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
+          {{ $t('skills.categories.proficiency') }}</span
+        >
         <div class="flex space-x-2">
           <span class="w-3 h-3 bg-indigo-200 rounded-full"></span>
           <span class="w-3 h-3 bg-indigo-400 rounded-full"></span>

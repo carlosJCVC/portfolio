@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Connect With Me</h3>
+  <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">{{ $t('contact.title2') }}</h3>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
     <a href="https://www.linkedin.com/in/jcarlos-veizaga" class="social-link" target="_blank">
       <IconLinkedin></IconLinkedin>
@@ -26,24 +26,33 @@
     </a>
   </div>
   <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-    <h4 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">About Me</h4>
-    <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
-      I'm a passionate full-stack developer with expertise in Vue.js, React, and Node.js. My journey
-      in tech has been driven by a love for creating elegant solutions to complex problems. When I'm
-      not coding, you can find me exploring new technologies, contributing to open-source projects,
-      or sharing my knowledge through tech blogs and community meetups. I'm always excited about new
-      collaborations and opportunities to push the boundaries of what's possible in web development.
-    </p>
+    <h4 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">{{ $t('info.about') }}</h4>
+    <p
+      class="text-gray-600 dark:text-gray-300 leading-relaxed text-justify"
+      v-html="sanitizedIntroduction"
+    ></p>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import DOMPurify from 'dompurify'
 import IconGithub from './icons/IconGithub.vue'
 import IconGoogle from './icons/IconGoogle.vue'
 import IconLinkedin from './icons/IconLinkedin.vue'
 import IconTwitter from './icons/IconTwitter.vue'
 
-import { computed } from 'vue'
+const { t } = useI18n()
+
+const sanitizedIntroduction = computed(() => {
+  const name = 'Carlos'
+  const rawHtml = t('info.introduction', {
+    name: `<span class='font-semibold text-indigo-600 dark:text-indigo-400'>${DOMPurify.sanitize(name)}</span>`
+  })
+
+  return DOMPurify.sanitize(rawHtml, { ALLOWED_TAGS: ['span'], ALLOWED_ATTR: ['class'] })
+})
 
 const recipientEmail = 'carlosveizaga.jcvc@gmail.com'
 const subject = 'Inquiry from Your Portfolio Website'

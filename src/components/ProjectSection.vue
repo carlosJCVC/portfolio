@@ -4,22 +4,42 @@
     <ParticlesBackground />
 
     <div class="container mx-auto px-4 relative z-10">
-      <h2 class="text-6xl font-extrabold text-center mb-16 gradient-text tracking-tight" data-aos="fade-down">
-        Project Showcase
+      <h2
+        class="text-6xl font-extrabold text-center mb-16 gradient-text tracking-tight"
+        data-aos="fade-down"
+      >
+        {{ $t('projects.title') }}
       </h2>
 
-      <ProjectFilter :categories="categories" :activeCategory="activeCategory" @filter="filterProjects" />
+      <ProjectFilter
+        :categories="categories"
+        :activeCategory="activeCategory"
+        @filter="filterProjects"
+      />
 
-      <TransitionGroup tag="div" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" :css="false"
-        @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-        <ProjectCard v-for="(project, index) in filteredProjects" :key="project.id" :project="project" :index="index"
-          @open-modal="openModal" />
+      <TransitionGroup
+        tag="div"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        :css="false"
+        @before-enter="onBeforeEnter"
+        @enter="onEnter"
+        @leave="onLeave"
+      >
+        <ProjectCard
+          v-for="(project, index) in filteredProjects"
+          :key="project.id"
+          :project="project"
+          :index="index"
+          @open-modal="openModal"
+        />
       </TransitionGroup>
 
       <div class="text-center mt-16">
-        <button @click="showAllProjects"
-          class="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transform hover:scale-105 shadow-lg">
-          {{ showAll ? 'Show Less' : 'Discover More Projects' }}
+        <button
+          @click="showAllProjects"
+          class="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transform hover:scale-105 shadow-lg"
+        >
+          {{ showAll ? $t('projects.show_less') : $t('projects.more_projects') }}
         </button>
       </div>
     </div>
@@ -30,6 +50,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { gsap } from 'gsap'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -40,65 +61,65 @@ import ParticlesBackground from './ParticlesBackground.vue'
 import Educertify from '@/assets/images/projects/educertify.webp'
 import AnimeHeroChallenge from '@/assets/images/projects/Anime_Hero_Challenge_600x400.png'
 
+const { t } = useI18n()
+
 AOS.init({
   duration: 1000,
   once: true
 })
 
-const allProjects = [
+const allProjects = computed(() => [
   {
     id: 1,
     title: 'EduCertify',
-    description:
-      'Educertify is a platform for creating, customizing, and sending digital certificates with ease.',
-    fullDescription:
-      'Educertify is a certificate generation and distribution platform designed for easy customization. Users can personalize certificates by changing fonts, colors, and adding signatures. The platform also supports uploading pre-signed certificates or digitally signing them directly. Once created, certificates can be sent to recipients via email, making the distribution process efficient. Educertify enables users to generate professional certificates with ease and flexibility, offering both customization and automated delivery.',
+    description: computed(() => t('projects.list.educertify.short_description')),
+    fullDescription: computed(() => t('projects.list.educertify.full_description')),
     image: Educertify,
     technologies: ['PHP', 'CSS', 'Laravel', 'MySQL', 'JavaScript', 'JQuery', 'Bootstrap', 'Vite'],
     category: 'Web App',
     liveUrl: 'https://example-ecommerce.com',
     githubUrl: 'https://github.com/carlosJCVC/EduCertify',
     featured: true,
-    features: [
-      'Customizable certificate templates',
-      'Digital and manual signature options',
-      'Font and color customization',
-      'Certificate upload and management',
-      'Automated email certificate delivery',
-      'User authentication and profile management',
-      'Admin dashboard for certificate tracking and analytics'
-    ]
+    features: computed(() => [
+      t('projects.list.educertify.features.template'),
+      t('projects.list.educertify.features.signature'),
+      t('projects.list.educertify.features.customization'),
+      t('projects.list.educertify.features.management'),
+      t('projects.list.educertify.features.delivery'),
+      t('projects.list.educertify.features.authentication'),
+      t('projects.list.educertify.features.dashboard')
+    ])
   },
   {
     id: 2,
     title: 'Anime Hero Challengue',
-    description: "Anime Hero Challengue is a fun and engaging character guessing game featuring Dragon Ball and Pokémon characters.",
-    fullDescription: "Anime Hero Challengue is an interactive game that challenges users to identify characters from Dragon Ball or Pokémon. Players select between the two series, and a character silhouette is displayed. Users must guess the character from multiple choices, earning points for correct guesses. If they answer incorrectly, the score resets, and they are encouraged to try again. GuessMaster combines fun with competition, providing endless entertainment for fans of these iconic franchises.",
+    description: computed(() => t('projects.list.animehero.short_description')),
+    fullDescription: computed(() => t('projects.list.animehero.full_description')),
     image: AnimeHeroChallenge,
-    technologies: ['JavaScript', 'Vue', 'Vite', 'Tailwind CSS', 'JavaScript', 'JQuery', 'Bootstrap', 'Vite'],
+    technologies: ['JavaScript', 'Vue', 'Vite', 'Tailwind CSS', 'Api Integration', 'Vite'],
     category: 'Web App',
     liveUrl: 'https://calm-beijinho-4007d3.netlify.app',
     githubUrl: 'https://github.com/carlosJCVC/pokemon-game',
     featured: false,
-    features: [
-      "Selection of Dragon Ball and Pokémon anime characters",
-      "Character silhouette guessing game",
-      "Multiple-choice options for character identification",
-      "Point-based scoring system for correct guesses",
-      "Score reset on incorrect guesses",
-      "Option to choose between different anime series",
-      "API integration for dynamic character information",
-      "Progress tracking for players",
-      "Responsive design for a smooth experience on all devices",
-      "Future expansion with additional anime series"
-    ]
+    features: computed(() => [
+      t('projects.list.animehero.features.selection'),
+      t('projects.list.animehero.features.silhouette'),
+      t('projects.list.animehero.features.multiple'),
+      t('projects.list.animehero.features.scoring'),
+      t('projects.list.animehero.features.reset'),
+      t('projects.list.animehero.features.series'),
+      t('projects.list.animehero.features.api'),
+      t('projects.list.animehero.features.progress'),
+      t('projects.list.animehero.features.responsive'),
+      t('projects.list.animehero.features.expansion')
+    ])
   }
-]
+])
 
-const projects = ref(allProjects.slice(0, 3))
+const projects = ref(allProjects.value.slice(0, 3))
 const showAll = ref(false)
 const selectedProject = ref(null)
-const categories = ['All', ...new Set(allProjects.map((p) => p.category))]
+const categories = ['All', ...new Set(allProjects.value.map((p) => p.category))]
 const activeCategory = ref('All')
 
 const filteredProjects = computed(() => {
@@ -114,7 +135,7 @@ const filterProjects = (category) => {
 
 const showAllProjects = () => {
   if (showAll.value) {
-    projects.value = allProjects.slice(0, 3)
+    projects.value = allProjects.value.slice(0, 3)
     showAll.value = false
   } else {
     projects.value = allProjects

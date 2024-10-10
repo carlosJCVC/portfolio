@@ -5,7 +5,7 @@
     <div class="absolute inset-0 bg-white dark:bg-gray-800 opacity-80 backdrop-blur-sm z-0"></div>
     <div class="relative z-10 p-8">
       <h3 class="text-3xl font-bold mb-6 text-center text-blue-600 dark:text-blue-300">
-        3D Skills Sphere
+        {{ $t('skills.sphere.title') }}
       </h3>
       <div
         class="bg-white bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-50 rounded-xl p-6 shadow-inner transition-colors duration-300"
@@ -22,14 +22,15 @@
               {{ hoveredSkill.name }}
             </h4>
             <p class="text-sm mt-1">
-              Proficiency: <span class="font-medium">{{ hoveredSkill.level }}%</span>
+              {{ $t('skills.sphere.proficiency') }}:
+              <span class="font-medium">{{ hoveredSkill.level }}%</span>
             </p>
             <p class="text-sm mt-2">{{ hoveredSkill.description }}</p>
           </div>
         </div>
       </div>
       <div class="mt-6 text-sm text-gray-600 dark:text-gray-300 text-center">
-        Hover over the sphere to explore skills
+        {{ $t('skills.sphere.detail') }}
       </div>
     </div>
     <div

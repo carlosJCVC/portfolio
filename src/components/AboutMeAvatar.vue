@@ -17,7 +17,7 @@
 
 <script setup>
 // const profileImage = ref('https://picsum.photos/500/500');
-import profileImage from '@/assets/images/avatar.png'
+import profileImage from '@/assets/images/avatar.jpg'
 </script>
 
 <style scoped></style>

@@ -4,7 +4,7 @@
     class="py-20 transition-colors duration-300 bg-gradient-to-br from-gray-100 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 text-gray-800 dark:text-white"
   >
     <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Skills & Expertise</h2>
+      <h2 class="text-5xl font-bold text-center mb-16 gradient-text">{{ $t('skills.title') }}</h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- 3D Skill Sphere -->

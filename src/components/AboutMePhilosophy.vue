@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="text-2xl font-semibold mb-6 dark:text-gray-200">My Development Philosophy</h3>
+    <h3 class="text-2xl font-semibold mb-6 dark:text-gray-200">{{ $t('info.philosophy') }}</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div
         v-for="(principle, index) in principles"
@@ -16,26 +16,28 @@
 </template>
 
 <script setup>
-const principles = [
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const principles = computed(() => [
   {
     icon: 'fas fa-lightbulb',
-    title: 'Innovative Solutions',
-    description:
-      'I believe in thinking outside the box to solve complex problems with elegant solutions.'
+    title: t('info.principles.innovative_solutions.title'),
+    description: t('info.principles.innovative_solutions.description')
   },
   {
     icon: 'fas fa-users',
-    title: 'User-Centric Approach',
-    description:
-      'Every line of code I write is with the end-user in mind, ensuring intuitive and enjoyable experiences.'
+    title: t('info.principles.user_centric_approach.title'),
+    description: t('info.principles.user_centric_approach.description')
   },
   {
     icon: 'fas fa-rocket',
-    title: 'Continuous Learning',
-    description:
-      "In this ever-evolving field, I'm committed to staying at the forefront of new technologies and best practices."
+    title: t('info.principles.continuous_learning.title'),
+    description: t('info.principles.continuous_learning.description')
   }
-]
+])
 </script>
 
 <style lang="scss" scoped></style>
