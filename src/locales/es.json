@@ -70,6 +70,20 @@
           "responsive": "Diseño responsivo para una experiencia fluida en todos los dispositivos",
           "expansion": "Expansión futura con series de anime adicionales"
         }
+      },
+      "elfec": {
+        "title": "ELFEC",
+        "short_description": "ELFEC es un CMS para la gestión de servicios y la atención al cliente de la empresa de electricidad de Cochabamba.",
+        "full_description": "ELFEC.bo es una plataforma diseñada para la gestión integral de servicios eléctricos, permitiendo a la Empresa de Electricidad de Cochabamba (ELFEC) ofrecer un servicio eficiente a sus clientes. La plataforma permite la gestión de cuentas de usuario, consulta de facturas, y reportes de fallas, facilitando la comunicación entre la empresa y sus usuarios. Además, el CMS incluye funcionalidades para la generación de informes y estadísticas sobre el consumo y la satisfacción del cliente, mejorando así la calidad del servicio. elfec.bo está orientado a mejorar la experiencia del cliente y optimizar la operación interna de la empresa.",
+        "features": {
+          "user_management": "Gestión de cuentas de usuario y perfiles",
+          "billing": "Consulta y gestión de facturas",
+          "reporting": "Reportes de fallas y estadísticas de consumo",
+          "notifications": "Notificaciones automáticas de servicio y actualizaciones",
+          "analytics": "Panel de administración con análisis de datos de clientes y servicios",
+          "support": "Soporte al cliente y gestión de tickets",
+          "mobile_access": "Acceso móvil para una gestión eficiente en cualquier lugar"
+        }
       }
     }
   },

@@ -4,41 +4,21 @@
     <ParticlesBackground />
 
     <div class="container mx-auto px-4 relative z-10">
-      <h2
-        class="text-6xl font-extrabold text-center mb-16 gradient-text tracking-tight"
-        data-aos="fade-down"
-      >
+      <h2 class="text-6xl font-extrabold text-center mb-16 gradient-text tracking-tight" data-aos="fade-down">
         {{ $t('projects.title') }}
       </h2>
 
-      <ProjectFilter
-        :categories="categories"
-        :activeCategory="activeCategory"
-        @filter="filterProjects"
-      />
+      <ProjectFilter :categories="categories" :activeCategory="activeCategory" @filter="filterProjects" />
 
-      <TransitionGroup
-        tag="div"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        :css="false"
-        @before-enter="onBeforeEnter"
-        @enter="onEnter"
-        @leave="onLeave"
-      >
-        <ProjectCard
-          v-for="(project, index) in filteredProjects"
-          :key="project.id"
-          :project="project"
-          :index="index"
-          @open-modal="openModal"
-        />
+      <TransitionGroup tag="div" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" :css="false"
+        @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+        <ProjectCard v-for="(project, index) in filteredProjects" :key="project.id" :project="project" :index="index"
+          @open-modal="openModal" />
       </TransitionGroup>
 
       <div class="text-center mt-16">
-        <button
-          @click="showAllProjects"
-          class="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transform hover:scale-105 shadow-lg"
-        >
+        <button @click="showAllProjects"
+          class="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transform hover:scale-105 shadow-lg">
           {{ showAll ? $t('projects.show_less') : $t('projects.more_projects') }}
         </button>
       </div>
@@ -58,6 +38,7 @@ import ProjectCard from './ProjectCard.vue'
 import ProjectModal from './ProjectModal.vue'
 import ProjectFilter from './ProjectFilter.vue'
 import ParticlesBackground from './ParticlesBackground.vue'
+import ElfecImage from '@/assets/images/projects/elfec.png'
 import Educertify from '@/assets/images/projects/educertify.webp'
 import AnimeHeroChallenge from '@/assets/images/projects/Anime_Hero_Challenge_600x400.png'
 
@@ -71,6 +52,29 @@ AOS.init({
 const allProjects = computed(() => [
   {
     id: 1,
+    title: 'ELFEC',
+    description: computed(() => t('projects.list.elfec.short_description')),
+    fullDescription: computed(() => t('projects.list.elfec.full_description')),
+    image: ElfecImage,
+    technologies: ['PHP', 'CSS', 'Drupal', 'MySQL', 'JavaScript', 'JQuery', 'Bootstrap'],
+    category: 'Web App',
+    liveUrl: 'https://www.elfec.bo',
+    githubUrl: '',
+    displayLiveUrl: true,
+    displayGithubUrl: false,
+    featured: false,
+    features: computed(() => [
+      t('projects.list.elfec.features.user_management'),
+      t('projects.list.elfec.features.billing'),
+      t('projects.list.elfec.features.reporting'),
+      t('projects.list.elfec.features.notifications'),
+      t('projects.list.elfec.features.analytics'),
+      t('projects.list.elfec.features.support'),
+      t('projects.list.elfec.features.mobile_access')
+    ])
+  },
+  {
+    id: 2,
     title: 'EduCertify',
     description: computed(() => t('projects.list.educertify.short_description')),
     fullDescription: computed(() => t('projects.list.educertify.full_description')),
@@ -79,6 +83,8 @@ const allProjects = computed(() => [
     category: 'Web App',
     liveUrl: 'https://example-ecommerce.com',
     githubUrl: 'https://github.com/carlosJCVC/EduCertify',
+    displayLiveUrl: false,
+    displayGithubUrl: true,
     featured: true,
     features: computed(() => [
       t('projects.list.educertify.features.template'),
@@ -91,7 +97,7 @@ const allProjects = computed(() => [
     ])
   },
   {
-    id: 2,
+    id: 3,
     title: 'Anime Hero Challengue',
     description: computed(() => t('projects.list.animehero.short_description')),
     fullDescription: computed(() => t('projects.list.animehero.full_description')),
@@ -100,6 +106,8 @@ const allProjects = computed(() => [
     category: 'Web App',
     liveUrl: 'https://calm-beijinho-4007d3.netlify.app',
     githubUrl: 'https://github.com/carlosJCVC/pokemon-game',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
     featured: false,
     features: computed(() => [
       t('projects.list.animehero.features.selection'),
