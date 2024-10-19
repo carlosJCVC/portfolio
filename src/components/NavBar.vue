@@ -37,7 +37,7 @@
             @click="toggleMobileMenu"
             type="button"
             class="hover:text-indigo-200 focus:outline-none focus:text-indigo-200"
-            :class="[isDarkMode ? 'text-white' : 'text-gray-900']"
+            :class="[isDarkMode || !scrolled ? 'text-white' : 'text-gray-900']"
           >
             <svg
               class="h-6 w-6"
@@ -59,7 +59,10 @@
     </div>
 
     <div class="md:hidden" :class="{ hidden: !mobileMenuOpen }" id="mobile-menu">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <div
+        class="px-2 pt-2 pb-3 space-y-1 sm:px-3"
+        :class="[isDarkMode || scrolled ? 'bg-white' : 'bg-gray-900']"
+      >
         <a
           v-for="item in navItems"
           :key="item.href"
@@ -83,12 +86,14 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import LanguageSelector from './LanguageSelector.vue'
+import { useThemeStore } from '@/store/useThemeStore'
+const { theme } = useThemeStore()
 
 const { t } = useI18n()
 
 const scrolled = ref(false)
 const mobileMenuOpen = ref(false)
-const isDarkMode = ref(false)
+const isDarkMode = ref(theme == 'dark' ? true : false)
 
 const navItems = computed(() => [
   { href: '/', text: t('nav.home') },

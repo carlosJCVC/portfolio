@@ -19,6 +19,7 @@
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
 import NavBar from './components/NavBar.vue'
 import MyHeader from './components/MyHeader.vue'
 import AboutMe from './components/AboutMe.vue'
@@ -27,7 +28,9 @@ import SkillSection from './components/SkillSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import { useThemeStore } from './store/useThemeStore'
 
-const { theme, toggleTheme } = useThemeStore()
+const store = useThemeStore()
+const { theme } = storeToRefs(store)
+const { toggleTheme } = store
 </script>
 
 <style>

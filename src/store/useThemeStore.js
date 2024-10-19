@@ -2,10 +2,11 @@ import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useThemeStore = defineStore('theme', () => {
-  const theme = ref(localStorage.getItem('theme') || 'light')
+  const key = 'theme'
+  const theme = ref(localStorage.getItem(key) || 'light')
 
   watch(theme, (newTheme) => {
-    localStorage.setItem('theme', newTheme)
+    localStorage.setItem(key, newTheme)
     updateTheme(newTheme)
   })
 

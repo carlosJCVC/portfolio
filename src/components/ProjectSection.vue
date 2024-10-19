@@ -4,21 +4,41 @@
     <ParticlesBackground />
 
     <div class="container mx-auto px-4 relative z-10">
-      <h2 class="text-6xl font-extrabold text-center mb-16 gradient-text tracking-tight" data-aos="fade-down">
+      <h2
+        class="text-6xl font-extrabold text-center mb-16 gradient-text tracking-tight"
+        data-aos="fade-down"
+      >
         {{ $t('projects.title') }}
       </h2>
 
-      <ProjectFilter :categories="categories" :activeCategory="activeCategory" @filter="filterProjects" />
+      <ProjectFilter
+        :categories="categories"
+        :activeCategory="activeCategory"
+        @filter="filterProjects"
+      />
 
-      <TransitionGroup tag="div" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" :css="false"
-        @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-        <ProjectCard v-for="(project, index) in filteredProjects" :key="project.id" :project="project" :index="index"
-          @open-modal="openModal" />
+      <TransitionGroup
+        tag="div"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        :css="false"
+        @before-enter="onBeforeEnter"
+        @enter="onEnter"
+        @leave="onLeave"
+      >
+        <ProjectCard
+          v-for="(project, index) in filteredProjects"
+          :key="project.id"
+          :project="project"
+          :index="index"
+          @open-modal="openModal"
+        />
       </TransitionGroup>
 
       <div class="text-center mt-16">
-        <button @click="showAllProjects"
-          class="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transform hover:scale-105 shadow-lg">
+        <button
+          @click="showAllProjects"
+          class="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transform hover:scale-105 shadow-lg"
+        >
           {{ showAll ? $t('projects.show_less') : $t('projects.more_projects') }}
         </button>
       </div>
