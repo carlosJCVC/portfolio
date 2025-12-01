@@ -12,22 +12,26 @@
   },
   "info": {
     "about": "Acerca de Mi",
-    "introduction": "¡Hola! Soy {name}, un apasionado desarrollador full-stack con más de 7 años de experiencia, especializado en el desarrollo de aplicaciones web robustas utilizando tecnologías como Laravel, Vue, Angular y JavaScript, con una sólida formación en PHP, MySQL, JavaScript y API REST. Un historial comprobado de entrega de soluciones escalables de alta calidad. Experto en desarrollo front-end y back-end, con experiencia en la aplicación de principios de código limpio y patrones de diseño SOLID. Amplia experiencia en gestión de servidores, desarrollo móvil y colaboración con clientes de diversas industrias, ofreciendo soluciones versátiles y orientadas a resultados para desafíos complejos y contribuyendo a proyectos impactantes.",
+    "introduction": "Soy {name}, un <span class='font-bold text-gray-900 dark:text-white'>Desarrollador Full-Stack</span> con más de 7 años creando experiencias digitales. No solo escribo código; construyo <span class='font-bold text-gray-900 dark:text-white'>motores escalables de alto rendimiento</span> usando Laravel, Vue y Node.js. Desde la arquitectura de backends complejos hasta el pulido de frontends perfectos, uno la brecha entre la <span class='font-bold text-gray-900 dark:text-white'>complejidad técnica y la simplicidad del usuario</span>. ¿Mi misión? Convertir ideas ambiciosas en software confiable y listo para el mercado.",
     "download": "Descargar CV",
     "view_projects": "Ver Proyectos",
     "philosophy": "Mi Filosofía de Desarrollo",
     "principles": {
-      "innovative_solutions": {
-        "title": "Soluciones innovadoras",
-        "description": "Creo en pensar fuera de la caja para resolver problemas complejos con soluciones elegantes."
+      "clean_code": {
+        "title": "Código Limpio y Arquitectura",
+        "description": "Priorizo la mantenibilidad, escalabilidad y principios SOLID para sistemas robustos."
       },
-      "user_centric_approach": {
-        "title": "Enfoque centrado en el usuario",
-        "description": "Cada línea de código que escribo está pensando en el usuario final, garantizando experiencias intuitivas y agradables."
+      "user_centric": {
+        "title": "Diseño Centrado en el Usuario",
+        "description": "Cada píxel e interacción está diseñado pensando en el usuario final para experiencias intuitivas."
       },
-      "continuous_learning": {
-        "title": "Aprendizaje continuo",
-        "description": "En este campo en constante evolución, me comprometo a mantenerme a la vanguardia de las nuevas tecnologías y las mejores prácticas."
+      "scalable_performance": {
+        "title": "Rendimiento Escalable",
+        "description": "Construyendo sistemas de alto rendimiento que crecen sin comprometer la velocidad."
+      },
+      "continuous_evolution": {
+        "title": "Evolución Continua",
+        "description": "Comprometido con el aprendizaje continuo para ofrecer soluciones preparadas para el futuro."
       }
     }
   },

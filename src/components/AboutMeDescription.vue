@@ -7,10 +7,12 @@
 
     <div class="flex flex-wrap gap-3 my-8">
       <span
-        v-for="skill in skills"
+        v-for="(skill, index) in skills"
         :key="skill"
-        class="px-4 py-2 bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white cursor-default border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary"
+        class="px-4 py-2 bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white cursor-default border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary hover:scale-105 transform"
         @click="highlightSkill(skill)"
+        data-aos="zoom-in"
+        :data-aos-delay="index * 50"
       >
         {{ skill }}
       </span>
@@ -60,7 +62,10 @@ const sanitizedIntroduction = computed(() => {
     name: `<span class='font-semibold text-primary'>${DOMPurify.sanitize(name)}</span>`
   })
 
-  return DOMPurify.sanitize(rawHtml, { ALLOWED_TAGS: ['span'], ALLOWED_ATTR: ['class'] })
+  return DOMPurify.sanitize(rawHtml, {
+    ALLOWED_TAGS: ['span', 'b', 'strong'],
+    ALLOWED_ATTR: ['class']
+  })
 })
 
 const downloadCV = () => {
