@@ -40,20 +40,45 @@
           target="_blank"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
-          <i class="fab fa-github text-gray-400 group-hover:text-white"></i>
+          <i class="fab fa-github text-gray-400 group-hover:text-white text-lg w-6 text-center"></i>
           <div class="flex-grow">
             <div class="text-gray-300 text-sm group-hover:text-white">GitHub Profile</div>
-            <div class="text-gray-500 text-[10px]">View source code</div>
+            <div class="text-gray-500 text-[10px]">Check out my repos</div>
           </div>
         </a>
+        
         <a
-          href="#"
+          href="https:www.linkedin.com/in/jcarlos-veizaga"
+          target="_blank"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
-          <i class="fas fa-file-pdf text-red-400"></i>
+          <i class="fab fa-linkedin text-blue-400 group-hover:text-blue-300 text-lg w-6 text-center"></i>
+          <div class="flex-grow">
+            <div class="text-gray-300 text-sm group-hover:text-white">LinkedIn</div>
+            <div class="text-gray-500 text-[10px]">Let's connect</div>
+          </div>
+        </a>
+
+        <a
+          :href="resumeUrl"
+          download="Carlos_Veizaga_Resume.pdf"
+          class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
+        >
+          <i class="fas fa-file-pdf text-red-400 group-hover:text-red-300 text-lg w-6 text-center"></i>
           <div class="flex-grow">
             <div class="text-gray-300 text-sm group-hover:text-white">Resume.pdf</div>
-            <div class="text-gray-500 text-[10px]">Recently updated</div>
+            <div class="text-gray-500 text-[10px]">Download CV</div>
+          </div>
+        </a>
+
+        <a
+          href="mailto:carlos.veizaga.c@gmail.com"
+          class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
+        >
+          <i class="fas fa-envelope text-green-400 group-hover:text-green-300 text-lg w-6 text-center"></i>
+          <div class="flex-grow">
+            <div class="text-gray-300 text-sm group-hover:text-white">Email Me</div>
+            <div class="text-gray-500 text-[10px]">carlos.veizaga.c@gmail.com</div>
           </div>
         </a>
       </div>
@@ -77,6 +102,8 @@
 </template>
 
 <script setup>
+import resumeUrl from '@/assets/Carlos_Veizaga_Resume.pdf'
+
 const props = defineProps({
   isOpen: Boolean,
   apps: Array
