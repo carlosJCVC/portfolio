@@ -1,13 +1,17 @@
 <template>
-  <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-4 flex flex-wrap">
+  <section
+    id="contact"
+    class="py-24 bg-white dark:bg-dark-card transition-colors duration-300 relative"
+  >
+    <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap lg:flex-nowrap gap-12">
       <!-- Contact Form -->
-      <div class="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-8">
+      <div class="w-full lg:w-1/2" data-aos="fade-right">
         <GetInTouch></GetInTouch>
       </div>
 
       <!-- Social Links and About Me -->
-      <div class="w-full lg:w-1/2 lg:pl-8">
+      <div class="w-full lg:w-1/2" data-aos="fade-left">
         <ConnectWithMe></ConnectWithMe>
       </div>
     </div>

@@ -1,15 +1,15 @@
 <template>
   <div class="mb-12">
-    <div class="flex justify-center space-x-4" data-aos="fade-up">
+    <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
       <button
         v-for="category in categories"
         :key="category"
         @click="$emit('filter', category)"
         :class="[
-          'px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300',
+          'px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border',
           activeCategory === category
-            ? 'bg-indigo-600 text-white shadow-lg scale-105'
-            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-indigo-100 dark:hover:bg-indigo-900'
+            ? 'bg-primary text-white border-primary shadow-lg shadow-primary/30'
+            : 'bg-white dark:bg-dark-card text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary'
         ]"
       >
         {{ category }}

@@ -1,55 +1,70 @@
 <template>
   <div
-    class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+    class="group relative bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800"
     :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
     :data-aos-delay="index * 100"
   >
-    <div class="relative overflow-hidden group aspect-w-16 aspect-h-9">
+    <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
       <img
         :src="project.image"
         :alt="project.title"
-        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
       <div
-        class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-8"
       >
         <button
           @click="$emit('open-modal', project)"
-          class="bg-white text-gray-800 px-6 py-3 rounded-full hover:bg-indigo-100 transition-colors duration-300 transform hover:scale-105"
+          class="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 shadow-lg"
         >
           {{ $t('projects.explore') }}
         </button>
       </div>
     </div>
 
-    <div class="p-6">
-      <h3 class="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-200">{{ project.title }}</h3>
-      <p class="text-gray-600 dark:text-gray-400 mb-4 text-justify">{{ project.description }}</p>
-      <div class="flex flex-wrap gap-2 mb-4">
+    <div class="p-6 relative">
+      <div class="absolute top-0 right-0 p-6" v-if="project.featured">
         <span
-          v-for="tech in project.technologies"
+          class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-400/10 text-yellow-500 border border-yellow-400/20"
+        >
+          {{ $t('projects.featured') }}
+        </span>
+      </div>
+
+      <h3
+        class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-300"
+      >
+        {{ project.title }}
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3 leading-relaxed">
+        {{ project.description }}
+      </p>
+
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span
+          v-for="tech in project.technologies.slice(0, 4)"
           :key="tech"
-          class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-xs font-medium rounded-full"
+          class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-medium rounded-full border border-gray-200 dark:border-gray-700"
         >
           {{ tech }}
         </span>
+        <span v-if="project.technologies.length > 4" class="px-3 py-1 text-xs text-gray-400"
+          >+{{ project.technologies.length - 4 }}</span
+        >
       </div>
-      <div class="flex justify-between items-center">
+
+      <div
+        class="flex justify-between items-center pt-4 border-t border-gray-100 dark:border-gray-800"
+      >
         <a
           v-if="project.displayLiveUrl"
           :href="project.liveUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200 transition-colors duration-300 flex items-center"
+          class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center gap-2"
         >
           <span>{{ $t('projects.live') }}</span>
-          <svg
-            class="w-4 h-4 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -63,14 +78,9 @@
           :href="project.githubUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300 flex items-center"
+          class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center gap-2"
         >
-          <svg
-            class="w-5 h-5 mr-2"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"
@@ -80,12 +90,6 @@
           <span>{{ $t('projects.view') }}</span>
         </a>
       </div>
-    </div>
-    <div
-      v-if="project.featured"
-      class="absolute top-4 right-4 bg-yellow-400 text-gray-800 px-3 py-1 rounded-full text-xs font-bold shadow-md"
-    >
-      {{ $t('projects.featured') }}
     </div>
   </div>
 </template>

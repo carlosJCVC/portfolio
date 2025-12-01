@@ -1,16 +1,18 @@
 <template>
-  <div class="relative">
+  <div class="relative group">
     <div
-      class="w-64 h-64 mx-auto rounded-full overflow-hidden shadow-2xl ring-4 ring-indigo-500 dark:ring-indigo-400"
+      class="w-64 h-64 mx-auto rounded-full overflow-hidden shadow-2xl ring-4 ring-offset-4 ring-offset-white dark:ring-offset-dark-bg ring-primary/50 dark:ring-primary/50 transition-all duration-500 group-hover:ring-primary"
     >
       <img
         :src="profileImage"
         alt="Carlos Developer"
-        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
     </div>
-    <div class="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg">
-      <span class="text-3xl">👨‍💻</span>
+    <div
+      class="absolute -bottom-2 -right-2 bg-white dark:bg-dark-card rounded-full p-4 shadow-xl border border-gray-100 dark:border-gray-700 animate-bounce-slow"
+    >
+      <span class="text-4xl">👨‍💻</span>
     </div>
   </div>
 </template>

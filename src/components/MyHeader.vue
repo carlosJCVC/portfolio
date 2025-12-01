@@ -1,33 +1,45 @@
 <template>
-  <header id="home" class="relative min-h-screen flex items-center justify-center">
+  <header id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <div ref="vantaContainer" id="vanta-background" class="absolute inset-0"></div>
-    <div class="container mx-auto px-4 z-10 text-center">
-      <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white" data-aos="fade-up">
+
+    <!-- Overlay for better text readability -->
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark-bg/90 pointer-events-none"
+    ></div>
+
+    <div class="container mx-auto px-4 z-10 text-center relative">
+      <h1
+        class="text-6xl md:text-8xl font-extrabold mb-6 text-white tracking-tight"
+        data-aos="fade-up"
+      >
         {{ $t('header.title', { name: 'Carlos' }) }}
       </h1>
-      <p class="text-xl md:text-2xl mb-8 text-indigo-200" data-aos="fade-up" data-aos-delay="200">
-        Full Stack Developer
-      </p>
-      <a
-        href="#contact"
-        class="bg-white text-indigo-600 py-3 px-8 rounded-full text-lg font-semibold hover:bg-indigo-100 transition duration-300 inline-block"
+      <p
+        class="text-2xl md:text-3xl mb-10 text-gray-300 font-light"
         data-aos="fade-up"
-        data-aos-delay="400"
-        >{{ $t('header.contact') }}</a
+        data-aos-delay="200"
       >
-    </div>
-    <div class="custom-shape-divider-bottom-1679213778">
-      <svg
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 120"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-          class="shape-fill"
-        ></path>
-      </svg>
+        <span class="gradient-text font-semibold">Full Stack Developer</span>
+      </p>
+
+      <div data-aos="fade-up" data-aos-delay="400" class="flex justify-center gap-6">
+        <a
+          href="#contact"
+          class="group relative px-8 py-4 bg-primary text-white rounded-full text-lg font-semibold overflow-hidden shadow-lg hover:shadow-primary/50 transition-all duration-300"
+        >
+          <span class="relative z-10">{{ $t('header.contact') }}</span>
+          <div
+            class="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-secondary/20"
+          ></div>
+        </a>
+
+        <a
+          href="#projects"
+          class="px-8 py-4 border border-white/20 text-white rounded-full text-lg font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+        >
+          View Work
+        </a>
+      </div>
     </div>
   </header>
 </template>
@@ -36,15 +48,12 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
-// import BIRDS from 'vanta/dist/vanta.birds.min';
 
 const vantaContainer = ref(null)
 let vantaEffect = null
 
 onMounted(() => {
   if (typeof window !== 'undefined') {
-    // const THREE = await import('three');
-
     vantaEffect = NET({
       el: vantaContainer.value,
       THREE: THREE,
@@ -55,11 +64,12 @@ onMounted(() => {
       minWidth: 200.0,
       scale: 1.0,
       scaleMobile: 1.0,
-      color: 0x3b82f6,
-      backgroundColor: 0x111827,
-      points: 10.0,
-      maxDistance: 25.0,
-      spacing: 18.0
+      color: 0x6366f1, // Primary color
+      backgroundColor: 0x111827, // Dark bg
+      points: 12.0,
+      maxDistance: 22.0,
+      spacing: 16.0,
+      showDots: true
     })
   }
 })
@@ -72,23 +82,5 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.custom-shape-divider-bottom-1679213778 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-bottom-1679213778 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 150px;
-}
-
-.custom-shape-divider-bottom-1679213778 .shape-fill {
-  fill: #ffffff;
-}
+/* Removed the SVG shape divider for a cleaner look */
 </style>

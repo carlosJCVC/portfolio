@@ -1,15 +1,19 @@
 <template>
   <div>
-    <h3 class="text-2xl font-semibold mb-6 dark:text-gray-200">{{ $t('info.philosophy') }}</h3>
+    <h3 class="text-3xl font-bold mb-10 text-center gradient-text">{{ $t('info.philosophy') }}</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div
         v-for="(principle, index) in principles"
         :key="index"
-        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+        class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 group"
       >
-        <i :class="principle.icon + ' text-4xl text-indigo-500 mb-4'"></i>
-        <h4 class="text-xl font-semibold mb-2 dark:text-gray-200">{{ principle.title }}</h4>
-        <p class="text-gray-600 dark:text-gray-400">{{ principle.description }}</p>
+        <div
+          class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300"
+        >
+          <i :class="principle.icon + ' text-3xl text-primary'"></i>
+        </div>
+        <h4 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">{{ principle.title }}</h4>
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{{ principle.description }}</p>
       </div>
     </div>
   </div>

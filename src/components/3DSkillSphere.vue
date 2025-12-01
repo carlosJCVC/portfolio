@@ -113,6 +113,18 @@ const skills = [
     level: 70,
     description: 'Eye for design and user experience principles',
     category: 'Design'
+  },
+  {
+    name: 'n8n',
+    level: 75,
+    description: 'Workflow automation and integration',
+    category: 'DevOps'
+  },
+  {
+    name: 'React Native',
+    level: 80,
+    description: 'Cross-platform mobile app development',
+    category: 'Frontend'
   }
 ]
 

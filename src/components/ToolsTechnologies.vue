@@ -68,7 +68,8 @@ const tools = [
   { name: 'Git', icon: GitIcon },
   { name: 'Docker', icon: DockerIcon },
   { name: 'Webpack', icon: WebpackIcon },
-  { name: 'Postman', icon: PostmanIcon }
+  { name: 'Postman', icon: PostmanIcon },
+  { name: 'React Native', icon: ReactIcon }
 ]
 </script>
 

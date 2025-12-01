@@ -1,25 +1,42 @@
 <template>
-  <section id="projects" class="py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 opacity-10"></div>
+  <section
+    id="projects"
+    class="py-24 relative overflow-hidden bg-gray-50 dark:bg-dark-bg transition-colors duration-300"
+  >
+    <!-- Subtle gradient background -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-50"
+    ></div>
     <ParticlesBackground />
 
     <div class="container mx-auto px-4 relative z-10">
-      <h2
-        class="text-6xl font-extrabold text-center mb-16 gradient-text tracking-tight"
-        data-aos="fade-down"
-      >
-        {{ $t('projects.title') }}
-      </h2>
+      <div class="text-center mb-16">
+        <h2
+          class="text-5xl md:text-6xl font-extrabold text-center mb-6 gradient-text tracking-tight inline-block"
+          data-aos="fade-down"
+        >
+          {{ $t('projects.title') }}
+        </h2>
+        <p
+          class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Explore a selection of my recent work, ranging from web applications to interactive
+          experiences.
+        </p>
+      </div>
 
       <ProjectFilter
         :categories="categories"
         :activeCategory="activeCategory"
         @filter="filterProjects"
+        class="mb-12"
       />
 
       <TransitionGroup
         tag="div"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
         :css="false"
         @before-enter="onBeforeEnter"
         @enter="onEnter"
@@ -34,12 +51,14 @@
         />
       </TransitionGroup>
 
-      <div class="text-center mt-16">
+      <div class="text-center mt-20">
         <button
           @click="showAllProjects"
-          class="bg-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transform hover:scale-105 shadow-lg"
+          class="group relative px-8 py-4 bg-white dark:bg-dark-card text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-full text-lg font-semibold hover:border-primary dark:hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20"
         >
-          {{ showAll ? $t('projects.show_less') : $t('projects.more_projects') }}
+          <span class="relative z-10 group-hover:text-primary transition-colors duration-300">
+            {{ showAll ? $t('projects.show_less') : $t('projects.more_projects') }}
+          </span>
         </button>
       </div>
     </div>

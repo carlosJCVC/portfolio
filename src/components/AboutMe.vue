@@ -1,22 +1,31 @@
 <template>
-  <section
-    id="about-me"
-    class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
-  >
-    <div class="container mx-auto px-4">
-      <h2 class="text-5xl font-bold text-center mb-16 gradient-text" data-aos="fade-down">
-        {{ $t('info.about') }}
-      </h2>
+  <section id="about-me" class="py-24 bg-white dark:bg-dark-bg relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 -left-24 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
+    </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-        <div class="lg:col-span-1" data-aos="fade-right">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="text-center mb-20">
+        <h2
+          class="text-5xl md:text-6xl font-extrabold mb-6 gradient-text inline-block tracking-tight"
+          data-aos="fade-down"
+        >
+          {{ $t('info.about') }}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+        <div class="lg:col-span-4 flex justify-center" data-aos="fade-right">
           <AboutMeAvatar></AboutMeAvatar>
         </div>
-        <div class="lg:col-span-2 space-y-6" data-aos="fade-left">
+        <div class="lg:col-span-8 space-y-8" data-aos="fade-left">
           <AboutMeDescription></AboutMeDescription>
         </div>
       </div>
-      <div class="mt-16 text-center" data-aos="fade-up">
+
+      <div data-aos="fade-up">
         <AboutMePhilosophy></AboutMePhilosophy>
       </div>
     </div>
@@ -37,10 +46,5 @@ AOS.init({
 </script>
 
 <style scoped>
-.gradient-text {
-  @apply bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* Scoped styles if needed */
 </style>

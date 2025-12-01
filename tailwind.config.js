@@ -8,8 +8,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        sans: ['Outfit', 'sans-serif'],
+        poppins: ['Outfit', 'sans-serif'], // Keep for backward compatibility if needed, but map to Outfit
       },
+      colors: {
+        primary: '#6366f1',
+        secondary: '#3b82f6',
+        accent: '#2dd4bf',
+        'dark-bg': '#111827',
+        'dark-card': '#1f2937',
+      }
     },
   },
   plugins: [],

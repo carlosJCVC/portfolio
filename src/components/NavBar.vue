@@ -3,75 +3,83 @@
     id="navbar"
     class="fixed w-full z-50 transition-all duration-300"
     :class="{
-      'bg-white shadow-md': scrolled && !isDarkMode,
-      'bg-gray-900 shadow-md': scrolled && isDarkMode,
-      'bg-transparent': !isDarkMode
+      'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg': scrolled,
+      'bg-transparent': !scrolled
     }"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <a href="/" class="text-2xl font-bold gradient-text">CARLOS DEV</a>
+      <div class="flex justify-between h-20 items-center">
+        <a href="/" class="text-3xl font-bold logo-gradient-text tracking-tight">CARLOS DEV</a>
 
         <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-4">
+          <div class="ml-10 flex items-center space-x-8">
             <a
               v-for="item in navItems"
               :key="item.href"
               :href="item.href"
-              class="nav-link px-3 py-2 rounded-md text-sm font-medium"
+              class="nav-link text-sm font-medium transition-colors duration-300 relative group"
               :class="[
-                scrolled && !isDarkMode
-                  ? 'text-gray-800 hover:text-indigo-600'
+                scrolled
+                  ? 'text-gray-800 dark:text-gray-100 hover:text-primary dark:hover:text-primary'
                   : 'text-white hover:text-indigo-200'
               ]"
             >
               {{ item.text }}
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+              ></span>
             </a>
           </div>
         </div>
 
-        <LanguageSelector></LanguageSelector>
+        <div class="flex items-center gap-4">
+          <LanguageSelector></LanguageSelector>
 
-        <div class="md:hidden">
-          <button
-            @click="toggleMobileMenu"
-            type="button"
-            class="hover:text-indigo-200 focus:outline-none focus:text-indigo-200"
-            :class="[isDarkMode || !scrolled ? 'text-white' : 'text-gray-900']"
-          >
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div class="md:hidden">
+            <button
+              @click="toggleMobileMenu"
+              type="button"
+              class="hover:text-primary focus:outline-none transition-colors"
+              :class="[isDarkMode || !scrolled ? 'text-white' : 'text-gray-900']"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+              <svg
+                class="h-8 w-8"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="md:hidden" :class="{ hidden: !mobileMenuOpen }" id="mobile-menu">
+    <div
+      class="md:hidden transition-all duration-300 ease-in-out overflow-hidden"
+      :class="[mobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0']"
+      id="mobile-menu"
+    >
       <div
-        class="px-2 pt-2 pb-3 space-y-1 sm:px-3"
-        :class="[isDarkMode || scrolled ? 'bg-white' : 'bg-gray-900']"
+        class="px-4 pt-2 pb-4 space-y-2 backdrop-blur-xl"
+        :class="[isDarkMode || scrolled ? 'bg-white/90 dark:bg-gray-900/90' : 'bg-gray-900/90']"
       >
         <a
           v-for="item in navItems"
           :key="item.href"
           :href="item.href"
-          class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium"
+          class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium transition-all"
           :class="[
             scrolled && !isDarkMode
-              ? 'text-gray-700 hover:text-indigo-600 hover:bg-indigo-50'
-              : 'text-white hover:text-indigo-200 hover:bg-gray-800'
+              ? 'text-gray-700 hover:text-primary hover:bg-indigo-50'
+              : 'text-white hover:text-primary hover:bg-gray-800'
           ]"
           @click="closeMobileMenu"
         >
