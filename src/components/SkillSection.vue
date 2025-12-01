@@ -31,82 +31,82 @@
 
       <!-- Bento Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        <!-- Core Stack (Large Item) -->
+        <!-- 1. Vue.js Ecosystem (Hero - 2x2) -->
         <SkillBentoItem
           title="Vue.js Ecosystem"
-          description="My primary weapon of choice. Expert in Vue 3, Pinia, Vue Router, and Nuxt for server-side rendering."
+          description="My primary weapon. Expert in Vue 3, Pinia, Nuxt.js, and component architecture."
           icon="fab fa-vuejs"
           size="2x2"
           color="green"
-          :level="95"
+          :level="98"
           data-aos="fade-up"
           data-aos-delay="0"
         />
 
-        <!-- Secondary Core (Wide Item) -->
+        <!-- 2. React & Native (Wide - 2x1) -->
         <SkillBentoItem
-          title="Node.js & Backend"
-          description="Building scalable RESTful APIs and microservices with Express and NestJS."
-          icon="fab fa-node-js"
+          title="React & React Native"
+          description="Building cross-platform mobile apps and dynamic web interfaces with the React ecosystem."
+          icon="fab fa-react"
           size="2x1"
-          color="green"
+          color="blue"
           :level="90"
           data-aos="fade-up"
           data-aos-delay="100"
         />
 
-        <!-- Frontend Tool -->
+        <!-- 3. Laravel & PHP (Wide - 2x1) -->
         <SkillBentoItem
-          title="React & Native"
-          description="Building cross-platform mobile apps and dynamic web interfaces."
-          icon="fab fa-react"
-          size="1x1"
-          color="blue"
-          :level="85"
+          title="Laravel & PHP"
+          description="Architecting robust, secure backends with modern PHP and the Laravel framework."
+          icon="fab fa-laravel"
+          size="2x1"
+          color="orange"
+          :level="92"
           data-aos="fade-up"
           data-aos-delay="200"
         />
 
-        <!-- Frontend Tool -->
+        <!-- 4. Node.js & Backend (Wide - 2x1) -->
+        <SkillBentoItem
+          title="Node.js & Microservices"
+          description="Scalable API development using Express, NestJS, and event-driven architectures."
+          icon="fab fa-node-js"
+          size="2x1"
+          color="green"
+          :level="88"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        />
+
+        <!-- 5. n8n Automation (Standard - 1x1) -->
+        <SkillBentoItem
+          title="n8n Automation"
+          description="Workflow orchestration and service integration."
+          icon="fas fa-project-diagram"
+          size="1x1"
+          color="pink"
+          :level="85"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        />
+
+        <!-- 6. Tailwind CSS (Standard - 1x1) -->
         <SkillBentoItem
           title="Tailwind CSS"
-          description="Rapid UI development with utility-first CSS."
+          description="Rapid, utility-first UI development."
           icon="fas fa-wind"
           size="1x1"
           color="teal"
           :level="95"
           data-aos="fade-up"
-          data-aos-delay="300"
-        />
-
-        <!-- Automation (Featured) -->
-        <SkillBentoItem
-          title="n8n Automation"
-          description="Orchestrating complex workflows and integrating disparate services."
-          icon="fas fa-project-diagram"
-          size="2x1"
-          color="pink"
-          :level="80"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        />
-
-        <!-- Database -->
-        <SkillBentoItem
-          title="Database Design"
-          description="SQL (PostgreSQL, MySQL) and NoSQL (MongoDB) architecture."
-          icon="fas fa-database"
-          size="1x1"
-          color="orange"
-          :level="85"
-          data-aos="fade-up"
           data-aos-delay="500"
         />
 
-        <!-- DevOps -->
+        <!-- 7. DevOps & Cloud (Standard - 1x1) -->
         <SkillBentoItem
           title="DevOps & Cloud"
-          description="Docker containerization and AWS cloud infrastructure."
+          description="Docker, AWS, and CI/CD pipelines."
           icon="fab fa-docker"
           size="1x1"
           color="blue"
@@ -115,27 +115,16 @@
           data-aos-delay="600"
         />
 
-        <!-- Other Tools -->
+        <!-- 8. Database (Standard - 1x1) -->
         <SkillBentoItem
-          title="Git & Workflow"
-          description="Version control and CI/CD pipelines."
-          icon="fab fa-git-alt"
+          title="Database Design"
+          description="SQL (PostgreSQL) & NoSQL (MongoDB)."
+          icon="fas fa-database"
           size="1x1"
-          color="orange"
-          :level="90"
+          color="purple"
+          :level="85"
           data-aos="fade-up"
           data-aos-delay="700"
-        />
-
-        <!-- Learning/Future -->
-        <SkillBentoItem
-          title="Exploring AI"
-          description="Currently diving deep into LLMs and Generative AI integration."
-          icon="fas fa-brain"
-          size="2x1"
-          color="purple"
-          data-aos="fade-up"
-          data-aos-delay="800"
         />
       </div>
 
