@@ -1,6 +1,7 @@
 <template>
   <div
-    class="h-screen w-screen overflow-hidden bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center relative select-none"
+    class="h-screen w-screen overflow-hidden bg-cover bg-center relative select-none transition-all duration-700 ease-in-out"
+    :style="{ backgroundImage: `url(${store.wallpaper})` }"
     @click="handleDesktopClick"
   >
     <!-- Mobile Warning Overlay -->
@@ -76,6 +77,7 @@ import StartMenu from './StartMenu.vue'
 import TerminalApp from './apps/TerminalApp.vue'
 import ExplorerApp from './apps/ExplorerApp.vue'
 import MessengerApp from './apps/MessengerApp.vue'
+import SettingsApp from './apps/SettingsApp.vue'
 
 const store = useOSStore()
 const isStartMenuOpen = ref(false)
@@ -85,6 +87,7 @@ const apps = [
   { id: 'projects', title: 'Projects', icon: 'fas fa-folder-open', component: ExplorerApp },
   { id: 'skills', title: 'Skills', icon: 'fas fa-code', component: TerminalApp }, // Reusing Terminal for now
   { id: 'contact', title: 'Contact', icon: 'fas fa-envelope', component: MessengerApp },
+  { id: 'settings', title: 'Settings', icon: 'fas fa-cog', component: SettingsApp },
   { id: 'browser', title: 'Chrome', icon: 'fab fa-chrome', component: null }
 ]
 

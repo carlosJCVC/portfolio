@@ -6,6 +6,8 @@ export const useOSStore = defineStore('os', () => {
   const activeWindowId = ref(null)
   const zIndexCounter = ref(100)
   const isBooting = ref(true)
+  const wallpaper = ref('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')
+  const theme = ref('dark') // 'dark' | 'light'
 
   const openWindow = (id, title, component, props = {}) => {
     const existingWindow = windows.value.find(w => w.id === id)
@@ -87,6 +89,8 @@ export const useOSStore = defineStore('os', () => {
     windows,
     activeWindowId,
     isBooting,
+    wallpaper,
+    theme,
     openWindow,
     closeWindow,
     focusWindow,

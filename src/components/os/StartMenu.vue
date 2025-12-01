@@ -88,6 +88,7 @@
     <div class="p-2 bg-[#1e1e1e] border-t border-gray-700 flex justify-between items-center">
       <button
         class="p-2 rounded hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+        @click="openSettings"
       >
         <i class="fas fa-cog"></i>
       </button>
@@ -112,11 +113,18 @@ const props = defineProps({
 const emit = defineEmits(['close', 'launch'])
 
 // Filter apps for the pinned section (excluding browser for now if null)
-const pinnedApps = props.apps.filter((app) => app.component)
+const pinnedApps = props.apps.filter((app) => app.component && app.id !== 'settings')
 
 const launch = (app) => {
   emit('launch', app)
   emit('close')
+}
+
+const openSettings = () => {
+  const settingsApp = props.apps.find(app => app.id === 'settings')
+  if (settingsApp) {
+    launch(settingsApp)
+  }
 }
 
 const shutdown = () => {
