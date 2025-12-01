@@ -1,100 +1,115 @@
 <template>
   <div
-    class="group relative bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800"
+    ref="cardRef"
+    class="group relative rounded-2xl bg-gray-50 dark:bg-dark-card border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 hover:-translate-y-1"
     :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
     :data-aos-delay="index * 100"
+    @mousemove="handleMouseMove"
+    @mouseleave="handleMouseLeave"
   >
-    <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
-      <img
-        :src="project.image"
-        :alt="project.title"
-        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-8"
-      >
-        <button
-          @click="$emit('open-modal', project)"
-          class="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 shadow-lg"
-        >
-          {{ $t('projects.explore') }}
-        </button>
-      </div>
-    </div>
+    <!-- Spotlight Effect -->
+    <div
+      class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+      :style="spotlightStyle"
+    ></div>
 
-    <div class="p-6 relative">
-      <div class="absolute top-0 right-0 p-6" v-if="project.featured">
-        <span
-          class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-400/10 text-yellow-500 border border-yellow-400/20"
+    <!-- Content -->
+    <div class="relative h-full flex flex-col">
+      <!-- Image Area -->
+      <div class="relative aspect-video overflow-hidden">
+        <img
+          :src="project.image"
+          :alt="project.title"
+          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <!-- Overlay with Action -->
+        <div
+          class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]"
         >
-          {{ $t('projects.featured') }}
-        </span>
-      </div>
-
-      <h3
-        class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-300"
-      >
-        {{ project.title }}
-      </h3>
-      <p class="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3 leading-relaxed">
-        {{ project.description }}
-      </p>
-
-      <div class="flex flex-wrap gap-2 mb-6">
-        <span
-          v-for="tech in project.technologies.slice(0, 4)"
-          :key="tech"
-          class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-medium rounded-full border border-gray-200 dark:border-gray-700"
-        >
-          {{ tech }}
-        </span>
-        <span v-if="project.technologies.length > 4" class="px-3 py-1 text-xs text-gray-400"
-          >+{{ project.technologies.length - 4 }}</span
-        >
+          <button
+            @click="$emit('open-modal', project)"
+            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 bg-white text-gray-900 px-6 py-2 rounded-full font-bold text-sm shadow-lg hover:scale-105"
+          >
+            {{ $t('projects.explore') }}
+          </button>
+        </div>
       </div>
 
-      <div
-        class="flex justify-between items-center pt-4 border-t border-gray-100 dark:border-gray-800"
-      >
-        <a
-          v-if="project.displayLiveUrl"
-          :href="project.liveUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center gap-2"
+      <!-- Details Area -->
+      <div class="p-6 flex flex-col flex-grow">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h3
+              class="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors"
+            >
+              {{ project.title }}
+            </h3>
+            <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-md">
+              {{ project.category }}
+            </span>
+          </div>
+          <!-- Tech Stack Icons -->
+          <div class="flex -space-x-2 overflow-hidden">
+            <div
+              v-for="tech in project.technologies.slice(0, 4)"
+              :key="tech"
+              class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-dark-card bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 dark:text-gray-400 text-xs shadow-sm relative z-0 hover:z-10 transition-all hover:scale-110"
+              :title="tech"
+            >
+              <i :class="getTechIcon(tech)"></i>
+            </div>
+            <div
+              v-if="project.technologies.length > 4"
+              class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-dark-card bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-xs font-bold text-gray-500 dark:text-gray-400"
+            >
+              +{{ project.technologies.length - 4 }}
+            </div>
+          </div>
+        </div>
+
+        <p
+          class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2 flex-grow"
         >
-          <span>{{ $t('projects.live') }}</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            ></path>
-          </svg>
-        </a>
-        <a
-          v-if="project.displayGithubUrl"
-          :href="project.githubUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300 flex items-center gap-2"
+          {{ project.description }}
+        </p>
+
+        <!-- Footer Actions -->
+        <div
+          class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800 mt-auto"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"
-            ></path>
-          </svg>
-          <span>{{ $t('projects.view') }}</span>
-        </a>
+          <div class="flex gap-4">
+            <a
+              v-if="project.displayLiveUrl"
+              :href="project.liveUrl"
+              target="_blank"
+              class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-1"
+            >
+              <i class="fas fa-external-link-alt"></i> {{ $t('projects.live') }}
+            </a>
+            <a
+              v-if="project.displayGithubUrl"
+              :href="project.githubUrl"
+              target="_blank"
+              class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-1"
+            >
+              <i class="fab fa-github"></i> Code
+            </a>
+          </div>
+          <span v-if="project.featured" class="flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-yellow-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+
 defineProps({
   project: {
     type: Object,
@@ -105,4 +120,65 @@ defineProps({
     required: true
   }
 })
+
+const cardRef = ref(null)
+const mouseX = ref(0)
+const mouseY = ref(0)
+
+const handleMouseMove = (e) => {
+  if (!cardRef.value) return
+  const rect = cardRef.value.getBoundingClientRect()
+  mouseX.value = e.clientX - rect.left
+  mouseY.value = e.clientY - rect.top
+}
+
+const handleMouseLeave = () => {
+  mouseX.value = 0
+  mouseY.value = 0
+}
+
+const spotlightStyle = computed(() => {
+  return {
+    background: `radial-gradient(600px circle at ${mouseX.value}px ${mouseY.value}px, rgba(var(--color-primary-rgb), 0.15), transparent 40%)`
+  }
+})
+
+const getTechIcon = (tech) => {
+  const map = {
+    PHP: 'fab fa-php',
+    Laravel: 'fab fa-laravel',
+    Vue: 'fab fa-vuejs',
+    'Vue.js': 'fab fa-vuejs',
+    JavaScript: 'fab fa-js',
+    React: 'fab fa-react',
+    Angular: 'fab fa-angular',
+    'Node.js': 'fab fa-node-js',
+    Python: 'fab fa-python',
+    Java: 'fab fa-java',
+    Docker: 'fab fa-docker',
+    AWS: 'fab fa-aws',
+    CSS: 'fab fa-css3-alt',
+    HTML: 'fab fa-html5',
+    Sass: 'fab fa-sass',
+    Bootstrap: 'fab fa-bootstrap',
+    'Tailwind CSS': 'fas fa-wind',
+    MySQL: 'fas fa-database',
+    PostgreSQL: 'fas fa-database',
+    MongoDB: 'fas fa-leaf',
+    Git: 'fab fa-git-alt',
+    Drupal: 'fab fa-drupal',
+    JQuery: 'fas fa-code',
+    Vite: 'fas fa-bolt',
+    'Api Integration': 'fas fa-network-wired'
+  }
+  return map[tech] || 'fas fa-code'
+}
 </script>
+
+<style scoped>
+/* Custom RGB variable for spotlight color (primary color) */
+.group {
+  --color-primary-rgb:
+    14, 165, 233; /* Example: Sky-500. Adjust to match your theme's primary color */
+}
+</style>

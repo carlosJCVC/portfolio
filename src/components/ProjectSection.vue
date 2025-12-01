@@ -7,6 +7,8 @@
     <div
       class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-50"
     ></div>
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05]"></div>
     <ParticlesBackground />
 
     <div class="container mx-auto px-4 relative z-10">
@@ -160,32 +162,172 @@ const allProjects = computed(() => [
       t('projects.list.animehero.features.responsive'),
       t('projects.list.animehero.features.expansion')
     ])
+  },
+  {
+    id: 4,
+    title: 'TaskMaster AI',
+    description:
+      'A smart productivity app that uses AI to prioritize tasks and schedule meetings automatically.',
+    fullDescription:
+      "TaskMaster AI revolutionizes personal productivity by integrating OpenAI's GPT-4 to analyze your workload. It automatically categorizes tasks, suggests optimal scheduling based on your energy levels, and even drafts email responses. Built with React and Node.js, it features real-time synchronization across devices.",
+    image: 'https://placehold.co/600x400/4F46E5/FFFFFF?text=TaskMaster+AI',
+    technologies: ['React', 'Node.js', 'OpenAI API', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
+    category: 'AI App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
+    featured: true,
+    features: [
+      'AI Task Prioritization',
+      'Smart Scheduling',
+      'Email Drafting',
+      'Real-time Sync',
+      'Voice Commands'
+    ]
+  },
+  {
+    id: 5,
+    title: 'CryptoDash',
+    description:
+      'Real-time cryptocurrency dashboard featuring advanced charting and portfolio tracking.',
+    fullDescription:
+      'CryptoDash provides investors with a comprehensive view of the crypto market. It aggregates data from multiple exchanges via WebSockets to offer millisecond-latency price updates. Users can track their portfolio performance with interactive D3.js charts and set custom alerts for price movements.',
+    image: 'https://placehold.co/600x400/10B981/FFFFFF?text=CryptoDash',
+    technologies: ['Vue.js', 'D3.js', 'Firebase', 'WebSockets', 'Netlify Functions'],
+    category: 'Finance',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
+    featured: false,
+    features: [
+      'Real-time Data',
+      'Interactive Charts',
+      'Portfolio Tracking',
+      'Price Alerts',
+      'News Feed'
+    ]
+  },
+  {
+    id: 6,
+    title: 'TravelLog',
+    description:
+      'A social platform for travelers to share journals, photos, and interactive maps of their journeys.',
+    fullDescription:
+      'TravelLog connects wanderlusts around the globe. It allows users to create rich-text travel journals embedded with photos and interactive maps. The platform uses geolocation to suggest nearby hidden gems and connects travelers visiting the same destination.',
+    image: 'https://placehold.co/600x400/F59E0B/FFFFFF?text=TravelLog',
+    technologies: ['Flutter', 'Firebase', 'Google Maps API', 'Dart', 'Cloud Functions'],
+    category: 'Mobile App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
+    featured: false,
+    features: ['Interactive Maps', 'Photo Galleries', 'Social Feed', 'Geolocation', 'Offline Mode']
+  },
+  {
+    id: 7,
+    title: 'EcoTrack IoT',
+    description:
+      'IoT dashboard for monitoring energy consumption in smart homes with predictive analytics.',
+    fullDescription:
+      'EcoTrack IoT helps homeowners reduce their carbon footprint. By connecting to smart meters and IoT devices, it visualizes energy consumption patterns in real-time. The system uses machine learning to predict future usage and suggests actionable tips to save energy and money.',
+    image: 'https://placehold.co/600x400/3B82F6/FFFFFF?text=EcoTrack',
+    technologies: ['Angular', 'AWS IoT', 'Lambda', 'DynamoDB', 'Chart.js'],
+    category: 'IoT',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
+    featured: false,
+    features: [
+      'Real-time Monitoring',
+      'Predictive Analytics',
+      'Device Control',
+      'Cost Estimation',
+      'Sustainability Reports'
+    ]
+  },
+  {
+    id: 8,
+    title: 'Project Alpha',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    fullDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    image: 'https://placehold.co/600x400/6366F1/FFFFFF?text=Project+Alpha',
+    technologies: ['React', 'Redux', 'Sass', 'Webpack'],
+    category: 'Web App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
+    featured: false,
+    features: ['Feature One', 'Feature Two', 'Feature Three', 'Feature Four']
+  },
+  {
+    id: 9,
+    title: 'Beta Dashboard',
+    description:
+      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    fullDescription:
+      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.',
+    image: 'https://placehold.co/600x400/EC4899/FFFFFF?text=Beta+Dashboard',
+    technologies: ['Vue.js', 'Vuex', 'Chart.js', 'Firebase'],
+    category: 'Finance',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
+    featured: false,
+    features: ['Analytics', 'Real-time Updates', 'User Management', 'Reporting']
+  },
+  {
+    id: 10,
+    title: 'Gamma Mobile',
+    description:
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    fullDescription:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    image: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=Gamma+Mobile',
+    technologies: ['React Native', 'Expo', 'Redux', 'Node.js'],
+    category: 'Mobile App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: true,
+    featured: false,
+    features: ['Push Notifications', 'Offline Support', 'Camera Integration', 'Maps']
   }
 ])
 
-const projects = ref(allProjects.value.slice(0, 3))
 const showAll = ref(false)
 const selectedProject = ref(null)
 const categories = ['All', ...new Set(allProjects.value.map((p) => p.category))]
 const activeCategory = ref('All')
 
 const filteredProjects = computed(() => {
+  // Always filter from allProjects to ensure category switching works correctly with "Show More" state
+  let sourceProjects = showAll.value ? allProjects.value : allProjects.value.slice(0, 6)
+
   if (activeCategory.value === 'All') {
-    return projects.value
+    return sourceProjects
   }
-  return projects.value.filter((p) => p.category === activeCategory.value)
+  return sourceProjects.filter((p) => p.category === activeCategory.value)
 })
 
 const filterProjects = (category) => {
   activeCategory.value = category
+  // Reset to initial view when changing categories if we want, or keep current state.
+  // Usually better to keep "showAll" state or reset?
+  // Let's keep it simple: just filter.
 }
 
 const showAllProjects = () => {
   if (showAll.value) {
-    projects.value = allProjects.value.slice(0, 3)
     showAll.value = false
   } else {
-    projects.value = allProjects
     showAll.value = true
   }
 }
@@ -223,5 +365,10 @@ const onLeave = (el, done) => {
 </script>
 
 <style scoped>
-/* ... (mantén los estilos aquí) */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 40px 40px;
+}
 </style>

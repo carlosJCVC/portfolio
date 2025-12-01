@@ -14,7 +14,7 @@
             leave-from="opacity-100"
             leave-to="opacity-0"
           >
-            <DialogOverlay class="fixed inset-0 bg-black bg-opacity-75 transition-opacity" />
+            <DialogOverlay class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" />
           </TransitionChild>
 
           <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"
@@ -31,7 +31,7 @@
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div
-              class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full sm:p-6"
+              class="inline-block align-bottom bg-white dark:bg-dark-card rounded-2xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full sm:p-8 border border-gray-100 dark:border-gray-700"
             >
               <div class="absolute top-0 right-0 pt-4 pr-4">
                 <button
