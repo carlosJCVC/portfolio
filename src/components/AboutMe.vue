@@ -29,11 +29,14 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+        <!-- Left: Avatar (Keep existing) -->
         <div class="lg:col-span-4 flex justify-center" data-aos="fade-right">
           <AboutMeAvatar></AboutMeAvatar>
         </div>
-        <div class="lg:col-span-8 space-y-8" data-aos="fade-left">
-          <AboutMeDescription></AboutMeDescription>
+
+        <!-- Right: IDE Window (Replaces Description) -->
+        <div class="lg:col-span-8" data-aos="fade-left">
+          <AboutMeIDE />
         </div>
       </div>
 
@@ -48,7 +51,7 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import AboutMeAvatar from './AboutMeAvatar.vue'
-import AboutMeDescription from './AboutMeDescription.vue'
+import AboutMeIDE from './AboutMeIDE.vue'
 import AboutMePhilosophy from './AboutMePhilosophy.vue'
 
 AOS.init({

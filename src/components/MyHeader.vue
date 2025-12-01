@@ -4,25 +4,13 @@
 
     <!-- Parallax Container -->
     <div
-      class="relative z-10 text-center px-4"
+      class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto"
       :style="{ transform: `translateY(${scrollY * 0.5}px)` }"
     >
-      <h1
-        class="text-6xl md:text-8xl font-extrabold mb-6 text-white tracking-tight"
-        data-aos="fade-up"
-      >
-        {{ $t('header.title', { name: 'Carlos' }) }}
-      </h1>
-
-      <!-- Typewriter Effect -->
-      <p
-        class="text-2xl md:text-3xl mb-10 text-gray-300 font-light h-10"
-        data-aos="fade-up"
-        data-aos-delay="200"
-      >
-        <span class="gradient-text font-semibold">{{ currentRole }}</span>
-        <span class="animate-pulse">|</span>
-      </p>
+      <!-- Terminal Window (Replaces Static Text) -->
+      <div class="mb-12" data-aos="fade-up">
+        <TerminalWindow />
+      </div>
 
       <div data-aos="fade-up" data-aos-delay="400" class="flex justify-center gap-6">
         <a
@@ -60,42 +48,10 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
+import TerminalWindow from './TerminalWindow.vue'
 
 const vantaRef = ref(null)
 let vantaEffect = null
-
-// Typewriter Logic
-const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Explorer']
-const currentRole = ref('')
-let roleIndex = 0
-let charIndex = 0
-let isDeleting = false
-let typeSpeed = 100
-
-const typeWriter = () => {
-  const currentFullRole = roles[roleIndex]
-
-  if (isDeleting) {
-    currentRole.value = currentFullRole.substring(0, charIndex - 1)
-    charIndex--
-    typeSpeed = 50
-  } else {
-    currentRole.value = currentFullRole.substring(0, charIndex + 1)
-    charIndex++
-    typeSpeed = 100
-  }
-
-  if (!isDeleting && charIndex === currentFullRole.length) {
-    isDeleting = true
-    typeSpeed = 2000 // Pause at end
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false
-    roleIndex = (roleIndex + 1) % roles.length
-    typeSpeed = 500 // Pause before typing next
-  }
-
-  setTimeout(typeWriter, typeSpeed)
-}
 
 // Parallax Logic
 const scrollY = ref(0)
@@ -124,9 +80,6 @@ onMounted(() => {
     maxDistance: 22.0,
     spacing: 18.0
   })
-
-  // Start Typewriter
-  typeWriter()
 
   window.addEventListener('scroll', handleScroll)
 })
