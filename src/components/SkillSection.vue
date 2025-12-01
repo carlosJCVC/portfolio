@@ -11,7 +11,7 @@
     <!-- Grid Pattern -->
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05]"></div>
 
-    <div class="container mx-auto px-4 relative z-10">
+    <div class="container mx-auto px-4 relative z-10 max-w-7xl">
       <div class="text-center mb-20">
         <h2
           class="text-5xl md:text-6xl font-extrabold mb-6 gradient-text inline-block tracking-tight"
@@ -30,7 +30,7 @@
       </div>
 
       <!-- Bento Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto">
         <!-- 1. Vue.js Ecosystem (Hero - 2x2) -->
         <SkillBentoItem
           title="Vue.js Ecosystem"

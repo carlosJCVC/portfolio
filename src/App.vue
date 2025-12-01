@@ -7,8 +7,6 @@
       <ProjectSection></ProjectSection>
       <SkillSection></SkillSection>
       <ContactSection></ContactSection>
-
-      <ContactSection></ContactSection>
     </div>
   </div>
 </template>

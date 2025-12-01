@@ -11,7 +11,7 @@
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05]"></div>
     <ParticlesBackground />
 
-    <div class="container mx-auto px-4 relative z-10">
+    <div class="container mx-auto px-4 relative z-10 max-w-7xl">
       <div class="text-center mb-16">
         <h2
           class="text-5xl md:text-6xl font-extrabold text-center mb-6 gradient-text tracking-tight inline-block"
