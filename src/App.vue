@@ -8,12 +8,7 @@
       <SkillSection></SkillSection>
       <ContactSection></ContactSection>
 
-      <button
-        @click="toggleTheme"
-        class="fixed bottom-4 right-4 p-2 rounded-full bg-gray-700 dark:bg-white"
-      >
-        {{ theme === 'light' ? '🌙' : '☀️' }}
-      </button>
+      <ContactSection></ContactSection>
     </div>
   </div>
 </template>
@@ -30,7 +25,6 @@ import { useThemeStore } from './store/useThemeStore'
 
 const store = useThemeStore()
 const { theme } = storeToRefs(store)
-const { toggleTheme } = store
 </script>
 
 <style>
