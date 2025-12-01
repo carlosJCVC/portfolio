@@ -17,61 +17,17 @@
         </p>
       </div>
 
-      <!-- Recruiter Command Center Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mx-auto">
-        <!-- 1. Contact Form (Left - 2x2) -->
-        <ContactForm data-aos="fade-right" data-aos-delay="0" />
+      <!-- Main Contact Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <!-- Left Column: Contact Form -->
+        <div data-aos="fade-right">
+          <ContactForm />
+        </div>
 
-        <!-- 2. Resume Download (Right - 2x2) -->
-        <ResumeTile data-aos="fade-left" data-aos-delay="100" />
-
-        <!-- 3. Email (1x1) -->
-        <ContactBentoItem
-          title="Email"
-          subtitle="carlos.veizaga.c@gmail.com"
-          icon="fas fa-envelope"
-          size="1x1"
-          color="blue"
-          is-copy
-          copy-value="carlos.veizaga.c@gmail.com"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        />
-
-        <!-- 4. LinkedIn (1x1) -->
-        <ContactBentoItem
-          title="LinkedIn"
-          subtitle="Connect professionally"
-          icon="fab fa-linkedin-in"
-          size="1x1"
-          color="blue"
-          link="https://www.linkedin.com/in/carlos-veizaga-c-62325310/"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        />
-
-        <!-- 5. GitHub (1x1) -->
-        <ContactBentoItem
-          title="GitHub"
-          subtitle="Review my code"
-          icon="fab fa-github"
-          size="1x1"
-          color="purple"
-          link="https://github.com/carlosJCVC"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        />
-
-        <!-- 6. Location (1x1) -->
-        <ContactBentoItem
-          title="Location"
-          subtitle="Cochabamba, Bolivia"
-          icon="fas fa-map-marker-alt"
-          size="1x1"
-          color="orange"
-          data-aos="fade-up"
-          data-aos-delay="500"
-        />
+        <!-- Right Column: Social Hub -->
+        <div data-aos="fade-left" data-aos-delay="100">
+          <SocialHub />
+        </div>
       </div>
 
       <!-- Footer Tech Stack -->
@@ -95,8 +51,7 @@
 
 <script setup>
 import ContactForm from './ContactForm.vue'
-import ContactBentoItem from './ContactBentoItem.vue'
-import ResumeTile from './ResumeTile.vue'
+import SocialHub from './SocialHub.vue'
 </script>
 
 <style scoped>
