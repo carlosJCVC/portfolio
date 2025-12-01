@@ -5,11 +5,7 @@
   >
     <!-- User Profile -->
     <div class="p-4 border-b border-gray-700 flex items-center gap-3 bg-[#252526]">
-      <div
-        class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg"
-      >
-        CV
-      </div>
+      <img src="@/assets/images/avatar.jpg" alt="Carlos Veizaga" class="w-10 h-10 rounded-full object-cover border border-gray-600" />
       <div>
         <div class="text-white font-bold text-sm">Carlos Veizaga</div>
         <div class="text-gray-400 text-xs">Full Stack Developer</div>
@@ -29,7 +25,9 @@
         >
           <i :class="app.icon"></i>
         </div>
-        <span class="text-[10px] text-gray-400 group-hover:text-white">{{ app.title }}</span>
+        <span class="text-[10px] text-gray-400 group-hover:text-white">
+          {{ app.title }}
+        </span>
       </div>
     </div>
 

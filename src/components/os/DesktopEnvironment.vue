@@ -35,9 +35,9 @@
         >
           <i :class="app.icon"></i>
         </div>
-        <span class="text-white text-sm font-medium drop-shadow-md bg-black/20 px-2 rounded-full">{{
-          app.title
-        }}</span>
+        <span class="text-white text-sm font-medium drop-shadow-md bg-black/20 px-2 rounded-full">
+          {{ app.title }}
+        </span>
       </div>
     </div>
 
