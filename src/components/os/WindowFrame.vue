@@ -23,21 +23,21 @@
         <div class="flex gap-2 group">
           <button
             @click.stop="close"
-            class="w-3 h-3 rounded-full bg-[#ff5f56] hover:bg-[#ff5f56]/80 flex items-center justify-center text-[8px] text-black opacity-0 group-hover:opacity-100 transition-opacity"
+            class="w-3 h-3 rounded-full bg-[#ff5f56] hover:bg-[#ff5f56]/80 flex items-center justify-center text-[8px] text-black transition-opacity"
           >
-            ✕
+            <span class="opacity-0 group-hover:opacity-100">✕</span>
           </button>
           <button
             @click.stop="minimize"
-            class="w-3 h-3 rounded-full bg-[#ffbd2e] hover:bg-[#ffbd2e]/80 flex items-center justify-center text-[8px] text-black opacity-0 group-hover:opacity-100 transition-opacity"
+            class="w-3 h-3 rounded-full bg-[#ffbd2e] hover:bg-[#ffbd2e]/80 flex items-center justify-center text-[8px] text-black transition-opacity"
           >
-            −
+            <span class="opacity-0 group-hover:opacity-100">−</span>
           </button>
           <button
             @click.stop="toggleMaximize"
-            class="w-3 h-3 rounded-full bg-[#27c93f] hover:bg-[#27c93f]/80 flex items-center justify-center text-[8px] text-black opacity-0 group-hover:opacity-100 transition-opacity"
+            class="w-3 h-3 rounded-full bg-[#27c93f] hover:bg-[#27c93f]/80 flex items-center justify-center text-[8px] text-black transition-opacity"
           >
-            +
+            <span class="opacity-0 group-hover:opacity-100">+</span>
           </button>
         </div>
         <span class="ml-4 text-sm text-gray-400 font-medium">{{ window.title }}</span>
