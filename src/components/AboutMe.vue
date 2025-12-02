@@ -36,7 +36,14 @@
 
         <!-- Right: IDE Window (Replaces Description) -->
         <div class="lg:col-span-8" data-aos="fade-left">
-          <AboutMeIDE />
+          <div class="prose prose-lg dark:prose-invert max-w-none">
+            <p class="text-xl leading-relaxed text-gray-600 dark:text-gray-300 mb-6">
+              {{ $t('info.description_1') }}
+            </p>
+            <p class="text-xl leading-relaxed text-gray-600 dark:text-gray-300">
+              {{ $t('info.description_2') }}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -51,7 +58,7 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import AboutMeAvatar from './AboutMeAvatar.vue'
-import AboutMeIDE from './AboutMeIDE.vue'
+
 import AboutMePhilosophy from './AboutMePhilosophy.vue'
 
 AOS.init({

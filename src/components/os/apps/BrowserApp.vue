@@ -68,7 +68,7 @@ const urlInput = ref('')
 const currentUrl = ref(null)
 
 const bookmarks = [
-  { name: 'Portfolio', url: 'https://carlos-veizaga.com', icon: 'fas fa-briefcase', color: '#3b82f6' },
+  { name: 'Portfolio', url: '/classic', icon: 'fas fa-briefcase', color: '#3b82f6' },
   { name: 'GitHub', url: 'https://github.com/carlosJCVC', icon: 'fab fa-github', color: '#1f2937' },
   { name: 'LinkedIn', url: 'https://linkedin.com/in/carlos-veizaga-c', icon: 'fab fa-linkedin', color: '#0a66c2' },
   { name: 'Google', url: 'https://www.google.com/webhp?igu=1', icon: 'fab fa-google', color: '#ea4335' }
@@ -77,6 +77,12 @@ const bookmarks = [
 const navigate = () => {
   let url = urlInput.value.trim()
   if (!url) return
+
+  // Internal route handling
+  if (url.startsWith('/')) {
+    currentUrl.value = url
+    return
+  }
 
   if (!url.startsWith('http')) {
     url = 'https://' + url

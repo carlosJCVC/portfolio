@@ -8,11 +8,16 @@
   },
   "header": {
     "title": "{name} Software Developer",
+    "greeting": "Hello, I'm",
+    "name": "Carlos Veizaga",
+    "role": "Full Stack Developer",
     "contact": "Contact Me"
   },
   "info": {
     "about": "About Me",
     "introduction": "I'm {name}, a <span class='font-bold text-gray-900 dark:text-white'>Full-Stack Developer</span> with 7+ years of crafting digital experiences. I don't just write code; I build <span class='font-bold text-gray-900 dark:text-white'>scalable, high-performance engines</span> using Laravel, Vue, and Node.js. From architecting complex backends to polishing pixel-perfect frontends, I bridge the gap between <span class='font-bold text-gray-900 dark:text-white'>technical complexity and user simplicity</span>. My mission? To turn ambitious ideas into reliable, market-ready software.",
+    "description_1": "I am a Full-Stack Developer with 7+ years of experience crafting digital experiences. I don't just write code; I build scalable, high-performance engines using Laravel, Vue, and Node.js.",
+    "description_2": "From architecting complex backends to polishing pixel-perfect frontends, I bridge the gap between technical complexity and user simplicity. My mission is to turn ambitious ideas into reliable, market-ready software.",
     "download": "Download CV",
     "view_projects": "View Projects",
     "philosophy": "My Development Philosophy",

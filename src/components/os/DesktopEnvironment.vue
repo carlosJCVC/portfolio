@@ -33,6 +33,7 @@
       >
         <div
           class="w-16 h-16 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-3xl text-white shadow-lg group-hover:bg-white/20 transition-all duration-300 border border-white/10"
+          :class="{ 'text-blue-400': app.id === 'vscode' }"
         >
           <i :class="app.icon"></i>
         </div>
@@ -79,6 +80,7 @@ import ExplorerApp from './apps/ExplorerApp.vue'
 import MessengerApp from './apps/MessengerApp.vue'
 import SettingsApp from './apps/SettingsApp.vue'
 import BrowserApp from './apps/BrowserApp.vue'
+import CodeEditorApp from './apps/CodeEditorApp.vue'
 
 const store = useOSStore()
 const isStartMenuOpen = ref(false)
@@ -87,6 +89,7 @@ const apps = [
   { id: 'terminal', title: 'Terminal', icon: 'fas fa-terminal', component: TerminalApp },
   { id: 'projects', title: 'Projects', icon: 'fas fa-folder-open', component: ExplorerApp },
   { id: 'skills', title: 'Skills', icon: 'fas fa-code', component: TerminalApp }, // Reusing Terminal for now
+  { id: 'vscode', title: 'VS Code', icon: 'fas fa-code', component: CodeEditorApp },
   { id: 'contact', title: 'Contact', icon: 'fas fa-envelope', component: MessengerApp },
   { id: 'settings', title: 'Settings', icon: 'fas fa-cog', component: SettingsApp },
   { id: 'browser', title: 'Chrome', icon: 'fab fa-chrome', component: BrowserApp }

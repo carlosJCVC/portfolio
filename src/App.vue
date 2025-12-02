@@ -1,16 +1,15 @@
 <template>
-  <DesktopEnvironment />
+  <router-view />
 </template>
 
 <script setup>
-import DesktopEnvironment from './components/os/DesktopEnvironment.vue'
+// Router handles the view
 </script>
 
 <style>
-/* Global Reset for OS Mode */
+/* Global Reset */
 body {
   margin: 0;
-  overflow: hidden; /* Prevent body scroll, OS handles it */
   background-color: #000;
 }
 </style>

@@ -7,10 +7,20 @@
       class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto"
       :style="{ transform: `translateY(${scrollY * 0.5}px)` }"
     >
-      <!-- Terminal Window (Replaces Static Text) -->
-      <div class="mb-12" data-aos="fade-up">
-        <TerminalWindow />
-      </div>
+      <!-- Main Heading -->
+      <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight" data-aos="fade-up">
+        <span class="block text-white mb-2">{{ $t('header.greeting') }}</span>
+        <span class="gradient-text">{{ $t('header.name') }}</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p
+        class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        {{ $t('header.role') }}
+      </p>
 
       <div data-aos="fade-up" data-aos-delay="400" class="flex justify-center gap-6">
         <a
@@ -48,7 +58,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
-import TerminalWindow from './TerminalWindow.vue'
+
 
 const vantaRef = ref(null)
 let vantaEffect = null

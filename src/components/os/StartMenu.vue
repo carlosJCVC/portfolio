@@ -85,24 +85,27 @@
     </div>
 
     <!-- Power Options -->
-    <div class="p-2 bg-[#1e1e1e] border-t border-gray-700 flex justify-between items-center">
+    <div class="p-4 border-t border-gray-700 flex justify-between items-center bg-[#252526]">
       <button
-        class="p-2 rounded hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
-        @click="openSettings"
+        class="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 transition-colors text-sm text-gray-300"
+        @click="goToClassic"
       >
-        <i class="fas fa-cog"></i>
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Exit to Classic Site</span>
       </button>
       <button
-        class="p-2 rounded hover:bg-red-500/20 text-gray-400 hover:text-red-400 transition-colors"
+        class="flex items-center gap-2 px-3 py-2 rounded hover:bg-white/10 transition-colors text-sm text-gray-300"
         @click="shutdown"
       >
         <i class="fas fa-power-off"></i>
+        <span>Shut Down</span>
       </button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import resumeUrl from '@/assets/Carlos_Veizaga_Resume.pdf'
 
 const props = defineProps({
@@ -111,6 +114,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['close', 'launch'])
+const router = useRouter()
 
 // Filter apps for the pinned section (excluding browser for now if null)
 const pinnedApps = props.apps.filter((app) => app.component && app.id !== 'settings')
@@ -121,16 +125,19 @@ const launch = (app) => {
 }
 
 const openSettings = () => {
-  const settingsApp = props.apps.find(app => app.id === 'settings')
+  const settingsApp = props.apps.find((app) => app.id === 'settings')
   if (settingsApp) {
-    launch(settingsApp)
+    emit('launch', settingsApp)
   }
 }
 
+const goToClassic = () => {
+  router.push('/classic')
+}
+
 const shutdown = () => {
-  // Fun shutdown effect? For now just reload or alert
-  if (confirm('Are you sure you want to shut down the system?')) {
-    window.location.reload()
-  }
+  // Placeholder for shutdown logic
+  alert('Shutting down...')
 }
 </script>
+```

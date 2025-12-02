@@ -8,11 +8,16 @@
   },
   "header": {
     "title": "{name} Desarrollador de Software",
+    "greeting": "Hola, soy",
+    "name": "Carlos Veizaga",
+    "role": "Desarrollador Full Stack",
     "contact": "Contacta me"
   },
   "info": {
     "about": "Acerca de Mi",
     "introduction": "Soy {name}, un <span class='font-bold text-gray-900 dark:text-white'>Desarrollador Full-Stack</span> con más de 7 años creando experiencias digitales. No solo escribo código; construyo <span class='font-bold text-gray-900 dark:text-white'>motores escalables de alto rendimiento</span> usando Laravel, Vue y Node.js. Desde la arquitectura de backends complejos hasta el pulido de frontends perfectos, uno la brecha entre la <span class='font-bold text-gray-900 dark:text-white'>complejidad técnica y la simplicidad del usuario</span>. ¿Mi misión? Convertir ideas ambiciosas en software confiable y listo para el mercado.",
+    "description_1": "Soy un Desarrollador Full-Stack con más de 7 años de experiencia creando experiencias digitales. No solo escribo código; construyo motores escalables de alto rendimiento usando Laravel, Vue y Node.js.",
+    "description_2": "Desde la arquitectura de backends complejos hasta el pulido de frontends perfectos, uno la brecha entre la complejidad técnica y la simplicidad del usuario. Mi misión es convertir ideas ambiciosas en software confiable y listo para el mercado.",
     "download": "Descargar CV",
     "view_projects": "Ver Proyectos",
     "philosophy": "Mi Filosofía de Desarrollo",
