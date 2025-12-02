@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full py-10 overflow-hidden relative">
+  <div class="w-full py-10 overflow-hidden relative bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
     <!-- Gradient Masks -->
     <div
       class="absolute top-0 bottom-0 left-0 w-32 z-10 bg-gradient-to-r from-gray-50 dark:from-dark-bg to-transparent pointer-events-none"
@@ -7,6 +7,17 @@
     <div
       class="absolute top-0 bottom-0 right-0 w-32 z-10 bg-gradient-to-l from-gray-50 dark:from-dark-bg to-transparent pointer-events-none"
     ></div>
+
+    <div class="container mx-auto px-4 relative z-10 max-w-screen-2xl mb-10">
+      <div class="text-center" data-aos="fade-down">
+        <h2 class="text-3xl md:text-4xl font-extrabold gradient-text mb-4">
+          {{ $t('skills.technologies') || 'Technologies & Tools' }}
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          My preferred stack for building scalable applications.
+        </p>
+      </div>
+    </div>
 
     <!-- Row 1: Left to Right -->
     <div class="flex mb-8 relative">

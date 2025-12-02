@@ -18,7 +18,7 @@
       </div>
 
       <!-- Main Contact Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 2xl:gap-20 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 2xl:gap-20 mx-auto">
         <!-- Left Column: Contact Form -->
         <div class="lg:col-span-7" data-aos="fade-right">
           <ContactForm />

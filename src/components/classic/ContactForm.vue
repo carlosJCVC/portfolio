@@ -21,27 +21,29 @@
       <p class="text-sm text-gray-500 dark:text-gray-400 ml-13">Got a project? Drop me a line.</p>
     </div>
 
-    <form @submit.prevent="handleSubmit" class="flex-grow flex flex-col gap-4 relative z-10">
-      <!-- Name Input -->
-      <div>
-        <input
-          v-model="form.name"
-          type="text"
-          class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-dark-bg border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none placeholder-gray-400"
-          :placeholder="$t('contact.name') || 'Your Name'"
-          required
-        />
-      </div>
+    <form @submit.prevent="handleSubmit" class="flex-grow flex flex-col gap-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Name Input -->
+        <div>
+          <input
+            v-model="form.name"
+            type="text"
+            class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-dark-bg border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none placeholder-gray-400"
+            :placeholder="$t('contact.name') || 'Your Name'"
+            required
+          />
+        </div>
 
-      <!-- Email Input -->
-      <div>
-        <input
-          v-model="form.email"
-          type="email"
-          class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-dark-bg border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none placeholder-gray-400"
-          :placeholder="$t('contact.email') || 'Your Email'"
-          required
-        />
+        <!-- Email Input -->
+        <div>
+          <input
+            v-model="form.email"
+            type="email"
+            class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-dark-bg border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none placeholder-gray-400"
+            :placeholder="$t('contact.email') || 'Your Email'"
+            required
+          />
+        </div>
       </div>
 
       <!-- Message Input -->
