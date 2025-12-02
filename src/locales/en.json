@@ -124,9 +124,13 @@
   "contact": {
     "title": "Get in Touch",
     "title2": "Connect With Me",
+    "formTitle": "Send a Message",
     "terms": "I agree to the terms and privacy policy",
     "sending": "Sending",
     "send": "Send Message",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "How can I help you?",
     "form": {
       "name": {
         "label": "Name",

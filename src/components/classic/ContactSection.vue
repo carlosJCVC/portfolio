@@ -8,7 +8,7 @@
       class="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.03] pointer-events-none"
     ></div>
 
-    <div class="container mx-auto px-4 relative z-10 max-w-7xl">
+    <div class="container mx-auto px-4 relative z-10 max-w-screen-2xl">
       <!-- Section Header -->
       <div class="text-center mb-16" data-aos="fade-down">
         <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-6">Start a Conversation</h2>
@@ -18,7 +18,7 @@
       </div>
 
       <!-- Main Contact Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 2xl:gap-20 max-w-6xl mx-auto">
         <!-- Left Column: Contact Form -->
         <div data-aos="fade-right">
           <ContactForm />

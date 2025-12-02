@@ -9,9 +9,8 @@ const i18n = createI18n({
   messages: {
     en,
     es
-  }
-  // missingWarn: false,
-  // fallbackWarn: false
+  },
+  warnHtmlMessage: false
 })
 
 export default i18n

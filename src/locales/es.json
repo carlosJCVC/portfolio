@@ -124,9 +124,13 @@
   "contact": {
     "title": "Ponte en Contacto",
     "title2": "Conéctate Conmigo",
+    "formTitle": "Enviar un Mensaje",
     "terms": "Acepto los términos y la política de privacidad",
     "sending": "Enviando",
     "send": "Enviar Mensaje",
+    "name": "Tu Nombre",
+    "email": "Tu Correo Electrónico",
+    "message": "¿En qué puedo ayudarte?",
     "form": {
       "name": {
         "label": "Nombre",

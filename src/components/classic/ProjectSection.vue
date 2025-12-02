@@ -11,7 +11,7 @@
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-[0.05]"></div>
     <ParticlesBackground />
 
-    <div class="container mx-auto px-4 relative z-10 max-w-7xl">
+    <div class="container mx-auto px-4 relative z-10 max-w-screen-2xl">
       <div class="text-center mb-16">
         <h2
           class="text-5xl md:text-6xl font-extrabold text-center mb-6 gradient-text tracking-tight inline-block"
@@ -38,7 +38,7 @@
 
       <TransitionGroup
         tag="div"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 lg:gap-10"
         :css="false"
         @before-enter="onBeforeEnter"
         @enter="onEnter"
