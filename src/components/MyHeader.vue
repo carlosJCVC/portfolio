@@ -13,14 +13,15 @@
         <span class="gradient-text">{{ $t('header.name') }}</span>
       </h1>
 
-      <!-- Subheading -->
-      <p
-        class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed"
+      <!-- Subheading with Typewriter -->
+      <div
+        class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed h-8"
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        {{ $t('header.role') }}
-      </p>
+        <span>{{ displayText }}</span>
+        <span class="animate-blink border-r-2 border-white ml-1">&nbsp;</span>
+      </div>
 
       <div data-aos="fade-up" data-aos-delay="400" class="flex justify-center gap-6">
         <a
@@ -55,7 +56,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
 
@@ -72,6 +74,56 @@ const handleScroll = () => {
 const scrollToAbout = () => {
   document.getElementById('about-me').scrollIntoView({ behavior: 'smooth' })
 }
+
+// Typewriter Logic
+const { t, locale } = useI18n()
+const displayText = ref('')
+const currentRoleIndex = ref(0)
+const isDeleting = ref(false)
+const typingSpeed = 100
+const deletingSpeed = 50
+const pauseTime = 2000
+let typewriterTimeout = null
+
+const roles = computed(() => {
+  // Get roles from i18n, fallback to single role if array not found
+  const rolesList = t('header.roles', { returnObjects: true })
+  return Array.isArray(rolesList) ? rolesList : [t('header.role')]
+})
+
+const type = () => {
+  const currentRole = roles.value[currentRoleIndex.value]
+  
+  if (isDeleting.value) {
+    displayText.value = currentRole.substring(0, displayText.value.length - 1)
+  } else {
+    displayText.value = currentRole.substring(0, displayText.value.length + 1)
+  }
+
+  let typeSpeed = typingSpeed
+
+  if (!isDeleting.value && displayText.value === currentRole) {
+    typeSpeed = pauseTime
+    isDeleting.value = true
+  } else if (isDeleting.value && displayText.value === '') {
+    isDeleting.value = false
+    currentRoleIndex.value = (currentRoleIndex.value + 1) % roles.value.length
+    typeSpeed = 500
+  } else if (isDeleting.value) {
+    typeSpeed = deletingSpeed
+  }
+
+  typewriterTimeout = setTimeout(type, typeSpeed)
+}
+
+// Restart typewriter when locale changes
+watch(locale, () => {
+  clearTimeout(typewriterTimeout)
+  displayText.value = ''
+  isDeleting.value = false
+  currentRoleIndex.value = 0
+  type()
+})
 
 onMounted(() => {
   vantaEffect = NET({
@@ -92,11 +144,13 @@ onMounted(() => {
   })
 
   window.addEventListener('scroll', handleScroll)
+  type()
 })
 
 onBeforeUnmount(() => {
   if (vantaEffect) vantaEffect.destroy()
   window.removeEventListener('scroll', handleScroll)
+  clearTimeout(typewriterTimeout)
 })
 </script>
 
@@ -114,5 +168,14 @@ onBeforeUnmount(() => {
 
 .animate-scroll-down {
   animation: scroll-down 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
 }
 </style>

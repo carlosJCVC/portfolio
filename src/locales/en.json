@@ -11,6 +11,12 @@
     "greeting": "Hello, I'm",
     "name": "Carlos Veizaga",
     "role": "Full Stack Developer",
+    "roles": [
+      "Full Stack Developer",
+      "UI/UX Enthusiast",
+      "Problem Solver",
+      "Tech Explorer"
+    ],
     "contact": "Contact Me"
   },
   "info": {
