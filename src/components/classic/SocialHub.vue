@@ -46,7 +46,7 @@
       ></i>
     </a>
 
-    <!-- Social Links Grid (Bottom) -->
+    <!-- Social Links Grid (Middle) -->
     <div class="grid grid-cols-2 gap-4">
       <a
         v-for="social in socials"
@@ -80,11 +80,32 @@
         ></i>
       </a>
     </div>
+
+    <!-- Location Map (Bottom) -->
+    <div
+      class="flex-grow rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm min-h-[200px] relative group"
+    >
+      <img
+        src="https://placehold.co/600x400/1e293b/ffffff?text=Cochabamba,+Bolivia"
+        alt="Location Map"
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"
+      >
+        <div class="text-white">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fas fa-map-marker-alt text-red-500 animate-bounce"></i>
+            <h4 class="font-bold text-lg">Cochabamba, Bolivia</h4>
+          </div>
+          <p class="text-white/80 text-sm">Open to remote opportunities worldwide.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
 import resumeUrl from '@/assets/Carlos_Veizaga_Resume.pdf'
 

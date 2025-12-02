@@ -18,14 +18,14 @@
       </div>
 
       <!-- Main Contact Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 2xl:gap-20 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 2xl:gap-20 max-w-6xl mx-auto">
         <!-- Left Column: Contact Form -->
-        <div data-aos="fade-right">
+        <div class="lg:col-span-7" data-aos="fade-right">
           <ContactForm />
         </div>
 
         <!-- Right Column: Social Hub -->
-        <div data-aos="fade-left" data-aos-delay="100">
+        <div class="lg:col-span-5" data-aos="fade-left" data-aos-delay="100">
           <SocialHub />
         </div>
       </div>
