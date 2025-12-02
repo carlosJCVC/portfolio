@@ -9,11 +9,11 @@
 </template>
 
 <script setup>
-import NavBar from '@/components/NavBar.vue'
-import MyHeader from '@/components/MyHeader.vue'
-import AboutMe from '@/components/AboutMe.vue'
-import ProjectSection from '@/components/ProjectSection.vue'
-import ContactSection from '@/components/ContactSection.vue'
+import NavBar from '@/components/common/NavBar.vue'
+import MyHeader from '@/components/classic/MyHeader.vue'
+import AboutMe from '@/components/classic/AboutMe.vue'
+import ProjectSection from '@/components/classic/ProjectSection.vue'
+import ContactSection from '@/components/classic/ContactSection.vue'
 </script>
 
 <style>

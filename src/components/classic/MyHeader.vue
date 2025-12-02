@@ -20,7 +20,7 @@
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        <span class="gradient-text font-semibold">{{ currentRole }}</span>
+        <span class="gradient-text font-semibold">{{ displayText }}</span>
         <span class="animate-pulse">|</span>
       </p>
 
@@ -58,44 +58,12 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useTypewriter } from '@/composables/useTypewriter'
 import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
 
 const vantaRef = ref(null)
 let vantaEffect = null
-
-// Typewriter Logic
-const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Explorer']
-const currentRole = ref('')
-let roleIndex = 0
-let charIndex = 0
-let isDeleting = false
-let typeSpeed = 100
-
-const typeWriter = () => {
-  const currentFullRole = roles[roleIndex]
-
-  if (isDeleting) {
-    currentRole.value = currentFullRole.substring(0, charIndex - 1)
-    charIndex--
-    typeSpeed = 50
-  } else {
-    currentRole.value = currentFullRole.substring(0, charIndex + 1)
-    charIndex++
-    typeSpeed = 100
-  }
-
-  if (!isDeleting && charIndex === currentFullRole.length) {
-    isDeleting = true
-    typeSpeed = 2000 // Pause at end
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false
-    roleIndex = (roleIndex + 1) % roles.length
-    typeSpeed = 500 // Pause before typing next
-  }
-
-  setTimeout(typeWriter, typeSpeed)
-}
 
 // Parallax Logic
 const scrollY = ref(0)
@@ -106,6 +74,9 @@ const handleScroll = () => {
 const scrollToAbout = () => {
   document.getElementById('about-me').scrollIntoView({ behavior: 'smooth' })
 }
+
+// Typewriter Logic
+const { displayText, start, stop } = useTypewriter()
 
 onMounted(() => {
   vantaEffect = NET({
@@ -125,15 +96,14 @@ onMounted(() => {
     spacing: 18.0
   })
 
-  // Start Typewriter
-  typeWriter()
-
   window.addEventListener('scroll', handleScroll)
+  start()
 })
 
 onBeforeUnmount(() => {
   if (vantaEffect) vantaEffect.destroy()
   window.removeEventListener('scroll', handleScroll)
+  stop()
 })
 </script>
 
