@@ -4,24 +4,25 @@
 
     <!-- Parallax Container -->
     <div
-      class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto"
+      class="relative z-10 text-center px-4"
       :style="{ transform: `translateY(${scrollY * 0.5}px)` }"
     >
-      <!-- Main Heading -->
-      <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight" data-aos="fade-up">
-        <span class="block text-white mb-2">{{ $t('header.greeting') }}</span>
-        <span class="gradient-text">{{ $t('header.name') }}</span>
+      <h1
+        class="text-6xl md:text-8xl font-extrabold mb-6 text-white tracking-tight"
+        data-aos="fade-up"
+      >
+        {{ $t('header.title', { name: 'Carlos' }) }}
       </h1>
 
-      <!-- Subheading with Typewriter -->
-      <div
-        class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed h-8"
+      <!-- Typewriter Effect -->
+      <p
+        class="text-2xl md:text-3xl mb-10 text-gray-300 font-light h-10"
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        <span>{{ displayText }}</span>
-        <span class="animate-blink border-r-2 border-white ml-1">&nbsp;</span>
-      </div>
+        <span class="gradient-text font-semibold">{{ currentRole }}</span>
+        <span class="animate-pulse">|</span>
+      </p>
 
       <div data-aos="fade-up" data-aos-delay="400" class="flex justify-center gap-6">
         <a
@@ -56,14 +57,45 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import * as THREE from 'three'
 import NET from 'vanta/dist/vanta.net.min'
 
-
 const vantaRef = ref(null)
 let vantaEffect = null
+
+// Typewriter Logic
+const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Explorer']
+const currentRole = ref('')
+let roleIndex = 0
+let charIndex = 0
+let isDeleting = false
+let typeSpeed = 100
+
+const typeWriter = () => {
+  const currentFullRole = roles[roleIndex]
+
+  if (isDeleting) {
+    currentRole.value = currentFullRole.substring(0, charIndex - 1)
+    charIndex--
+    typeSpeed = 50
+  } else {
+    currentRole.value = currentFullRole.substring(0, charIndex + 1)
+    charIndex++
+    typeSpeed = 100
+  }
+
+  if (!isDeleting && charIndex === currentFullRole.length) {
+    isDeleting = true
+    typeSpeed = 2000 // Pause at end
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false
+    roleIndex = (roleIndex + 1) % roles.length
+    typeSpeed = 500 // Pause before typing next
+  }
+
+  setTimeout(typeWriter, typeSpeed)
+}
 
 // Parallax Logic
 const scrollY = ref(0)
@@ -74,56 +106,6 @@ const handleScroll = () => {
 const scrollToAbout = () => {
   document.getElementById('about-me').scrollIntoView({ behavior: 'smooth' })
 }
-
-// Typewriter Logic
-const { t, locale } = useI18n()
-const displayText = ref('')
-const currentRoleIndex = ref(0)
-const isDeleting = ref(false)
-const typingSpeed = 100
-const deletingSpeed = 50
-const pauseTime = 2000
-let typewriterTimeout = null
-
-const roles = computed(() => {
-  // Get roles from i18n, fallback to single role if array not found
-  const rolesList = t('header.roles', { returnObjects: true })
-  return Array.isArray(rolesList) ? rolesList : [t('header.role')]
-})
-
-const type = () => {
-  const currentRole = roles.value[currentRoleIndex.value]
-  
-  if (isDeleting.value) {
-    displayText.value = currentRole.substring(0, displayText.value.length - 1)
-  } else {
-    displayText.value = currentRole.substring(0, displayText.value.length + 1)
-  }
-
-  let typeSpeed = typingSpeed
-
-  if (!isDeleting.value && displayText.value === currentRole) {
-    typeSpeed = pauseTime
-    isDeleting.value = true
-  } else if (isDeleting.value && displayText.value === '') {
-    isDeleting.value = false
-    currentRoleIndex.value = (currentRoleIndex.value + 1) % roles.value.length
-    typeSpeed = 500
-  } else if (isDeleting.value) {
-    typeSpeed = deletingSpeed
-  }
-
-  typewriterTimeout = setTimeout(type, typeSpeed)
-}
-
-// Restart typewriter when locale changes
-watch(locale, () => {
-  clearTimeout(typewriterTimeout)
-  displayText.value = ''
-  isDeleting.value = false
-  currentRoleIndex.value = 0
-  type()
-})
 
 onMounted(() => {
   vantaEffect = NET({
@@ -143,14 +125,15 @@ onMounted(() => {
     spacing: 18.0
   })
 
+  // Start Typewriter
+  typeWriter()
+
   window.addEventListener('scroll', handleScroll)
-  type()
 })
 
 onBeforeUnmount(() => {
   if (vantaEffect) vantaEffect.destroy()
   window.removeEventListener('scroll', handleScroll)
-  clearTimeout(typewriterTimeout)
 })
 </script>
 
@@ -168,14 +151,5 @@ onBeforeUnmount(() => {
 
 .animate-scroll-down {
   animation: scroll-down 1.5s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-blink {
-  animation: blink 1s step-end infinite;
 }
 </style>

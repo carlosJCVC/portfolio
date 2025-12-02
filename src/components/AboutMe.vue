@@ -29,21 +29,11 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
-        <!-- Left: Avatar (Keep existing) -->
         <div class="lg:col-span-4 flex justify-center" data-aos="fade-right">
           <AboutMeAvatar></AboutMeAvatar>
         </div>
-
-        <!-- Right: IDE Window (Replaces Description) -->
-        <div class="lg:col-span-8" data-aos="fade-left">
-          <div class="prose prose-lg dark:prose-invert max-w-none">
-            <p class="text-xl leading-relaxed text-gray-600 dark:text-gray-300 mb-6">
-              {{ $t('info.description_1') }}
-            </p>
-            <p class="text-xl leading-relaxed text-gray-600 dark:text-gray-300">
-              {{ $t('info.description_2') }}
-            </p>
-          </div>
+        <div class="lg:col-span-8 space-y-8" data-aos="fade-left">
+          <AboutMeDescription></AboutMeDescription>
         </div>
       </div>
 
@@ -58,7 +48,7 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import AboutMeAvatar from './AboutMeAvatar.vue'
-
+import AboutMeDescription from './AboutMeDescription.vue'
 import AboutMePhilosophy from './AboutMePhilosophy.vue'
 
 AOS.init({

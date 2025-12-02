@@ -1,5 +1,6 @@
 <template>
   <div class="bg-black text-white min-h-screen font-sans selection:bg-blue-500 selection:text-white">
+    <NavBar />
     <MyHeader />
     <AboutMe />
     <ProjectSection />
@@ -8,6 +9,7 @@
 </template>
 
 <script setup>
+import NavBar from '@/components/NavBar.vue'
 import MyHeader from '@/components/MyHeader.vue'
 import AboutMe from '@/components/AboutMe.vue'
 import ProjectSection from '@/components/ProjectSection.vue'
