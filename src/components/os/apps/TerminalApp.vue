@@ -95,13 +95,13 @@ const execute = async () => {
   switch (cmd) {
     case 'help':
       output = `Available commands:
-  ls        - List directory contents
-  cd <dir>  - Change directory
-  cat <file>- Read file content
-  clear     - Clear terminal
-  sudo      - Run as superuser
-  about     - Quick summary
-  contact   - Get in touch`
+        ls           - List directory contents
+        cd &lt;dir&gt;     - Change directory
+        cat &lt;file&gt;   - Read file content
+        clear        - Clear terminal
+        sudo         - Run as superuser
+        about        - Quick summary
+        contact      - Get in touch`
       break
 
     case 'clear':

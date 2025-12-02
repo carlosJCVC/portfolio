@@ -78,6 +78,7 @@ import TerminalApp from './apps/TerminalApp.vue'
 import ExplorerApp from './apps/ExplorerApp.vue'
 import MessengerApp from './apps/MessengerApp.vue'
 import SettingsApp from './apps/SettingsApp.vue'
+import BrowserApp from './apps/BrowserApp.vue'
 
 const store = useOSStore()
 const isStartMenuOpen = ref(false)
@@ -88,7 +89,7 @@ const apps = [
   { id: 'skills', title: 'Skills', icon: 'fas fa-code', component: TerminalApp }, // Reusing Terminal for now
   { id: 'contact', title: 'Contact', icon: 'fas fa-envelope', component: MessengerApp },
   { id: 'settings', title: 'Settings', icon: 'fas fa-cog', component: SettingsApp },
-  { id: 'browser', title: 'Chrome', icon: 'fab fa-chrome', component: null }
+  { id: 'browser', title: 'Chrome', icon: 'fab fa-chrome', component: BrowserApp }
 ]
 
 const openApp = (app) => {
