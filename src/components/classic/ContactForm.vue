@@ -110,6 +110,9 @@
         </span>
       </div>
 
+      <!-- reCAPTCHA Widget -->
+      <div class="g-recaptcha" data-sitekey="6LdXIiAsAAAAAK17RNIHuNLjjPn9Var4XCnXRqxH"></div>
+
       <!-- Submit Button -->
       <div>
         <button
@@ -130,7 +133,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import emailjs from '@emailjs/browser'
 
@@ -149,6 +152,15 @@ const errors = reactive({
   name: '',
   email: '',
   message: ''
+})
+
+// Load reCAPTCHA script
+onMounted(() => {
+  const script = document.createElement('script')
+  script.src = 'https://www.google.com/recaptcha/api.js'
+  script.async = true
+  script.defer = true
+  document.head.appendChild(script)
 })
 
 // Validation Logic
@@ -198,6 +210,7 @@ const handleSubmit = async () => {
     const PUBLIC_KEY = 'EV9PLsB_yNSVnrQ79'
 
     // If credentials are not set, simulate success for demo purposes
+    // great powerfull
     if (SERVICE_ID === 'YOUR_SERVICE_ID') {
       await new Promise((resolve) => setTimeout(resolve, 1500))
       console.warn('EmailJS credentials not set. Simulating success.')
@@ -223,5 +236,9 @@ const resetForm = () => {
   errors.name = ''
   errors.email = ''
   errors.message = ''
+  // Reset captcha if possible, though reloading might be needed or using grecaptcha.reset()
+  if (window.grecaptcha) {
+    window.grecaptcha.reset()
+  }
 }
 </script>
