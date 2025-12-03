@@ -79,9 +79,51 @@ export const certifications = [
     year: '2022'
   },
   {
-    id: 3,
-    name: 'Server-side Development with NodeJS',
-    issuer: 'HKUST (Coursera)',
-    year: '2020'
-  }
+    id: 4,
+    name: 'Angular: From Zero to Expert',
+    issuer: 'Udemy',
+    year: '2023'
+  },
+  {
+    id: 5,
+    name: 'Modern JavaScript',
+    issuer: 'Udemy',
+    year: '2023'
+  },
+  {
+    id: 6,
+    name: 'NestJS: Scalable Backend Development',
+    issuer: 'DevTalles',
+    year: '2024'
+  },
+  {
+    id: 7,
+    name: 'NodeJS: From Zero to Expert',
+    issuer: 'DevTalles',
+    year: '2022'
+  },
+  {
+    id: 8,
+    name: 'n8n Workflow Automation',
+    issuer: 'DevTalles',
+    year: '2024'
+  },
+  {
+    id: 9,
+    name: 'React: From Zero to Expert',
+    issuer: 'DevTalles',
+    year: '2024'
+  },
+  {
+    id: 10,
+    name: 'React Native: Native apps for iOS and Android',
+    issuer: 'DevTalles',
+    year: '2024'
+  },
+  {
+    id: 11,
+    name: 'Vue: Composition API',
+    issuer: 'DevTalles',
+    year: '2024'
+  },
 ]
