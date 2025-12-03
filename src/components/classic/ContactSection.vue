@@ -30,21 +30,6 @@
         </div>
       </div>
 
-      <!-- Footer Tech Stack -->
-      <div class="mt-20 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
-        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
-          Designed & Built with <span class="text-red-500">❤️</span> using
-        </p>
-        <div class="flex justify-center gap-6 text-2xl text-gray-400 dark:text-gray-600">
-          <i class="fab fa-vuejs hover:text-green-500 transition-colors" title="Vue.js"></i>
-          <i class="fas fa-wind hover:text-teal-400 transition-colors" title="Tailwind CSS"></i>
-          <i class="fab fa-js hover:text-yellow-400 transition-colors" title="JavaScript"></i>
-          <i class="fas fa-bolt hover:text-purple-500 transition-colors" title="Vite"></i>
-        </div>
-        <p class="text-gray-400 dark:text-gray-600 text-xs mt-6">
-          © {{ new Date().getFullYear() }} Carlos Veizaga. All rights reserved.
-        </p>
-      </div>
     </div>
   </section>
 </template>
