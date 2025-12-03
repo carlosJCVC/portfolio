@@ -39,7 +39,7 @@
 
       <TransitionGroup
         tag="div"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 lg:gap-10 auto-rows-fr"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 lg:gap-10 auto-rows-fr grid-flow-dense"
         :css="false"
         @before-enter="onBeforeEnter"
         @enter="onEnter"

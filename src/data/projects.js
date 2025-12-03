@@ -4,6 +4,73 @@ import AnimeHeroChallenge from '@/assets/images/projects/Anime_Hero_Challenge_60
 
 export const projects = [
   {
+    id: 11,
+    title: 'EduCertify',
+    description: 'Course management and bulk certificate generation platform.',
+    fullDescription: 'An educational platform designed to streamline the certification process. Instructors can create courses, import student lists, and generate customizable certificates in bulk. The system allows for the personalization of certificate templates before distribution, ensuring a professional look for every graduate. It handles email delivery and record-keeping for all issued credentials.',
+    image: Educertify,
+    technologies: ['Laravel', 'PostgreSQL', 'Bootstrap', 'jQuery', 'CSS'],
+    category: 'Web App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'Bulk Certificate Generation',
+      'Customizable Templates',
+      'Student Import/Management',
+      'Automated Email Delivery',
+      'Course Administration'
+    ],
+    gallery: []
+  },
+  {
+    id: 8,
+    title: 'BTP Enterprise Platform',
+    description: 'Massive workforce and resource management system with mobile integration.',
+    fullDescription: 'A large-scale enterprise platform designed for comprehensive workforce and resource management. It features complex integrations with multiple payment gateways and e-invoicing services. The system handles agreement tracking with digital signatures, automated document generation (HTML/PDF/Word) with dynamic tag replacement, and organization management. It includes a time-tracking module with geolocation and PTO management, all governed by a granular role-based permission system. The platform is complemented by a React Native mobile app for iOS and Android, enabling push notifications and on-the-go access.',
+    image: 'https://placehold.co/600x400/2563EB/FFFFFF?text=BTP+Enterprise',
+    technologies: ['Laravel', 'React Native', 'Vue.js', 'jQuery', 'Bootstrap', 'Webpack', 'Payment APIs', 'E-Invoicing'],
+    category: 'Enterprise',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: true,
+    features: [
+      'Multi-Gateway Payments',
+      'Automated Invoicing',
+      'Digital Agreements & Signatures',
+      'Dynamic Document Generation',
+      'Time Tracking & PTO',
+      'Mobile App (iOS/Android)'
+    ],
+    gallery: []
+  },
+  {
+    id: 7,
+    title: 'ELFEC CMS',
+    description: 'Corporate content management system for a major electrical utility.',
+    fullDescription: 'A robust Drupal-based CMS designed for ELFEC to manage their corporate web presence. The system handles complex user roles, public information dissemination, and internal content workflows, providing a stable and scalable platform for the utility company.',
+    image: ElfecImage,
+    technologies: ['Drupal', 'PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
+    category: 'Web App',
+    liveUrl: 'https://www.elfec.bo',
+    githubUrl: '',
+    displayLiveUrl: true,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'User Role Management',
+      'Content Workflow',
+      'Public Portal',
+      'Reporting Modules',
+      'System Integration'
+    ],
+    gallery: []
+  },
+  {
     id: 1,
     title: 'MoxieCopywriting',
     description: 'Credit-based creative workflow platform integrating Shopify payments with a Laravel backend.',
@@ -47,139 +114,6 @@ export const projects = [
       'Gamification & Points System',
       'User Content Uploads',
       'Mobile-First Design'
-    ],
-    gallery: []
-  },
-  {
-    id: 3,
-    title: 'Cemetery ERP',
-    description: 'Custom ERP solution for cemetery management, sales, and invoicing.',
-    fullDescription: 'A specialized Enterprise Resource Planning (ERP) system built to manage the unique operations of a cemetery. The platform handles the sale of plots, flowers, and related products, complete with a custom invoicing module. It streamlines inventory management and provides administrative tools for tracking plot ownership and maintenance schedules.',
-    image: 'https://placehold.co/600x400/64748B/FFFFFF?text=Cemetery+ERP',
-    technologies: ['Laravel', 'Materialize CSS', 'PHP', 'MySQL'],
-    category: 'Web App',
-    liveUrl: '#',
-    githubUrl: '#',
-    displayLiveUrl: false,
-    displayGithubUrl: false,
-    featured: false,
-    features: [
-      'Plot Sales Management',
-      'Product Inventory & POS',
-      'Custom Invoicing',
-      'Map/Location Integration',
-      'Administrative Dashboard'
-    ],
-    gallery: []
-  },
-  {
-    id: 4,
-    title: 'KNT Reporting',
-    description: 'Automated evaluation and reporting system for performance metrics.',
-    fullDescription: 'A data-driven web application focused on generating detailed performance reports. It automates the calculation of averages, percentages, and evaluation scores (similar to academic grading). The system visualizes these metrics and allows for the export of comprehensive reports, aiding in data analysis and decision-making.',
-    image: 'https://placehold.co/600x400/F59E0B/FFFFFF?text=KNT+Reporting',
-    technologies: ['CodeIgniter', 'Bootstrap', 'jQuery', 'PHP', 'MySQL'],
-    category: 'Web App',
-    liveUrl: '#',
-    githubUrl: '#',
-    displayLiveUrl: false,
-    displayGithubUrl: false,
-    featured: false,
-    features: [
-      'Automated Calculations',
-      'Report Export (PDF/Excel)',
-      'Data Visualization',
-      'Evaluation Metrics',
-      'Legacy System Maintenance'
-    ],
-    gallery: []
-  },
-  {
-    id: 5,
-    title: 'USRacing',
-    description: 'Real-time horse racing monitor with automated data scraping.',
-    fullDescription: 'A WordPress-based monitoring system for horse racing news and events. The project involved building a custom Python scraping engine to mirror real-time race data, odds, and news from external sources, ensuring the site remained up-to-date with the latest industry information without manual input.',
-    image: 'https://placehold.co/600x400/EF4444/FFFFFF?text=USRacing',
-    technologies: ['WordPress', 'Python', 'Scrapy', 'PHP', 'MySQL'],
-    category: 'Backend',
-    liveUrl: '#',
-    githubUrl: '#',
-    displayLiveUrl: false,
-    displayGithubUrl: false,
-    featured: false,
-    features: [
-      'Automated Data Scraping',
-      'Real-time Odds Updates',
-      'News Aggregation',
-      'WordPress Customization',
-      'Backend Optimization'
-    ],
-    gallery: []
-  },
-  {
-    id: 6,
-    title: 'JaysWideShoes',
-    description: 'Security recovery and optimization for a Magento e-commerce platform.',
-    fullDescription: 'A critical recovery project for a Magento-based e-commerce store that suffered a cyberattack. The work involved cleaning malicious code, restoring database integrity, and scrubbing "dirty" data from Google search indices. Enhanced security measures were implemented to prevent future breaches and restore customer trust.',
-    image: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=JaysWideShoes',
-    technologies: ['Magento', 'PHP', 'MySQL', 'Security', 'SEO Recovery'],
-    category: 'Web App',
-    liveUrl: '#',
-    githubUrl: '#',
-    displayLiveUrl: false,
-    displayGithubUrl: false,
-    featured: false,
-    features: [
-      'Malware Removal',
-      'Database Restoration',
-      'SEO Index Cleaning',
-      'Security Hardening',
-      'Legacy Code Maintenance'
-    ],
-    gallery: []
-  },
-  {
-    id: 7,
-    title: 'ELFEC CMS',
-    description: 'Corporate content management system for a major electrical utility.',
-    fullDescription: 'A robust Drupal-based CMS designed for ELFEC to manage their corporate web presence. The system handles complex user roles, public information dissemination, and internal content workflows, providing a stable and scalable platform for the utility company.',
-    image: ElfecImage,
-    technologies: ['Drupal', 'PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    category: 'Web App',
-    liveUrl: 'https://www.elfec.bo',
-    githubUrl: '',
-    displayLiveUrl: true,
-    displayGithubUrl: false,
-    featured: false,
-    features: [
-      'User Role Management',
-      'Content Workflow',
-      'Public Portal',
-      'Reporting Modules',
-      'System Integration'
-    ],
-    gallery: []
-  },
-  {
-    id: 8,
-    title: 'BTP Enterprise Platform',
-    description: 'Massive workforce and resource management system with mobile integration.',
-    fullDescription: 'A large-scale enterprise platform designed for comprehensive workforce and resource management. It features complex integrations with multiple payment gateways and e-invoicing services. The system handles agreement tracking with digital signatures, automated document generation (HTML/PDF/Word) with dynamic tag replacement, and organization management. It includes a time-tracking module with geolocation and PTO management, all governed by a granular role-based permission system. The platform is complemented by a React Native mobile app for iOS and Android, enabling push notifications and on-the-go access.',
-    image: 'https://placehold.co/600x400/2563EB/FFFFFF?text=BTP+Enterprise',
-    technologies: ['Laravel', 'React Native', 'Vue.js', 'jQuery', 'Bootstrap', 'Webpack', 'Payment APIs', 'E-Invoicing'],
-    category: 'Enterprise',
-    liveUrl: '#',
-    githubUrl: '#',
-    displayLiveUrl: false,
-    displayGithubUrl: false,
-    featured: true,
-    features: [
-      'Multi-Gateway Payments',
-      'Automated Invoicing',
-      'Digital Agreements & Signatures',
-      'Dynamic Document Generation',
-      'Time Tracking & PTO',
-      'Mobile App (iOS/Android)'
     ],
     gallery: []
   },
@@ -228,12 +162,12 @@ export const projects = [
     gallery: []
   },
   {
-    id: 11,
-    title: 'EduCertify',
-    description: 'Course management and bulk certificate generation platform.',
-    fullDescription: 'An educational platform designed to streamline the certification process. Instructors can create courses, import student lists, and generate customizable certificates in bulk. The system allows for the personalization of certificate templates before distribution, ensuring a professional look for every graduate. It handles email delivery and record-keeping for all issued credentials.',
-    image: Educertify,
-    technologies: ['Laravel', 'PostgreSQL', 'Bootstrap', 'jQuery', 'CSS'],
+    id: 4,
+    title: 'KNT Reporting',
+    description: 'Automated evaluation and reporting system for performance metrics.',
+    fullDescription: 'A data-driven web application focused on generating detailed performance reports. It automates the calculation of averages, percentages, and evaluation scores (similar to academic grading). The system visualizes these metrics and allows for the export of comprehensive reports, aiding in data analysis and decision-making.',
+    image: 'https://placehold.co/600x400/F59E0B/FFFFFF?text=KNT+Reporting',
+    technologies: ['CodeIgniter', 'Bootstrap', 'jQuery', 'PHP', 'MySQL'],
     category: 'Web App',
     liveUrl: '#',
     githubUrl: '#',
@@ -241,11 +175,77 @@ export const projects = [
     displayGithubUrl: false,
     featured: false,
     features: [
-      'Bulk Certificate Generation',
-      'Customizable Templates',
-      'Student Import/Management',
-      'Automated Email Delivery',
-      'Course Administration'
+      'Automated Calculations',
+      'Report Export (PDF/Excel)',
+      'Data Visualization',
+      'Evaluation Metrics',
+      'Legacy System Maintenance'
+    ],
+    gallery: []
+  },
+  {
+    id: 3,
+    title: 'Cemetery ERP',
+    description: 'Custom ERP solution for cemetery management, sales, and invoicing.',
+    fullDescription: 'A specialized Enterprise Resource Planning (ERP) system built to manage the unique operations of a cemetery. The platform handles the sale of plots, flowers, and related products, complete with a custom invoicing module. It streamlines inventory management and provides administrative tools for tracking plot ownership and maintenance schedules.',
+    image: 'https://placehold.co/600x400/64748B/FFFFFF?text=Cemetery+ERP',
+    technologies: ['Laravel', 'Materialize CSS', 'PHP', 'MySQL'],
+    category: 'Web App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'Plot Sales Management',
+      'Product Inventory & POS',
+      'Custom Invoicing',
+      'Map/Location Integration',
+      'Administrative Dashboard'
+    ],
+    gallery: []
+  },
+  {
+    id: 5,
+    title: 'USRacing',
+    description: 'Real-time horse racing monitor with automated data scraping.',
+    fullDescription: 'A WordPress-based monitoring system for horse racing news and events. The project involved building a custom Python scraping engine to mirror real-time race data, odds, and news from external sources, ensuring the site remained up-to-date with the latest industry information without manual input.',
+    image: 'https://placehold.co/600x400/EF4444/FFFFFF?text=USRacing',
+    technologies: ['WordPress', 'Python', 'Scrapy', 'PHP', 'MySQL'],
+    category: 'Backend',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'Automated Data Scraping',
+      'Real-time Odds Updates',
+      'News Aggregation',
+      'WordPress Customization',
+      'Backend Optimization'
+    ],
+    gallery: []
+  },
+  {
+    id: 6,
+    title: 'JaysWideShoes',
+    description: 'Security recovery and optimization for a Magento e-commerce platform.',
+    fullDescription: 'A critical recovery project for a Magento-based e-commerce store that suffered a cyberattack. The work involved cleaning malicious code, restoring database integrity, and scrubbing "dirty" data from Google search indices. Enhanced security measures were implemented to prevent future breaches and restore customer trust.',
+    image: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=JaysWideShoes',
+    technologies: ['Magento', 'PHP', 'MySQL', 'Security', 'SEO Recovery'],
+    category: 'Web App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'Malware Removal',
+      'Database Restoration',
+      'SEO Index Cleaning',
+      'Security Hardening',
+      'Legacy Code Maintenance'
     ],
     gallery: []
   }
