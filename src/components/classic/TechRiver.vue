@@ -106,10 +106,12 @@ const row2 = [
 <style scoped>
 .animate-marquee-left {
   animation: marqueeLeft 40s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee-right {
   animation: marqueeRight 40s linear infinite;
+  will-change: transform;
 }
 
 @keyframes marqueeLeft {
