@@ -131,7 +131,7 @@ const row2 = [
 }
 
 .tech-item {
-  @apply flex items-center gap-3 px-6 py-3 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm transition-all duration-300 hover:scale-110 hover:shadow-md hover:border-primary/30 cursor-default;
+  @apply flex items-center gap-3 px-6 py-3 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm transition-all duration-200 hover:scale-110 hover:shadow-md hover:border-primary/30 cursor-default;
 }
 
 .tech-icon-wrapper {

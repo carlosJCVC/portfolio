@@ -17,7 +17,7 @@
 
     <!-- Spotlight Gradient -->
     <div
-      class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
+      class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
       style="
         background: radial-gradient(
           800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
@@ -32,7 +32,7 @@
       <!-- Icon/Header -->
       <div class="flex items-start justify-between mb-4 transform-style-3d">
         <div
-          class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-inner group-hover:shadow-lg relative overflow-hidden"
+          class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-inner group-hover:shadow-lg relative overflow-hidden"
           :class="iconBgClass"
         >
           <!-- Breathing Glow behind icon -->
@@ -63,7 +63,7 @@
       <i
         :class="[
           icon,
-          'absolute -bottom-4 -right-4 text-9xl opacity-[0.03] dark:opacity-[0.05] transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-transform duration-700 ease-out pointer-events-none z-0'
+          'absolute -bottom-4 -right-4 text-9xl opacity-[0.03] dark:opacity-[0.05] transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-transform duration-500 ease-out pointer-events-none z-0'
         ]"
       ></i>
     </div>
