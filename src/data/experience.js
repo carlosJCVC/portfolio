@@ -81,13 +81,13 @@ export const certifications = [
   {
     id: 4,
     name: 'Angular: From Zero to Expert',
-    issuer: 'Udemy',
+    issuer: 'DevTalles',
     year: '2023'
   },
   {
     id: 5,
     name: 'Modern JavaScript',
-    issuer: 'Udemy',
+    issuer: 'DevTalles',
     year: '2023'
   },
   {
