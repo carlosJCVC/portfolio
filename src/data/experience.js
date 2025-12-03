@@ -9,11 +9,19 @@ export const experience = [
   },
   {
     id: 2,
+    role: 'Senior Backend Developer',
+    company: 'NINEHUB',
+    period: 'Mar 2021 - Oct 2022',
+    description: 'Transitioned to modern frameworks. Led the development of "NRG-WELLNESS", a PWA video platform for user challenges using Laravel. Maintained and enhanced "KNT Reporting" (CodeIgniter), implementing Shopify integrations and optimizing performance.',
+    skills: ['Laravel', 'PWA', 'CodeIgniter', 'Shopify API', 'Video Streaming']
+  },
+  {
+    id: 2.5,
     role: 'Backend Developer',
     company: 'NINEHUB',
-    period: 'Mar 2020 - Oct 2022',
-    description: 'Developed RESTful APIs for seamless data exchange in distributed environments. Focused on Laravel integrations, payment gateways, and efficient SQL query management for high-performance applications.',
-    skills: ['Laravel', 'SQL', 'API Integration', 'Payment Gateways', 'Data Transport']
+    period: 'Mar 2020 - Feb 2021',
+    description: 'Maintained legacy monolithic applications using pure PHP, jQuery, and Bootstrap. Integrated payment gateways and developed new features. Also built a real-time data dashboard using Angular.',
+    skills: ['PHP (Legacy)', 'jQuery', 'Angular', 'Bootstrap', 'Payment Gateways']
   },
   {
     id: 3,
