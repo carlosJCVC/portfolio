@@ -127,23 +127,12 @@
           data-aos-delay="700"
         />
       </div>
-
-      <!-- Tech River -->
-      <div class="mt-24" data-aos="fade-up">
-        <h3
-          class="text-2xl font-bold text-center mb-8 text-gray-400 dark:text-gray-500 uppercase tracking-widest text-sm"
-        >
-          {{ $t('skills.technologies') }}
-        </h3>
-        <TechRiver />
-      </div>
     </div>
   </section>
 </template>
 
 <script setup>
 import SkillBentoItem from './SkillBentoItem.vue'
-import TechRiver from './TechRiver.vue'
 </script>
 
 <style scoped>
