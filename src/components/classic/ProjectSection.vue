@@ -32,13 +32,14 @@
       <ProjectFilter
         :categories="categories"
         :activeCategory="activeCategory"
+        :counts="categoryCounts"
         @filter="filterProjects"
         class="mb-12"
       />
 
       <TransitionGroup
         tag="div"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 lg:gap-10"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 lg:gap-10 auto-rows-fr"
         :css="false"
         @before-enter="onBeforeEnter"
         @enter="onEnter"
@@ -96,6 +97,14 @@ const showAll = ref(false)
 const selectedProject = ref(null)
 const categories = ['All', ...new Set(allProjects.value.map((p) => p.category))]
 const activeCategory = ref('All')
+
+const categoryCounts = computed(() => {
+  const counts = { All: allProjects.value.length }
+  allProjects.value.forEach((p) => {
+    counts[p.category] = (counts[p.category] || 0) + 1
+  })
+  return counts
+})
 
 const filteredProjects = computed(() => {
   // Always filter from allProjects to ensure category switching works correctly with "Show More" state

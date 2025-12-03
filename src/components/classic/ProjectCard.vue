@@ -1,7 +1,8 @@
 <template>
   <div
     ref="cardRef"
-    class="group relative rounded-2xl bg-gray-50 dark:bg-dark-card border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 hover:-translate-y-1"
+    class="group relative rounded-2xl bg-gray-50 dark:bg-dark-card border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col"
+    :class="{ 'md:col-span-2': project.featured }"
     :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
     :data-aos-delay="index * 100"
     @mousemove="handleMouseMove"
@@ -9,14 +10,14 @@
   >
     <!-- Spotlight Effect -->
     <div
-      class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+      class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100 z-0"
       :style="spotlightStyle"
     ></div>
 
     <!-- Content -->
-    <div class="relative h-full flex flex-col">
+    <div class="relative h-full flex flex-col z-10">
       <!-- Image Area -->
-      <div class="relative aspect-video overflow-hidden">
+      <div class="relative overflow-hidden" :class="project.featured ? 'aspect-[21/9]' : 'aspect-video'">
         <img
           :src="project.image"
           :alt="project.title"
@@ -53,10 +54,15 @@
             <div
               v-for="tech in project.technologies.slice(0, 4)"
               :key="tech"
-              class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-dark-card bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 dark:text-gray-400 text-xs shadow-sm relative z-0 hover:z-10 transition-all hover:scale-110"
-              :title="tech"
+              class="group/icon inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-dark-card bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 dark:text-gray-400 text-xs shadow-sm relative z-0 hover:z-10 transition-all hover:scale-110 cursor-help"
             >
               <i :class="getTechIcon(tech)"></i>
+              
+              <!-- Custom Tooltip -->
+              <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded opacity-0 group-hover/icon:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                {{ tech }}
+                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+              </div>
             </div>
             <div
               v-if="project.technologies.length > 4"
