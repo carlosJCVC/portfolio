@@ -1,11 +1,11 @@
 export const experience = [
   {
     id: 1,
-    role: 'Full Stack Web Developer',
-    company: 'Freelance (Remote)',
+    role: 'Senior Full Stack Developer',
+    company: 'Freelance (Upwork)',
     period: 'Jan 2022 - Present',
-    description: 'Specializing in Laravel and Vue.js development. Integrated payment gateways (Stripe, PayPal, Fortis) and built robust ERP systems. Improved transaction efficiency by 20% and backend communication by 30% through optimized RESTful APIs.',
-    skills: ['Laravel', 'Vue.js', 'PHP', 'MySQL', 'Stripe', 'PayPal', 'REST APIs']
+    description: 'Architected scalable solutions using Clean Architecture and Design Patterns. Expanded web platforms into mobile ecosystems with React Native and Expo. Engineered complex backend workflows including digital signatures, automated invoicing (HTML-to-PDF), and real-time Slack/Mobile notifications. Key projects include "MoxieCopywriting", a photography design tracking platform.',
+    skills: ['Laravel', 'React Native', 'Clean Architecture', 'Automation', 'REST APIs']
   },
   {
     id: 2,
