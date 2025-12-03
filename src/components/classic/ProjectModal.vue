@@ -159,6 +159,33 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- Gallery Section -->
+                <div v-if="project.gallery && project.gallery.length > 0" class="px-8 pb-8">
+                  <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                    <i class="fas fa-images text-primary"></i>
+                    Project Gallery
+                  </h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div
+                      v-for="(image, index) in project.gallery"
+                      :key="index"
+                      class="group relative rounded-xl overflow-hidden shadow-md border border-gray-100 dark:border-gray-700 aspect-video"
+                    >
+                      <img
+                        :src="image.src || image"
+                        :alt="image.caption || `Gallery Image ${index + 1}`"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div
+                        v-if="image.caption"
+                        class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        {{ image.caption }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </TransitionChild>

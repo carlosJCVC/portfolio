@@ -57,6 +57,11 @@ export const projects = [
       { name: 'README.md', type: 'file', icon: 'fas fa-file-alt', color: 'text-gray-400' },
       { name: 'preview.webp', type: 'image', icon: 'fas fa-file-image', color: 'text-purple-400' },
       { name: 'source_code.url', type: 'link', icon: 'fab fa-github', color: 'text-gray-300' }
+    ],
+    gallery: [
+      { src: 'https://placehold.co/800x600/1e293b/ffffff?text=Admin+Dashboard', caption: 'Admin Dashboard' },
+      { src: 'https://placehold.co/800x600/3b82f6/ffffff?text=Certificate+Editor', caption: 'Certificate Editor' },
+      { src: 'https://placehold.co/800x600/10b981/ffffff?text=Mobile+View', caption: 'Responsive Mobile View' }
     ]
   },
   {
