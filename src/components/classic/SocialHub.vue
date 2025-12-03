@@ -1,105 +1,73 @@
 <template>
-  <div class="flex flex-col gap-6 h-full">
-    <!-- Resume Download Card (Top) -->
+  <div
+    class="bg-white dark:bg-dark-card rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-800 h-full flex flex-col gap-6"
+  >
+    <!-- Header -->
+    <div>
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Connect</h3>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">
+        Find me on social media or download my resume.
+      </p>
+    </div>
+
+    <!-- Resume Button (Full Width) -->
     <a
       :href="resumeUrl"
       download="Carlos_Veizaga_Resume.pdf"
-      class="group relative overflow-hidden rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl border border-white/10 dark:border-gray-700/50 bg-gradient-to-br from-primary to-secondary flex flex-col justify-between min-h-[200px]"
+      class="group relative overflow-hidden rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-between"
     >
-      <!-- Animated Background Pattern -->
-      <div class="absolute inset-0 opacity-20">
-        <div class="absolute inset-0 bg-grid-white/[0.2] bg-[length:20px_20px]"></div>
-      </div>
-
-      <!-- Content -->
-      <div class="relative z-10 flex flex-col h-full justify-between">
-        <div class="flex items-center justify-between">
-          <div
-            class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl text-white shadow-lg group-hover:scale-110 transition-transform duration-500"
-          >
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <div
-            class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:rotate-45 transition-transform duration-500"
-          >
-            <i class="fas fa-arrow-down"></i>
-          </div>
+      <div class="flex items-center gap-4 relative z-10">
+        <div
+          class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
+        >
+          <i class="fas fa-file-alt"></i>
         </div>
-
         <div>
-          <h3 class="text-2xl font-bold text-white mb-1">Download Resume</h3>
-          <p class="text-white/80 text-sm">Get my full CV & work history.</p>
+          <h3 class="font-bold text-white text-lg leading-tight">Download Resume</h3>
+          <p class="text-white/80 text-xs">PDF Format</p>
         </div>
       </div>
-
-      <!-- Pulsing "Hire Me" Badge -->
       <div
-        class="absolute top-6 right-6 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full border border-white/30 text-white text-xs font-bold flex items-center gap-1.5 animate-pulse"
+        class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white group-hover:rotate-45 transition-transform duration-300"
       >
-        <span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
-        HIRE ME
+        <i class="fas fa-arrow-down"></i>
       </div>
-
-      <!-- Decorative Icon -->
-      <i
-        class="fas fa-file-contract absolute -bottom-6 -right-6 text-8xl text-white opacity-10 rotate-12 group-hover:scale-110 transition-transform duration-700 pointer-events-none"
-      ></i>
     </a>
 
-    <!-- Social Links Grid (Middle) -->
-    <div class="grid grid-cols-2 gap-4">
+    <!-- Social Links (Grid) -->
+    <div class="grid grid-cols-2 gap-3 flex-grow">
       <a
         v-for="social in socials"
         :key="social.name"
         :href="social.link"
         target="_blank"
         @click="social.action && social.action()"
-        class="group flex items-center gap-3 p-4 rounded-2xl bg-white dark:bg-dark-card border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer"
+        class="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-gray-50 dark:bg-dark-bg/50 border border-gray-100 dark:border-gray-700/50 hover:border-primary/30 hover:bg-white dark:hover:bg-dark-bg transition-all duration-300 cursor-pointer"
       >
         <div
-          class="w-10 h-10 rounded-full flex items-center justify-center text-lg transition-colors duration-300"
+          class="w-8 h-8 rounded-full flex items-center justify-center text-lg transition-colors duration-300"
           :class="social.colorClass"
         >
           <i :class="social.icon"></i>
         </div>
-        <div class="flex-grow">
-          <h4
-            class="font-bold text-gray-900 dark:text-white text-sm group-hover:text-primary transition-colors"
-          >
-            {{ social.name }}
-          </h4>
-          <p class="text-xs text-gray-500 dark:text-gray-400">{{ social.subtitle }}</p>
-        </div>
-        <i
-          v-if="!social.action"
-          class="fas fa-external-link-alt text-xs text-gray-400 group-hover:text-primary transition-colors"
-        ></i>
-        <i
-          v-else
-          class="fas fa-copy text-xs text-gray-400 group-hover:text-primary transition-colors"
-        ></i>
+        <span class="text-xs font-bold text-gray-600 dark:text-gray-300 group-hover:text-primary">
+          {{ social.name }}
+        </span>
       </a>
     </div>
 
-    <!-- Location Map (Bottom) -->
+    <!-- Location (Simple Row) -->
     <div
-      class="flex-grow rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm min-h-[200px] relative group"
+      class="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 dark:bg-dark-bg/50 border border-gray-100 dark:border-gray-700/50"
     >
-      <img
-        src="https://placehold.co/600x400/1e293b/ffffff?text=Cochabamba,+Bolivia"
-        alt="Location Map"
-        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
       <div
-        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"
+        class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center text-red-500"
       >
-        <div class="text-white">
-          <div class="flex items-center gap-2 mb-1">
-            <i class="fas fa-map-marker-alt text-red-500 animate-bounce"></i>
-            <h4 class="font-bold text-lg">Cochabamba, Bolivia</h4>
-          </div>
-          <p class="text-white/80 text-sm">Open to remote opportunities worldwide.</p>
-        </div>
+        <i class="fas fa-map-marker-alt animate-bounce"></i>
+      </div>
+      <div>
+        <h4 class="font-bold text-gray-900 dark:text-white text-sm">Cochabamba, Bolivia</h4>
+        <p class="text-gray-500 dark:text-gray-400 text-xs">Open to remote work worldwide</p>
       </div>
     </div>
   </div>
