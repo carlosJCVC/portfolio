@@ -19,9 +19,17 @@ export const experience = [
     id: 3,
     role: 'Backend Developer',
     company: 'ACEDEVEL NETWORKS',
-    period: 'Jan 2017 - Nov 2020',
-    description: 'Worked on diverse projects including real-time data scraping for USRacing (35% speed increase), cyberattack recovery for JaysWideShoes, and custom ERP/CMS solutions for local enterprises.',
-    skills: ['PHP', 'WordPress', 'Data Scraping', 'Security', 'CMS Development']
+    period: 'Jan 2018 - Nov 2020',
+    description: 'Promoted to lead critical projects. Engineered a real-time data scraping engine for USRacing (35% speed boost) and led the cyberattack recovery for JaysWideShoes. Developed a custom WordPress module for the Bolivian Professional Football League and a comprehensive ERP for "Parque de las Memorias" cemetery.',
+    skills: ['Laravel', 'Data Scraping', 'Security', 'WordPress', 'ERP Development']
+  },
+  {
+    id: 4,
+    role: 'Junior Backend Developer',
+    company: 'ACEDEVEL NETWORKS',
+    period: 'Jan 2017 - Dec 2017',
+    description: 'Started my career implementing and deploying the corporate portal for Elfec using Drupal. Developed custom modules to extend CMS functionality, focusing on system stability and user management.',
+    skills: ['Drupal', 'PHP', 'CMS', 'Module Development', 'Linux']
   },
 ]
 
