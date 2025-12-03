@@ -159,5 +159,94 @@ export const projects = [
       'System Integration'
     ],
     gallery: []
+  },
+  {
+    id: 8,
+    title: 'BTP Enterprise Platform',
+    description: 'Massive workforce and resource management system with mobile integration.',
+    fullDescription: 'A large-scale enterprise platform designed for comprehensive workforce and resource management. It features complex integrations with multiple payment gateways and e-invoicing services. The system handles agreement tracking with digital signatures, automated document generation (HTML/PDF/Word) with dynamic tag replacement, and organization management. It includes a time-tracking module with geolocation and PTO management, all governed by a granular role-based permission system. The platform is complemented by a React Native mobile app for iOS and Android, enabling push notifications and on-the-go access.',
+    image: 'https://placehold.co/600x400/2563EB/FFFFFF?text=BTP+Enterprise',
+    technologies: ['Laravel', 'React Native', 'Vue.js', 'jQuery', 'Bootstrap', 'Webpack', 'Payment APIs', 'E-Invoicing'],
+    category: 'Enterprise',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: true,
+    features: [
+      'Multi-Gateway Payments',
+      'Automated Invoicing',
+      'Digital Agreements & Signatures',
+      'Dynamic Document Generation',
+      'Time Tracking & PTO',
+      'Mobile App (iOS/Android)'
+    ],
+    gallery: []
+  },
+  {
+    id: 9,
+    title: 'BR-WINS',
+    description: 'Competitive gaming platform integrating RapidAPI for real-time match data.',
+    fullDescription: 'A web-based gaming platform where users compete in skill-based games like chess to earn rewards. The application leverages RapidAPI to consume real-time match data and verify game outcomes. It features a secure wallet system for managing user earnings and a responsive interface for seamless gameplay across devices.',
+    image: 'https://placehold.co/600x400/DC2626/FFFFFF?text=BR-WINS',
+    technologies: ['Laravel', 'jQuery', 'Bootstrap', 'MySQL', 'RapidAPI', 'CSS'],
+    category: 'Web App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'Real-time API Integration',
+      'Skill-Based Gaming',
+      'Wallet & Rewards System',
+      'Match Verification',
+      'Responsive Design'
+    ],
+    gallery: []
+  },
+  {
+    id: 10,
+    title: 'BTP Hypervisor',
+    description: 'Cloud resource monitoring and provisioning dashboard for BTP systems.',
+    fullDescription: 'A specialized monitoring dashboard that allows users to subscribe to and oversee their BTP system status. It provides real-time visualization of resource usage and system health. The platform also facilitates the provisioning of additional resources, such as server instances and databases, through an intuitive web interface, streamlining infrastructure management.',
+    image: 'https://placehold.co/600x400/7C3AED/FFFFFF?text=BTP+Hypervisor',
+    technologies: ['Laravel', 'jQuery', 'Bootstrap', 'Chart.js', 'MySQL'],
+    category: 'Web App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'System Health Monitoring',
+      'Resource Provisioning',
+      'Subscription Management',
+      'Usage Analytics',
+      'Intuitive Dashboard'
+    ],
+    gallery: []
+  },
+  {
+    id: 11,
+    title: 'EduCertify',
+    description: 'Course management and bulk certificate generation platform.',
+    fullDescription: 'An educational platform designed to streamline the certification process. Instructors can create courses, import student lists, and generate customizable certificates in bulk. The system allows for the personalization of certificate templates before distribution, ensuring a professional look for every graduate. It handles email delivery and record-keeping for all issued credentials.',
+    image: Educertify,
+    technologies: ['Laravel', 'PostgreSQL', 'Bootstrap', 'jQuery', 'CSS'],
+    category: 'Web App',
+    liveUrl: '#',
+    githubUrl: '#',
+    displayLiveUrl: false,
+    displayGithubUrl: false,
+    featured: false,
+    features: [
+      'Bulk Certificate Generation',
+      'Customizable Templates',
+      'Student Import/Management',
+      'Automated Email Delivery',
+      'Course Administration'
+    ],
+    gallery: []
   }
 ]
