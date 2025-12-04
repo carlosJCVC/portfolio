@@ -53,15 +53,19 @@
         class="h-14 border-b border-gray-700 flex items-center justify-between px-6 bg-[#252526]"
       >
         <div class="flex items-center gap-3">
-          <span class="font-bold">Carlos Veizaga</span>
+          <span class="font-bold">Recruiter Bot</span>
           <span
             class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs border border-green-500/30"
-            >Available for Hire</span
+            >Online</span
           >
         </div>
-        <div class="flex gap-4 text-gray-400">
-          <i class="fas fa-phone hover:text-white cursor-pointer"></i>
-          <i class="fas fa-video hover:text-white cursor-pointer"></i>
+        <div class="flex gap-4 text-gray-400 items-center">
+          <button 
+            @click="sendEmail"
+            class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded transition-colors"
+          >
+            Send Email
+          </button>
           <i class="fas fa-info-circle hover:text-white cursor-pointer"></i>
         </div>
       </div>
@@ -81,10 +85,17 @@
                 ? 'bg-blue-600 text-white rounded-br-none'
                 : 'bg-[#2d2d2d] text-gray-200 rounded-bl-none'
             "
+            v-html="msg.text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\[(.*?)\]\((.*?)\)/g, '<a href=\'$2\' target=\'_blank\' class=\'underline\'>$1</a>')"
           >
-            {{ msg.text }}
           </div>
           <span class="text-[10px] text-gray-500 mt-1 px-1">{{ msg.time }}</span>
+        </div>
+        
+        <!-- Typing Indicator -->
+        <div v-if="isTyping" class="flex flex-col items-start">
+           <div class="bg-[#2d2d2d] px-4 py-2 rounded-2xl rounded-bl-none text-gray-400 text-xs italic">
+             Typing...
+           </div>
         </div>
       </div>
 
@@ -117,36 +128,64 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted, watch } from 'vue'
 import { initialMessages, contacts } from '@/data/messenger'
+import { processMessage } from '@/utils/chatBot'
+import { profile } from '@/data/profile'
 
-const messages = ref([...initialMessages])
+const messages = ref([])
 const newMessage = ref('')
 const messagesContainer = ref(null)
+const isTyping = ref(false)
+
+// Load messages from localStorage or use initial
+onMounted(() => {
+  const saved = localStorage.getItem('messenger_history')
+  if (saved) {
+    messages.value = JSON.parse(saved)
+  } else {
+    messages.value = [...initialMessages]
+  }
+  scrollToBottom()
+})
+
+// Save to localStorage whenever messages change
+watch(messages, (newVal) => {
+  localStorage.setItem('messenger_history', JSON.stringify(newVal))
+}, { deep: true })
 
 const sendMessage = async () => {
   if (!newMessage.value.trim()) return
 
+  const userText = newMessage.value
+  
   // User Message
   messages.value.push({
-    text: newMessage.value,
+    text: userText,
     isMe: true,
     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   })
 
-  const userText = newMessage.value
   newMessage.value = ''
   scrollToBottom()
 
-  // Auto-Reply Simulation
+  // Bot Logic
+  isTyping.value = true
+  
   setTimeout(() => {
+    const response = processMessage(userText)
     messages.value.push({
-      text: `Thanks for the message: "${userText}". I'll get back to you shortly via email!`,
+      text: response,
       isMe: false,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     })
+    isTyping.value = false
     scrollToBottom()
-  }, 1500)
+  }, 1000 + Math.random() * 1000) // Random delay 1-2s
+}
+
+const sendEmail = () => {
+  window.open(`mailto:${profile.email}`, '_blank')
 }
 
 const scrollToBottom = async () => {
