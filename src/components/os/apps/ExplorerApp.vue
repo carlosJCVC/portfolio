@@ -127,10 +127,7 @@ import SidebarItem from './components/SidebarItem.vue'
 import FileIcon from './components/FileIcon.vue'
 import { useOSStore } from '@/store/useOSStore'
 import { useFileSystem } from '@/composables/useFileSystem'
-import CodeEditorApp from './CodeEditorApp.vue'
-import ImageViewerApp from './ImageViewerApp.vue'
-import TerminalApp from './TerminalApp.vue'
-import BrowserApp from './BrowserApp.vue'
+import { getAppById } from '@/data/apps'
 
 const store = useOSStore()
 
@@ -156,20 +153,17 @@ const handleItemClick = (item) => {
     }
   } else if (item.type === 'app') {
     // Launch App from Desktop view
-    if (item.action === 'terminal') {
-      store.openWindow('terminal', 'Terminal', TerminalApp)
-    } else if (item.action === 'vscode') {
-      store.openWindow('vscode', 'VS Code', CodeEditorApp)
-    } else if (item.action === 'browser') {
-      store.openWindow('browser', 'Chrome', BrowserApp)
-    } else if (item.action === 'image-viewer') {
-      store.openWindow('image-viewer', 'Photos', ImageViewerApp)
+    const app = getAppById(item.action)
+    if (app) {
+      store.openWindow(app.id, app.title, app.component, app.props || {})
     }
   } else if (item.type === 'system' && item.action === 'trash') {
     goToLocation('trash')
   } else if (item.type === 'file' && item.name === 'README.md') {
     // Open in Code Editor
-    const content = `<span class="text-blue-400"># ${item.data.title}</span>
+    const app = getAppById('vscode')
+    if (app) {
+      const content = `<span class="text-blue-400"># ${item.data.title}</span>
 
 ${item.data.fullDescription}
 
@@ -185,19 +179,23 @@ ${
     : 'No specific features listed.'
 }`
 
-    store.openWindow('vscode', 'VS Code', CodeEditorApp, {
-      initialFile: {
-        name: `README-${item.data.id}.md`,
-        icon: 'fas fa-info-circle',
-        color: '#42b883',
-        content
-      }
-    })
+      store.openWindow(app.id, app.title, app.component, {
+        initialFile: {
+          name: `README-${item.data.id}.md`,
+          icon: 'fas fa-info-circle',
+          color: '#42b883',
+          content
+        }
+      })
+    }
   } else if (item.type === 'image') {
     // Open in Image Viewer
-    store.openWindow('image-viewer', 'Photos', ImageViewerApp, {
-      image: item.data
-    })
+    const app = getAppById('image-viewer')
+    if (app) {
+      store.openWindow(app.id, app.title, app.component, {
+        image: item.data
+      })
+    }
   }
 }
 

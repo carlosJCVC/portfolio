@@ -84,40 +84,22 @@
 <script setup>
 import { ref } from 'vue'
 import { useOSStore } from '@/store/useOSStore'
-import BootScreen from './BootScreen.vue'
-import ShutdownScreen from './ShutdownScreen.vue'
-import PowerOffScreen from './PowerOffScreen.vue'
-import WindowFrame from './WindowFrame.vue'
-import TaskBar from './TaskBar.vue'
-import StartMenu from './StartMenu.vue'
-import SystemDialog from './SystemDialog.vue'
-
-// Import App Components
-import TerminalApp from './apps/TerminalApp.vue'
-import ExplorerApp from './apps/ExplorerApp.vue'
-import MessengerApp from './apps/MessengerApp.vue'
-import SettingsApp from './apps/SettingsApp.vue'
-import BrowserApp from './apps/BrowserApp.vue'
-import CodeEditorApp from './apps/CodeEditorApp.vue'
-import ImageViewerApp from './apps/ImageViewerApp.vue'
+import { apps } from '@/data/apps'
+import BootScreen from './system/BootScreen.vue'
+import ShutdownScreen from './system/ShutdownScreen.vue'
+import PowerOffScreen from './system/PowerOffScreen.vue'
+import SystemDialog from './system/SystemDialog.vue'
+import WindowFrame from './desktop/WindowFrame.vue'
+import TaskBar from './desktop/TaskBar.vue'
+import StartMenu from './desktop/StartMenu.vue'
 
 const store = useOSStore()
 const isStartMenuOpen = ref(false)
 
-const apps = [
-  { id: 'terminal', title: 'Terminal', icon: 'fas fa-terminal', component: TerminalApp },
-  { id: 'projects', title: 'Projects', icon: 'fas fa-folder-open', component: ExplorerApp },
-  { id: 'skills', title: 'Skills', icon: 'fas fa-layer-group', component: TerminalApp }, // Reusing Terminal for now
-  { id: 'vscode', title: 'VS Code', icon: 'fas fa-code', component: CodeEditorApp },
-  { id: 'contact', title: 'Contact', icon: 'fas fa-envelope', component: MessengerApp },
-  { id: 'settings', title: 'Settings', icon: 'fas fa-cog', component: SettingsApp },
-  { id: 'browser', title: 'Chrome', icon: 'fab fa-chrome', component: BrowserApp },
-  { id: 'image-viewer', title: 'Photos', icon: 'fas fa-image', component: ImageViewerApp }
-]
-
 const openApp = (app) => {
   if (app.component) {
-    const props = app.id === 'skills' ? { initialCommand: 'skills' } : {}
+    // Merge default props from registry with any dynamic props (though currently we don't pass dynamic props here)
+    const props = app.props || {}
     store.openWindow(app.id, app.title, app.component, props)
     isStartMenuOpen.value = false
   } else {
