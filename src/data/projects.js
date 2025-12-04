@@ -1,6 +1,25 @@
 import ElfecImage from '@/assets/images/projects/elfec.png'
-import Educertify from '@/assets/images/projects/educertify.webp'
-import AnimeHeroChallenge from '@/assets/images/projects/Anime_Hero_Challenge_600x400.png'
+import EducertifyMain from '@/assets/images/projects/educertify/educertify.webp'
+import Educertify1 from '@/assets/images/projects/educertify/1.png'
+import Educertify2 from '@/assets/images/projects/educertify/2.png'
+import Educertify3 from '@/assets/images/projects/educertify/3.png'
+import BtpMain from '@/assets/images/projects/btp/main.png'
+import BtpOne from '@/assets/images/projects/btp/1.png'
+import MoxieMain from '@/assets/images/projects/moxie/main.png'
+import Moxie1 from '@/assets/images/projects/moxie/1.png'
+import Moxie2 from '@/assets/images/projects/moxie/2.png'
+import KtnMain from '@/assets/images/projects/ktn/main.png'
+import Ktn1 from '@/assets/images/projects/ktn/1.png'
+import Ktn2 from '@/assets/images/projects/ktn/2.png'
+import UsRacingMain from '@/assets/images/projects/usracing/main.png'
+import JaysMain from '@/assets/images/projects/jayswideshoes/main.png'
+import Jays1 from '@/assets/images/projects/jayswideshoes/1.png'
+import BrwMain from '@/assets/images/projects/brw/12.png'
+import Brw1 from '@/assets/images/projects/brw/1.png'
+import Brw2 from '@/assets/images/projects/brw/2.png'
+import HypervisorMain from '@/assets/images/projects/hypervisor/main.png'
+import Hypervisor1 from '@/assets/images/projects/hypervisor/1.png'
+import Hypervisor2 from '@/assets/images/projects/hypervisor/2.png'
 
 export const projects = [
   {
@@ -8,7 +27,7 @@ export const projects = [
     title: 'EduCertify',
     description: 'Course management and bulk certificate generation platform.',
     fullDescription: 'An educational platform designed to streamline the certification process. Instructors can create courses, import student lists, and generate customizable certificates in bulk. The system allows for the personalization of certificate templates before distribution, ensuring a professional look for every graduate. It handles email delivery and record-keeping for all issued credentials.',
-    image: Educertify,
+    image: EducertifyMain,
     technologies: ['Laravel', 'PostgreSQL', 'Bootstrap', 'jQuery', 'CSS'],
     category: 'Web App',
     liveUrl: '#',
@@ -23,14 +42,18 @@ export const projects = [
       'Automated Email Delivery',
       'Course Administration'
     ],
-    gallery: []
+    gallery: [
+      { src: Educertify1, caption: 'Certificate Generation Wizard' },
+      { src: Educertify2, caption: 'Course Management Dashboard' },
+      { src: Educertify3, caption: 'Student Import Interface' }
+    ]
   },
   {
     id: 8,
     title: 'BTP Enterprise Platform',
     description: 'Massive workforce and resource management system with mobile integration.',
     fullDescription: 'A large-scale enterprise platform designed for comprehensive workforce and resource management. It features complex integrations with multiple payment gateways and e-invoicing services. The system handles agreement tracking with digital signatures, automated document generation (HTML/PDF/Word) with dynamic tag replacement, and organization management. It includes a time-tracking module with geolocation and PTO management, all governed by a granular role-based permission system. The platform is complemented by a React Native mobile app for iOS and Android, enabling push notifications and on-the-go access.',
-    image: 'https://placehold.co/600x400/2563EB/FFFFFF?text=BTP+Enterprise',
+    image: BtpMain,
     technologies: ['Laravel', 'React Native', 'Vue.js', 'jQuery', 'Bootstrap', 'Webpack', 'Payment APIs', 'E-Invoicing'],
     category: 'Enterprise',
     liveUrl: '#',
@@ -46,7 +69,10 @@ export const projects = [
       'Time Tracking & PTO',
       'Mobile App (iOS/Android)'
     ],
-    gallery: []
+    gallery: [
+      { src: BtpMain, caption: 'Main Dashboard & Resource Overview' },
+      { src: BtpOne, caption: 'Detailed Management Interface' }
+    ]
   },
   {
     id: 7,
@@ -75,7 +101,7 @@ export const projects = [
     title: 'MoxieCopywriting',
     description: 'Credit-based creative workflow platform integrating Shopify payments with a Laravel backend.',
     fullDescription: 'A comprehensive creative services platform where clients use purchased credits to request design and copywriting work. The system features a seamless integration with Shopify for credit purchases, triggering real-time API updates to the user\'s balance. It includes a robust role-based workflow where administrators process requests, upload deliverables, and manage iterative revision cycles with clients until approval.',
-    image: 'https://placehold.co/600x400/4F46E5/FFFFFF?text=Moxie+Platform',
+    image: MoxieMain,
     technologies: ['Laravel', 'Shopify API', 'jQuery', 'Ajax', 'Bootstrap', 'Materialize', 'MySQL'],
     category: 'Web App',
     liveUrl: '#',
@@ -91,8 +117,9 @@ export const projects = [
       'Real-time Notifications'
     ],
     gallery: [
-      { src: 'https://placehold.co/800x600/4F46E5/FFFFFF?text=Request+Dashboard', caption: 'Client Request Dashboard' },
-      { src: 'https://placehold.co/800x600/6366F1/FFFFFF?text=Revision+Cycle', caption: 'Iterative Revision Interface' }
+      { src: MoxieMain, caption: 'Main Platform Interface' },
+      { src: Moxie1, caption: 'Client Request Flow' },
+      { src: Moxie2, caption: 'Admin Dashboard' }
     ]
   },
   {
@@ -122,7 +149,7 @@ export const projects = [
     title: 'BR-WINS',
     description: 'Competitive gaming platform integrating RapidAPI for real-time match data.',
     fullDescription: 'A web-based gaming platform where users compete in skill-based games like chess to earn rewards. The application leverages RapidAPI to consume real-time match data and verify game outcomes. It features a secure wallet system for managing user earnings and a responsive interface for seamless gameplay across devices.',
-    image: 'https://placehold.co/600x400/DC2626/FFFFFF?text=BR-WINS',
+    image: BrwMain,
     technologies: ['Laravel', 'jQuery', 'Bootstrap', 'MySQL', 'RapidAPI', 'CSS'],
     category: 'Web App',
     liveUrl: '#',
@@ -137,14 +164,18 @@ export const projects = [
       'Match Verification',
       'Responsive Design'
     ],
-    gallery: []
+    gallery: [
+      { src: BrwMain, caption: 'Game Lobby' },
+      { src: Brw1, caption: 'Match Interface' },
+      { src: Brw2, caption: 'User Wallet' }
+    ]
   },
   {
     id: 10,
     title: 'BTP Hypervisor',
     description: 'Cloud resource monitoring and provisioning dashboard for BTP systems.',
     fullDescription: 'A specialized monitoring dashboard that allows users to subscribe to and oversee their BTP system status. It provides real-time visualization of resource usage and system health. The platform also facilitates the provisioning of additional resources, such as server instances and databases, through an intuitive web interface, streamlining infrastructure management.',
-    image: 'https://placehold.co/600x400/7C3AED/FFFFFF?text=BTP+Hypervisor',
+    image: HypervisorMain,
     technologies: ['Laravel', 'jQuery', 'Bootstrap', 'Chart.js', 'MySQL'],
     category: 'Web App',
     liveUrl: '#',
@@ -159,14 +190,18 @@ export const projects = [
       'Usage Analytics',
       'Intuitive Dashboard'
     ],
-    gallery: []
+    gallery: [
+      { src: HypervisorMain, caption: 'System Status Dashboard' },
+      { src: Hypervisor1, caption: 'Resource Usage Charts' },
+      { src: Hypervisor2, caption: 'Provisioning Interface' }
+    ]
   },
   {
     id: 4,
     title: 'KNT Reporting',
     description: 'Automated evaluation and reporting system for performance metrics.',
     fullDescription: 'A data-driven web application focused on generating detailed performance reports. It automates the calculation of averages, percentages, and evaluation scores (similar to academic grading). The system visualizes these metrics and allows for the export of comprehensive reports, aiding in data analysis and decision-making.',
-    image: 'https://placehold.co/600x400/F59E0B/FFFFFF?text=KNT+Reporting',
+    image: KtnMain,
     technologies: ['CodeIgniter', 'Bootstrap', 'jQuery', 'PHP', 'MySQL'],
     category: 'Web App',
     liveUrl: '#',
@@ -181,7 +216,11 @@ export const projects = [
       'Evaluation Metrics',
       'Legacy System Maintenance'
     ],
-    gallery: []
+    gallery: [
+      { src: KtnMain, caption: 'Reporting Dashboard' },
+      { src: Ktn1, caption: 'Data Entry Form' },
+      { src: Ktn2, caption: 'Export Options' }
+    ]
   },
   {
     id: 3,
@@ -210,7 +249,7 @@ export const projects = [
     title: 'USRacing',
     description: 'Real-time horse racing monitor with automated data scraping.',
     fullDescription: 'A WordPress-based monitoring system for horse racing news and events. The project involved building a custom Python scraping engine to mirror real-time race data, odds, and news from external sources, ensuring the site remained up-to-date with the latest industry information without manual input.',
-    image: 'https://placehold.co/600x400/EF4444/FFFFFF?text=USRacing',
+    image: UsRacingMain,
     technologies: ['WordPress', 'Python', 'Scrapy', 'PHP', 'MySQL'],
     category: 'Backend',
     liveUrl: '#',
@@ -225,14 +264,16 @@ export const projects = [
       'WordPress Customization',
       'Backend Optimization'
     ],
-    gallery: []
+    gallery: [
+      { src: UsRacingMain, caption: 'Live Race Monitor' }
+    ]
   },
   {
     id: 6,
     title: 'JaysWideShoes',
     description: 'Security recovery and optimization for a Magento e-commerce platform.',
     fullDescription: 'A critical recovery project for a Magento-based e-commerce store that suffered a cyberattack. The work involved cleaning malicious code, restoring database integrity, and scrubbing "dirty" data from Google search indices. Enhanced security measures were implemented to prevent future breaches and restore customer trust.',
-    image: 'https://placehold.co/600x400/8B5CF6/FFFFFF?text=JaysWideShoes',
+    image: JaysMain,
     technologies: ['Magento', 'PHP', 'MySQL', 'Security', 'SEO Recovery'],
     category: 'Web App',
     liveUrl: '#',
@@ -247,6 +288,9 @@ export const projects = [
       'Security Hardening',
       'Legacy Code Maintenance'
     ],
-    gallery: []
+    gallery: [
+      { src: JaysMain, caption: 'Recovered Storefront' },
+      { src: Jays1, caption: 'Security Dashboard' }
+    ]
   }
 ]
