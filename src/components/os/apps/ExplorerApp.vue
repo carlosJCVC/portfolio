@@ -96,9 +96,11 @@ const searchQuery = ref('')
 
 // Computed view of current directory
 const currentItems = computed(() => {
+  let items = []
+
   if (currentPath.value.length === 0) {
     // Root: Show all projects as folders
-    return projects.map((p) => ({
+    items = projects.map((p) => ({
       id: p.id,
       name: p.title,
       type: 'folder',
@@ -114,10 +116,8 @@ const currentItems = computed(() => {
 
     // Level 1: Inside a Project Folder
     if (currentPath.value.length === 1) {
-      const files = []
-
       // README.md
-      files.push({
+      items.push({
         id: 'readme',
         name: 'README.md',
         type: 'file',
@@ -128,7 +128,7 @@ const currentItems = computed(() => {
 
       // Source Code Link
       if (project.displayGithubUrl && project.githubUrl) {
-        files.push({
+        items.push({
           id: 'source',
           name: 'Source Code.url',
           type: 'link',
@@ -140,7 +140,7 @@ const currentItems = computed(() => {
 
       // Live Demo Link
       if (project.displayLiveUrl && project.liveUrl) {
-        files.push({
+        items.push({
           id: 'demo',
           name: 'Live Demo.url',
           type: 'link',
@@ -152,7 +152,7 @@ const currentItems = computed(() => {
 
       // Gallery Folder (if has images)
       if (project.gallery && project.gallery.length > 0) {
-        files.push({
+        items.push({
           id: 'gallery',
           name: 'Gallery',
           type: 'folder',
@@ -161,14 +161,12 @@ const currentItems = computed(() => {
           data: project
         })
       }
-
-      return files
     }
 
     // Level 2: Inside Gallery
-    if (currentPath.value.length === 2 && currentPath.value[1] === 'Gallery') {
+    else if (currentPath.value.length === 2 && currentPath.value[1] === 'Gallery') {
       if (project.gallery) {
-        return project.gallery.map((img, i) => ({
+        items = project.gallery.map((img, i) => ({
           id: `img-${i}`,
           name: img.caption || `Image ${i + 1}`,
           type: 'image',
@@ -178,9 +176,15 @@ const currentItems = computed(() => {
         }))
       }
     }
-
-    return []
   }
+
+    // Apply Search Filter
+    if (searchQuery.value) {
+      const query = searchQuery.value.toLowerCase()
+      return items.filter((item) => item.name.toLowerCase().includes(query))
+    }
+
+    return items
 })
 
 const currentPathString = computed(() => {
