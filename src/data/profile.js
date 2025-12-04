@@ -13,22 +13,26 @@ export const profile = {
     filename: 'Carlos_Veizaga_Resume.pdf',
     downloadLabel: 'Download CV'
   },
-  about: `Carlos Veizaga - Senior Full-Stack Architect
+  about: `I am a Senior Full-Stack Architect with 10+ years of experience. I specialize in building enterprise-grade platforms, cross-platform mobile apps, and high-performance web systems.
 
-10+ years of experience specializing in enterprise-grade platforms (BTP), cross-platform mobile apps (React Native), and high-performance web systems.
-
-My expertise lies in architecting scalable solutions that solve complex business challenges.`,
-  skills: [
-    'Vue.js',
-    'Node.js',
-    'Tailwind CSS',
-    'Docker',
-    'AWS',
-    'Git',
-    'React Native',
-    'Laravel',
-    'Python',
-    'MySQL',
-    'PostgreSQL'
-  ]
+My expertise lies in architecting scalable solutions that solve complex business challenges while delivering a seamless user experience. From massive ERPs to engaging consumer apps, I deliver reliability and innovation.`,
+  roles: ["Full Stack Developer", "UI/UX Enthusiast", "Problem Solver", "Tech Explorer"],
+  skills: {
+    backend: {
+      title: 'Backend & Architecture',
+      items: ['Laravel', 'Node.js', 'Python', 'MySQL', 'PostgreSQL', 'AWS', 'Docker', 'Redis']
+    },
+    frontend: {
+      title: 'Frontend & UI',
+      items: ['Vue.js', 'React', 'Angular', 'Tailwind CSS', 'Bootstrap', 'Sass', 'TypeScript']
+    },
+    mobile: {
+      title: 'Mobile Development',
+      items: ['React Native', 'Flutter', 'Expo', 'Android', 'iOS']
+    },
+    tools: {
+      title: 'Tools & DevOps',
+      items: ['Git', 'n8n', 'Linux', 'Agile/Scrum', 'CI/CD', 'Webpack']
+    }
+  }
 }

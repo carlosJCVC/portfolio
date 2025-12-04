@@ -148,7 +148,10 @@ const files = [
 
   <span class="text-yellow-300">getSkills</span>() <span class="text-white">{</span>
     <span class="text-purple-400">return</span> [
-      ${profile.skills.map((s) => `<span class="text-green-300">'${s}'</span>`).join(', ')}
+      ${Object.values(profile.skills)
+        .flatMap((cat) => cat.items)
+        .map((s) => `<span class="text-green-300">'${s}'</span>`)
+        .join(', ')}
     ];
   <span class="text-white">}</span>
 <span class="text-white">}</span>

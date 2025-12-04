@@ -90,7 +90,9 @@ const fileSystem = computed(() => {
     },
     'skills.txt': {
       type: 'file',
-      content: `SKILLS & EXPERTISE\n\n${profile.skills.join('\n')}`
+      content: `SKILLS & EXPERTISE\n\n${Object.values(profile.skills)
+        .map((cat) => `[${cat.title}]\n${cat.items.join(', ')}`)
+        .join('\n\n')}`
     },
     'contact.txt': {
       type: 'file',
