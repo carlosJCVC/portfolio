@@ -132,6 +132,7 @@ const execute = async () => {
         sudo         - Run as superuser
         about        - Quick summary
         contact      - Get in touch
+        skills       - View technical skills
         shutdown     - Power off system`
       break
 
@@ -205,6 +206,10 @@ const execute = async () => {
       output = fileSystem.value['contact.txt'].content
       break
 
+    case 'skills':
+      output = fileSystem.value['skills.txt'].content
+      break
+
     case 'shutdown':
       output = 'Initiating system shutdown...'
       setTimeout(() => {
@@ -231,7 +236,15 @@ const focusInput = () => {
   inputRef.value?.focus()
 }
 
+const props = defineProps({
+  initialCommand: String
+})
+
 onMounted(() => {
   focusInput()
+  if (props.initialCommand) {
+    currentCmd.value = props.initialCommand
+    execute()
+  }
 })
 </script>

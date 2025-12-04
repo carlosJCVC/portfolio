@@ -100,7 +100,7 @@ const isStartMenuOpen = ref(false)
 const apps = [
   { id: 'terminal', title: 'Terminal', icon: 'fas fa-terminal', component: TerminalApp },
   { id: 'projects', title: 'Projects', icon: 'fas fa-folder-open', component: ExplorerApp },
-  { id: 'skills', title: 'Skills', icon: 'fas fa-code', component: TerminalApp }, // Reusing Terminal for now
+  { id: 'skills', title: 'Skills', icon: 'fas fa-layer-group', component: TerminalApp }, // Reusing Terminal for now
   { id: 'vscode', title: 'VS Code', icon: 'fas fa-code', component: CodeEditorApp },
   { id: 'contact', title: 'Contact', icon: 'fas fa-envelope', component: MessengerApp },
   { id: 'settings', title: 'Settings', icon: 'fas fa-cog', component: SettingsApp },
@@ -109,7 +109,8 @@ const apps = [
 
 const openApp = (app) => {
   if (app.component) {
-    store.openWindow(app.id, app.title, app.component)
+    const props = app.id === 'skills' ? { initialCommand: 'skills' } : {}
+    store.openWindow(app.id, app.title, app.component, props)
     isStartMenuOpen.value = false
   } else {
     alert('App under construction!')
