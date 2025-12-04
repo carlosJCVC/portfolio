@@ -134,13 +134,6 @@ const launch = (app) => {
   emit('close')
 }
 
-const openSettings = () => {
-  const settingsApp = props.apps.find((app) => app.id === 'settings')
-  if (settingsApp) {
-    emit('launch', settingsApp)
-  }
-}
-
 const goToClassic = () => {
   router.push('/classic')
 }

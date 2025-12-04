@@ -74,7 +74,6 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { gsap } from 'gsap'
-import AOS from 'aos'
 import 'aos/dist/aos.css'
 import ProjectCard from './ProjectCard.vue'
 import ProjectModal from './ProjectModal.vue'
