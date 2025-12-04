@@ -34,6 +34,7 @@
 
 <script setup>
 import { ref, onMounted, computed, nextTick } from 'vue'
+import { useOSStore } from '@/store/useOSStore'
 import { projects } from '@/data/projects'
 
 const history = ref([
@@ -42,6 +43,7 @@ const history = ref([
     output: 'Welcome to Carlos DevOS v1.0.0\nType "help" to see available commands.'
   }
 ])
+const store = useOSStore()
 const currentCmd = ref('')
 const inputRef = ref(null)
 const currentPath = ref([]) // [] = ~, ['projects'] = ~/projects
@@ -129,7 +131,8 @@ const execute = async () => {
         clear        - Clear terminal
         sudo         - Run as superuser
         about        - Quick summary
-        contact      - Get in touch`
+        contact      - Get in touch
+        shutdown     - Power off system`
       break
 
     case 'clear':
@@ -200,6 +203,13 @@ const execute = async () => {
 
     case 'contact':
       output = fileSystem.value['contact.txt'].content
+      break
+
+    case 'shutdown':
+      output = 'Initiating system shutdown...'
+      setTimeout(() => {
+        store.initiateShutdown()
+      }, 800)
       break
 
     default:
