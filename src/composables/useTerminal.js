@@ -3,13 +3,14 @@ import { useOSStore } from '@/store/useOSStore'
 import { profile } from '@/data/profile'
 import { projects } from '@/data/projects'
 import { registry, executeCommand } from '@/commands/registry'
+import { WELCOME_BANNER } from '@/utils/banners'
 
 export function useTerminal() {
   const store = useOSStore()
   const history = ref([
     {
       cmd: 'welcome',
-      output: 'Welcome to Carlos DevOS v1.0.0\nType "help" to see available commands.'
+      output: WELCOME_BANNER + '\nType "help" to see available commands.'
     }
   ])
   const currentCmd = ref('')
@@ -68,13 +69,32 @@ export function useTerminal() {
     }
   })
 
+  const theme = ref('default')
+  const showMatrix = ref(false)
+
   const clearHistory = () => {
     history.value = []
   }
 
+  const setTheme = (newTheme) => {
+    theme.value = newTheme
+  }
+
+  const toggleMatrix = () => {
+    showMatrix.value = !showMatrix.value
+  }
+
   const execute = async () => {
     const rawCmd = currentCmd.value.trim()
-    if (!rawCmd) return
+    
+    if (!rawCmd) {
+      history.value.push({
+        cmd: '',
+        path: currentPathString.value
+      })
+      currentCmd.value = ''
+      return
+    }
 
     const parts = rawCmd.split(' ')
     const cmdName = parts[0].toLowerCase()
@@ -86,7 +106,10 @@ export function useTerminal() {
       fileSystem: fileSystem.value,
       currentPath,
       registry,
-      clearHistory
+      clearHistory,
+      setTheme,
+      toggleMatrix,
+      history: history.value
     }
 
     const output = await executeCommand(cmdName, args, context)
@@ -112,6 +135,8 @@ export function useTerminal() {
     currentCmd,
     currentPath,
     currentPathString,
-    execute
+    execute,
+    theme,
+    showMatrix
   }
 }
