@@ -12,33 +12,34 @@
       <div class="flex-grow overflow-auto">
         <div class="p-2 space-y-1">
           <div
-            class="flex items-center gap-3 p-3 rounded-lg bg-blue-600/20 border border-blue-600/30 cursor-pointer"
+            v-for="contact in contacts"
+            :key="contact.id"
+            class="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors"
+            :class="contact.id === 'me' ? 'bg-blue-600/20 border border-blue-600/30' : 'hover:bg-[#2a2d2e] opacity-50'"
           >
             <div class="relative">
               <img
+                v-if="contact.avatar"
                 src="@/assets/images/avatar.jpg"
-                alt="Carlos"
+                :alt="contact.name"
                 class="w-10 h-10 rounded-full object-cover"
               />
               <div
+                v-else
+                class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center"
+              >
+                <i :class="contact.icon"></i>
+              </div>
+              <div
+                v-if="contact.isOnline"
                 class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-[#252526]"
               ></div>
             </div>
             <div>
-              <div class="font-bold text-sm">Carlos Veizaga</div>
-              <div class="text-xs text-blue-400">Typing...</div>
-            </div>
-          </div>
-          <!-- Mock Contacts -->
-          <div
-            class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#2a2d2e] cursor-pointer opacity-50"
-          >
-            <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
-              <i class="fas fa-robot"></i>
-            </div>
-            <div>
-              <div class="font-bold text-sm">Recruiter Bot</div>
-              <div class="text-xs text-gray-500">Offline</div>
+              <div class="font-bold text-sm">{{ contact.name }}</div>
+              <div class="text-xs" :class="contact.id === 'me' ? 'text-blue-400' : 'text-gray-500'">
+                {{ contact.status }}
+              </div>
             </div>
           </div>
         </div>
@@ -117,16 +118,9 @@
 
 <script setup>
 import { ref, nextTick } from 'vue'
+import { initialMessages, contacts } from '@/data/messenger'
 
-const messages = ref([
-  { text: 'Hi there! Thanks for visiting my portfolio OS.', isMe: false, time: '10:00 AM' },
-  {
-    text: 'I am currently open to new opportunities. Feel free to leave a message!',
-    isMe: false,
-    time: '10:01 AM'
-  }
-])
-
+const messages = ref([...initialMessages])
 const newMessage = ref('')
 const messagesContainer = ref(null)
 
