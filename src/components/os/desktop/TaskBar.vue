@@ -43,15 +43,23 @@
 
     <!-- System Tray -->
     <div class="flex items-center gap-3 text-white/80 text-xs">
-      <div class="hover:bg-white/10 p-1 rounded cursor-pointer">
-        <i class="fas fa-wifi"></i>
+      <div 
+        class="hover:bg-white/10 p-1 rounded cursor-pointer transition-colors"
+        @click="toggleWifi"
+        :title="isWifiOn ? 'Connected to DevNet' : 'Disconnected'"
+      >
+        <i class="fas" :class="isWifiOn ? 'fa-wifi' : 'fa-wifi-slash text-gray-500'"></i>
       </div>
-      <div class="hover:bg-white/10 p-1 rounded cursor-pointer">
-        <i class="fas fa-volume-up"></i>
+      <div 
+        class="hover:bg-white/10 p-1 rounded cursor-pointer transition-colors"
+        @click="toggleSound"
+        :title="isMuted ? 'Muted' : 'Volume: 100%'"
+      >
+        <i class="fas" :class="isMuted ? 'fa-volume-mute text-gray-500' : 'fa-volume-up'"></i>
       </div>
       <div
-        class="flex flex-col items-end leading-none hover:bg-white/10 px-2 py-1 rounded cursor-pointer"
-        @click="toggleTimeFormat"
+        class="flex flex-col items-end leading-none hover:bg-white/10 px-2 py-1 rounded cursor-pointer select-none"
+        :title="date"
       >
         <span class="font-medium">{{ time }}</span>
         <span class="text-[10px] text-gray-400">{{ date }}</span>
@@ -75,6 +83,8 @@ const store = useOSStore()
 
 const time = ref('')
 const date = ref('')
+const isWifiOn = ref(true)
+const isMuted = ref(false)
 
 const isAppOpen = (id) => {
   return store.windows.some((w) => w.id === id)
@@ -94,6 +104,14 @@ const handleAppClick = (app) => {
   } else {
     emit('launch', app)
   }
+}
+
+const toggleWifi = () => {
+  isWifiOn.value = !isWifiOn.value
+}
+
+const toggleSound = () => {
+  isMuted.value = !isMuted.value
 }
 
 const updateTime = () => {
