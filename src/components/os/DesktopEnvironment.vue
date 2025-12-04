@@ -21,6 +21,16 @@
       <BootScreen v-if="store.isBooting" />
     </Transition>
 
+    <!-- Shutdown Screen Overlay -->
+    <Transition name="fade">
+      <ShutdownScreen v-if="store.isShuttingDown" />
+    </Transition>
+
+    <!-- Power Off Screen Overlay -->
+    <Transition name="fade">
+      <PowerOffScreen v-if="store.isPoweredOff" />
+    </Transition>
+
     <!-- Desktop Icons Area -->
     <div
       class="absolute inset-0 p-8 grid grid-flow-col grid-rows-6 gap-8 content-start items-start w-max"
@@ -70,6 +80,8 @@
 import { ref } from 'vue'
 import { useOSStore } from '@/store/useOSStore'
 import BootScreen from './BootScreen.vue'
+import ShutdownScreen from './ShutdownScreen.vue'
+import PowerOffScreen from './PowerOffScreen.vue'
 import WindowFrame from './WindowFrame.vue'
 import TaskBar from './TaskBar.vue'
 import StartMenu from './StartMenu.vue'

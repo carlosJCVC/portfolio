@@ -116,6 +116,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { useOSStore } from '@/store/useOSStore'
 import resumeUrl from '@/assets/Carlos_Veizaga_Resume.pdf'
 
 const props = defineProps({
@@ -125,6 +126,7 @@ const props = defineProps({
 
 const emit = defineEmits(['close', 'launch'])
 const router = useRouter()
+const store = useOSStore()
 
 // Filter apps for the pinned section (excluding browser for now if null)
 const pinnedApps = props.apps.filter((app) => app.component && app.id !== 'settings')
@@ -139,8 +141,8 @@ const goToClassic = () => {
 }
 
 const shutdown = () => {
-  // Placeholder for shutdown logic
-  alert('Shutting down...')
+  store.initiateShutdown()
+  emit('close')
 }
 </script>
 ```

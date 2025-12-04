@@ -6,6 +6,8 @@ export const useOSStore = defineStore('os', () => {
   const activeWindowId = ref(null)
   const zIndexCounter = ref(100)
   const isBooting = ref(true)
+  const isShuttingDown = ref(false)
+  const isPoweredOff = ref(false)
   const wallpaper = ref(
     'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'
   )
@@ -81,6 +83,22 @@ export const useOSStore = defineStore('os', () => {
     isBooting.value = false
   }
 
+  const initiateShutdown = () => {
+    isShuttingDown.value = true
+    // The ShutdownScreen component will handle the timing and call completeShutdown
+  }
+
+  const completeShutdown = () => {
+    isShuttingDown.value = false
+    isPoweredOff.value = true
+    windows.value = [] // Clear windows on shutdown
+  }
+
+  const turnOn = () => {
+    isPoweredOff.value = false
+    isBooting.value = true
+  }
+
   const updateWindowPosition = (id, x, y) => {
     const window = windows.value.find((w) => w.id === id)
     if (window) {
@@ -93,6 +111,8 @@ export const useOSStore = defineStore('os', () => {
     windows,
     activeWindowId,
     isBooting,
+    isShuttingDown,
+    isPoweredOff,
     wallpaper,
     theme,
     openWindow,
@@ -101,6 +121,9 @@ export const useOSStore = defineStore('os', () => {
     minimizeWindow,
     maximizeWindow,
     setBootComplete,
+    initiateShutdown,
+    completeShutdown,
+    turnOn,
     updateWindowPosition
   }
 })
