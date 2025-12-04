@@ -48,14 +48,14 @@
         @click="toggleWifi"
         :title="isWifiOn ? 'Connected to DevNet' : 'Disconnected'"
       >
-        <i class="fas" :class="isWifiOn ? 'fa-wifi' : 'fa-wifi-slash text-gray-500'"></i>
+        <i class="fas fa-wifi transition-opacity" :class="isWifiOn ? 'opacity-100' : 'opacity-30'"></i>
       </div>
       <div 
         class="hover:bg-white/10 p-1 rounded cursor-pointer transition-colors"
         @click="toggleSound"
         :title="isMuted ? 'Muted' : 'Volume: 100%'"
       >
-        <i class="fas" :class="isMuted ? 'fa-volume-mute text-gray-500' : 'fa-volume-up'"></i>
+        <i class="fas" :class="isMuted ? 'fa-volume-mute text-red-400' : 'fa-volume-up'"></i>
       </div>
       <div
         class="flex flex-col items-end leading-none hover:bg-white/10 px-2 py-1 rounded cursor-pointer select-none"
