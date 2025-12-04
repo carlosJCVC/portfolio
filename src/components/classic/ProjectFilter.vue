@@ -1,7 +1,7 @@
 <template>
   <div class="mb-12 flex justify-center">
     <div
-      class="relative flex flex-wrap justify-center bg-gray-100 dark:bg-gray-800 p-1.5 rounded-xl"
+      class="relative flex flex-nowrap overflow-x-auto max-w-full justify-start md:justify-center bg-gray-100 dark:bg-gray-800 p-1.5 rounded-xl scrollbar-hide"
       data-aos="fade-up"
     >
       <div
@@ -105,5 +105,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* You can add any scoped styles here if needed */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 </style>
