@@ -55,6 +55,7 @@ export function useWindowManager() {
     const window = windows.value.find((w) => w.id === id)
     if (window) {
       window.zIndex = ++zIndexCounter.value
+      window.minimized = false // Ensure window is restored
       activeWindowId.value = id
     }
   }
