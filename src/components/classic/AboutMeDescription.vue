@@ -7,7 +7,9 @@
 
     <div class="space-y-6 my-8">
       <div v-for="category in skillCategories" :key="category.name">
-        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+        <h3
+          class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2"
+        >
           <i :class="category.icon"></i> {{ category.name }}
         </h3>
         <div class="flex flex-wrap gap-3">

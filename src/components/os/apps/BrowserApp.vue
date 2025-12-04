@@ -41,8 +41,12 @@
 
       <!-- New Tab Page -->
       <div v-else class="h-full flex flex-col items-center justify-center p-8">
-        <img src="@/assets/icons/logo-on-white-bg.svg" alt="Logo" class="w-24 h-24 mb-8 opacity-50" />
-        
+        <img
+          src="@/assets/icons/logo-on-white-bg.svg"
+          alt="Logo"
+          class="w-24 h-24 mb-8 opacity-50"
+        />
+
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl w-full">
           <button
             v-for="bookmark in bookmarks"
@@ -50,10 +54,14 @@
             class="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-white hover:shadow-md transition-all group"
             @click="navigateTo(bookmark.url)"
           >
-            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+            <div
+              class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"
+            >
               <i :class="bookmark.icon" :style="{ color: bookmark.color }"></i>
             </div>
-            <span class="text-sm font-medium text-gray-600 group-hover:text-gray-900">{{ bookmark.name }}</span>
+            <span class="text-sm font-medium text-gray-600 group-hover:text-gray-900">{{
+              bookmark.name
+            }}</span>
           </button>
         </div>
       </div>
@@ -70,8 +78,18 @@ const currentUrl = ref(null)
 const bookmarks = [
   { name: 'Portfolio', url: '/classic', icon: 'fas fa-briefcase', color: '#3b82f6' },
   { name: 'GitHub', url: 'https://github.com/carlosJCVC', icon: 'fab fa-github', color: '#1f2937' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/carlos-veizaga-c', icon: 'fab fa-linkedin', color: '#0a66c2' },
-  { name: 'Google', url: 'https://www.google.com/webhp?igu=1', icon: 'fab fa-google', color: '#ea4335' }
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/jcarlos-veizaga',
+    icon: 'fab fa-linkedin',
+    color: '#0a66c2'
+  },
+  {
+    name: 'Google',
+    url: 'https://www.google.com/webhp?igu=1',
+    icon: 'fab fa-google',
+    color: '#ea4335'
+  }
 ]
 
 const navigate = () => {
@@ -87,7 +105,7 @@ const navigate = () => {
   if (!url.startsWith('http')) {
     url = 'https://' + url
   }
-  
+
   currentUrl.value = url
 }
 
@@ -97,7 +115,7 @@ const navigateTo = (url) => {
 }
 
 const goBack = () => {
-  // Iframe history manipulation is tricky due to cross-origin, 
+  // Iframe history manipulation is tricky due to cross-origin,
   // so we'll just reset to home for now or implement a simple history stack later.
   currentUrl.value = null
   urlInput.value = ''

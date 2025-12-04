@@ -29,7 +29,6 @@
           <SocialHub />
         </div>
       </div>
-
     </div>
   </section>
 </template>
@@ -41,8 +40,7 @@ import SocialHub from './SocialHub.vue'
 
 <style scoped>
 .bg-grid-pattern {
-  background-image:
-    linear-gradient(to right, currentColor 1px, transparent 1px),
+  background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
     linear-gradient(to bottom, currentColor 1px, transparent 1px);
   background-size: 40px 40px;
 }

@@ -4,7 +4,8 @@ export const experience = [
     role: 'Senior Full Stack Developer',
     company: 'Freelance (Upwork)',
     period: 'Jan 2022 - Present',
-    description: 'Architected scalable solutions using Clean Architecture and Design Patterns. Expanded web platforms into mobile ecosystems with React Native and Expo. Engineered complex backend workflows including digital signatures, automated invoicing (HTML-to-PDF), and real-time Slack/Mobile notifications. Key projects include "MoxieCopywriting", a photography design tracking platform.',
+    description:
+      'Architected scalable solutions using Clean Architecture and Design Patterns. Expanded web platforms into mobile ecosystems with React Native and Expo. Engineered complex backend workflows including digital signatures, automated invoicing (HTML-to-PDF), and real-time Slack/Mobile notifications. Key projects include "MoxieCopywriting", a photography design tracking platform.',
     skills: ['Laravel', 'React Native', 'Clean Architecture', 'Automation', 'REST APIs']
   },
   {
@@ -12,7 +13,8 @@ export const experience = [
     role: 'Senior Backend Developer',
     company: 'NINEHUB',
     period: 'Mar 2021 - Oct 2022',
-    description: 'Transitioned to modern frameworks. Led the development of "NRG-WELLNESS", a PWA video platform for user challenges using Laravel. Maintained and enhanced "KNT Reporting" (CodeIgniter), implementing Shopify integrations and optimizing performance.',
+    description:
+      'Transitioned to modern frameworks. Led the development of "NRG-WELLNESS", a PWA video platform for user challenges using Laravel. Maintained and enhanced "KNT Reporting" (CodeIgniter), implementing Shopify integrations and optimizing performance.',
     skills: ['Laravel', 'PWA', 'CodeIgniter', 'Shopify API', 'Video Streaming']
   },
   {
@@ -20,7 +22,8 @@ export const experience = [
     role: 'Backend Developer',
     company: 'NINEHUB',
     period: 'Mar 2020 - Feb 2021',
-    description: 'Maintained legacy monolithic applications using pure PHP, jQuery, and Bootstrap. Integrated payment gateways and developed new features. Also built a real-time data dashboard using Angular.',
+    description:
+      'Maintained legacy monolithic applications using pure PHP, jQuery, and Bootstrap. Integrated payment gateways and developed new features. Also built a real-time data dashboard using Angular.',
     skills: ['PHP (Legacy)', 'jQuery', 'Angular', 'Bootstrap', 'Payment Gateways']
   },
   {
@@ -28,7 +31,8 @@ export const experience = [
     role: 'Backend Developer',
     company: 'ACEDEVEL NETWORKS',
     period: 'Jan 2018 - Nov 2020',
-    description: 'Promoted to lead critical projects. Engineered a real-time data scraping engine for USRacing (35% speed boost) and led the cyberattack recovery for JaysWideShoes. Developed a custom WordPress module for the Bolivian Professional Football League and a comprehensive ERP for "Parque de las Memorias" cemetery.',
+    description:
+      'Promoted to lead critical projects. Engineered a real-time data scraping engine for USRacing (35% speed boost) and led the cyberattack recovery for JaysWideShoes. Developed a custom WordPress module for the Bolivian Professional Football League and a comprehensive ERP for "Parque de las Memorias" cemetery.',
     skills: ['Laravel', 'Data Scraping', 'Security', 'WordPress', 'ERP Development']
   },
   {
@@ -36,9 +40,10 @@ export const experience = [
     role: 'Junior Backend Developer',
     company: 'ACEDEVEL NETWORKS',
     period: 'Jan 2017 - Dec 2017',
-    description: 'Started my career implementing and deploying the corporate portal for Elfec using Drupal. Developed custom modules to extend CMS functionality, focusing on system stability and user management.',
+    description:
+      'Started my career implementing and deploying the corporate portal for Elfec using Drupal. Developed custom modules to extend CMS functionality, focusing on system stability and user management.',
     skills: ['Drupal', 'PHP', 'CMS', 'Module Development', 'Linux']
-  },
+  }
 ]
 
 export const education = [
@@ -47,7 +52,8 @@ export const education = [
     degree: 'B.S. Systems Engineering',
     school: 'Universidad Mayor de San Simón',
     period: '2012 - 2020',
-    description: 'Comprehensive engineering foundation with a focus on software development and systems architecture.'
+    description:
+      'Comprehensive engineering foundation with a focus on software development and systems architecture.'
   },
   {
     id: 2,
@@ -125,5 +131,5 @@ export const certifications = [
     name: 'Vue: Composition API',
     issuer: 'DevTalles',
     year: '2024'
-  },
+  }
 ]

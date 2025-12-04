@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full py-10 overflow-hidden relative bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
+  <div
+    class="w-full py-10 overflow-hidden relative bg-gray-50 dark:bg-dark-bg transition-colors duration-300"
+  >
     <!-- Gradient Masks -->
     <div
       class="absolute top-0 bottom-0 left-0 w-32 z-10 bg-gradient-to-r from-gray-50 dark:from-dark-bg to-transparent pointer-events-none"

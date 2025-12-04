@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-black text-white min-h-screen font-sans selection:bg-blue-500 selection:text-white">
+  <div
+    class="bg-black text-white min-h-screen font-sans selection:bg-blue-500 selection:text-white"
+  >
     <NavBar />
     <MyHeader />
     <AboutMe />
@@ -26,7 +28,8 @@ import MyFooter from '@/components/common/MyFooter.vue'
 
 <style>
 /* Ensure classic scroll behavior */
-html, body {
+html,
+body {
   overflow-y: auto !important;
   scroll-behavior: smooth;
 }

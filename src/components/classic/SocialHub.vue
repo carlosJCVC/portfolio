@@ -96,7 +96,7 @@ const socials = [
     name: 'LinkedIn',
     subtitle: 'Connect professionally',
     icon: 'fab fa-linkedin-in',
-    link: 'https://www.linkedin.com/in/carlos-veizaga-c-62325310/',
+    link: 'https://www.linkedin.com/in/jcarlos-veizaga',
     colorClass: 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white'
   },
   {

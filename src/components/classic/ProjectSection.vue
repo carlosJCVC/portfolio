@@ -85,11 +85,13 @@ import { projects } from '@/data/projects'
 const { t } = useI18n()
 
 const allProjects = computed(() => {
-  return projects.map(p => ({
+  return projects.map((p) => ({
     ...p,
     description: p.descriptionKey ? computed(() => t(p.descriptionKey)) : p.description,
-    fullDescription: p.fullDescriptionKey ? computed(() => t(p.fullDescriptionKey)) : p.fullDescription,
-    features: p.featuresKeys ? computed(() => p.featuresKeys.map(key => t(key))) : p.features
+    fullDescription: p.fullDescriptionKey
+      ? computed(() => t(p.fullDescriptionKey))
+      : p.fullDescription,
+    features: p.featuresKeys ? computed(() => p.featuresKeys.map((key) => t(key))) : p.features
   }))
 })
 
@@ -165,8 +167,7 @@ const onLeave = (el, done) => {
 
 <style scoped>
 .bg-grid-pattern {
-  background-image:
-    linear-gradient(to right, currentColor 1px, transparent 1px),
+  background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
     linear-gradient(to bottom, currentColor 1px, transparent 1px);
   background-size: 40px 40px;
 }

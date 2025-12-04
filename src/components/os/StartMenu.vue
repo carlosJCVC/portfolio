@@ -5,7 +5,11 @@
   >
     <!-- User Profile -->
     <div class="p-4 border-b border-gray-700 flex items-center gap-3 bg-[#252526]">
-      <img src="@/assets/images/avatar.jpg" alt="Carlos Veizaga" class="w-10 h-10 rounded-full object-cover border border-gray-600" />
+      <img
+        src="@/assets/images/avatar.jpg"
+        alt="Carlos Veizaga"
+        class="w-10 h-10 rounded-full object-cover border border-gray-600"
+      />
       <div>
         <div class="text-white font-bold text-sm">Carlos Veizaga</div>
         <div class="text-gray-400 text-xs">Full Stack Developer</div>
@@ -46,13 +50,15 @@
             <div class="text-gray-500 text-[10px]">Check out my repos</div>
           </div>
         </a>
-        
+
         <a
           href="https:www.linkedin.com/in/jcarlos-veizaga"
           target="_blank"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
-          <i class="fab fa-linkedin text-blue-400 group-hover:text-blue-300 text-lg w-6 text-center"></i>
+          <i
+            class="fab fa-linkedin text-blue-400 group-hover:text-blue-300 text-lg w-6 text-center"
+          ></i>
           <div class="flex-grow">
             <div class="text-gray-300 text-sm group-hover:text-white">LinkedIn</div>
             <div class="text-gray-500 text-[10px]">Let's connect</div>
@@ -64,7 +70,9 @@
           download="Carlos_Veizaga_Resume.pdf"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
-          <i class="fas fa-file-pdf text-red-400 group-hover:text-red-300 text-lg w-6 text-center"></i>
+          <i
+            class="fas fa-file-pdf text-red-400 group-hover:text-red-300 text-lg w-6 text-center"
+          ></i>
           <div class="flex-grow">
             <div class="text-gray-300 text-sm group-hover:text-white">Resume.pdf</div>
             <div class="text-gray-500 text-[10px]">Download CV</div>
@@ -75,7 +83,9 @@
           href="mailto:carlos.veizaga.c@gmail.com"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
-          <i class="fas fa-envelope text-green-400 group-hover:text-green-300 text-lg w-6 text-center"></i>
+          <i
+            class="fas fa-envelope text-green-400 group-hover:text-green-300 text-lg w-6 text-center"
+          ></i>
           <div class="flex-grow">
             <div class="text-gray-300 text-sm group-hover:text-white">Email Me</div>
             <div class="text-gray-500 text-[10px]">carlos.veizaga.c@gmail.com</div>

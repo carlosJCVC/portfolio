@@ -22,14 +22,14 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'Carlos Veizaga'
-  
+
   // Handle body overflow for OS vs Classic
   if (to.name === 'devos') {
     document.body.style.overflow = 'hidden'
   } else {
     document.body.style.overflow = 'auto'
   }
-  
+
   next()
 })
 

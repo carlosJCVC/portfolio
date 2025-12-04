@@ -17,7 +17,10 @@
     <!-- Content -->
     <div class="relative h-full flex flex-col z-10">
       <!-- Image Area -->
-      <div class="relative overflow-hidden" :class="project.featured ? 'aspect-[21/9]' : 'aspect-video'">
+      <div
+        class="relative overflow-hidden"
+        :class="project.featured ? 'aspect-[21/9]' : 'aspect-video'"
+      >
         <img
           :src="project.image"
           :alt="project.title"
@@ -57,11 +60,15 @@
               class="group/icon inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-dark-card bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 dark:text-gray-400 text-xs shadow-sm relative z-0 hover:z-10 transition-all hover:scale-110 cursor-help"
             >
               <i :class="getTechIcon(tech)"></i>
-              
+
               <!-- Custom Tooltip -->
-              <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded opacity-0 group-hover/icon:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              <div
+                class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded opacity-0 group-hover/icon:opacity-100 transition-opacity whitespace-nowrap pointer-events-none"
+              >
                 {{ tech }}
-                <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                <div
+                  class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"
+                ></div>
               </div>
             </div>
             <div
@@ -202,7 +209,6 @@ const getTechIcon = (tech) => {
 <style scoped>
 /* Custom RGB variable for spotlight color (primary color) */
 .group {
-  --color-primary-rgb:
-    14, 165, 233; /* Example: Sky-500. Adjust to match your theme's primary color */
+  --color-primary-rgb: 14, 165, 233; /* Example: Sky-500. Adjust to match your theme's primary color */
 }
 </style>

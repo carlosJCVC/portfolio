@@ -62,7 +62,11 @@
             @blur="validateField('name')"
             @input="clearError('name')"
             class="w-full px-5 py-4 rounded-2xl bg-gray-100 dark:bg-dark-bg/50 border text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none placeholder-gray-400 hover:bg-white dark:hover:bg-dark-card"
-            :class="errors.name ? 'border-red-500 focus:border-red-500' : 'border-gray-200 dark:border-gray-700'"
+            :class="
+              errors.name
+                ? 'border-red-500 focus:border-red-500'
+                : 'border-gray-200 dark:border-gray-700'
+            "
             placeholder="John Doe"
           />
           <span v-if="errors.name" class="text-red-500 text-xs ml-1 mt-1 block">
@@ -82,7 +86,11 @@
             @blur="validateField('email')"
             @input="clearError('email')"
             class="w-full px-5 py-4 rounded-2xl bg-gray-100 dark:bg-dark-bg/50 border text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none placeholder-gray-400 hover:bg-white dark:hover:bg-dark-card"
-            :class="errors.email ? 'border-red-500 focus:border-red-500' : 'border-gray-200 dark:border-gray-700'"
+            :class="
+              errors.email
+                ? 'border-red-500 focus:border-red-500'
+                : 'border-gray-200 dark:border-gray-700'
+            "
             placeholder="john@example.com"
           />
           <span v-if="errors.email" class="text-red-500 text-xs ml-1 mt-1 block">
@@ -102,7 +110,11 @@
           @blur="validateField('message')"
           @input="clearError('message')"
           class="w-full px-5 py-4 rounded-2xl bg-gray-100 dark:bg-dark-bg/50 border text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none resize-none placeholder-gray-400 min-h-[150px] hover:bg-white dark:hover:bg-dark-card"
-          :class="errors.message ? 'border-red-500 focus:border-red-500' : 'border-gray-200 dark:border-gray-700'"
+          :class="
+            errors.message
+              ? 'border-red-500 focus:border-red-500'
+              : 'border-gray-200 dark:border-gray-700'
+          "
           placeholder="Tell me about your project..."
         ></textarea>
         <span v-if="errors.message" class="text-red-500 text-xs ml-1 mt-1 block">
@@ -203,8 +215,7 @@ const handleSubmit = async () => {
   isSending.value = true
 
   try {
-    // Replace these with your actual EmailJS credentials
-    // You can get them from https://dashboard.emailjs.com/admin
+    // TO bget crdentials you can get them from https://dashboard.emailjs.com/admin
     const SERVICE_ID = 'service_0slku7m'
     const TEMPLATE_ID = 'template_nugk5rq'
     const PUBLIC_KEY = 'EV9PLsB_yNSVnrQ79'

@@ -2,7 +2,9 @@
   <Teleport to="body">
     <TransitionRoot as="template" :show="!!project">
       <Dialog as="div" class="fixed inset-0 z-50 overflow-y-auto" @close="CloseModal">
-        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+        <div
+          class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0"
+        >
           <TransitionChild
             as="template"
             enter="ease-out duration-300"
@@ -75,7 +77,9 @@
                   <!-- Left Column: Story & Features -->
                   <div class="lg:col-span-2 space-y-8">
                     <div>
-                      <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                      <h4
+                        class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2"
+                      >
                         <i class="fas fa-align-left text-primary"></i>
                         About the Project
                       </h4>
@@ -85,7 +89,9 @@
                     </div>
 
                     <div>
-                      <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                      <h4
+                        class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2"
+                      >
                         <i class="fas fa-star text-primary"></i>
                         {{ $t('modal.key_features') }}
                       </h4>
@@ -96,7 +102,9 @@
                           class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 flex items-start gap-3"
                         >
                           <div class="mt-1 w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
-                          <span class="text-gray-700 dark:text-gray-300 text-sm font-medium">{{ feature }}</span>
+                          <span class="text-gray-700 dark:text-gray-300 text-sm font-medium">{{
+                            feature
+                          }}</span>
                         </div>
                       </div>
                     </div>
@@ -146,12 +154,18 @@
                     </div>
 
                     <!-- Project Metadata (Optional) -->
-                    <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800">
+                    <div
+                      class="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800"
+                    >
                       <div class="flex items-center gap-3 mb-2">
-                        <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-300">
+                        <div
+                          class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-300"
+                        >
                           <i class="fas fa-info"></i>
                         </div>
-                        <span class="text-sm font-bold text-blue-900 dark:text-blue-200">Project Status</span>
+                        <span class="text-sm font-bold text-blue-900 dark:text-blue-200"
+                          >Project Status</span
+                        >
                       </div>
                       <p class="text-xs text-blue-700 dark:text-blue-300 ml-11">
                         Completed & Deployed
@@ -162,7 +176,9 @@
 
                 <!-- Gallery Section -->
                 <div v-if="project.gallery && project.gallery.length > 0" class="px-8 pb-8">
-                  <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                  <h4
+                    class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2"
+                  >
                     <i class="fas fa-images text-primary"></i>
                     Project Gallery
                   </h4>

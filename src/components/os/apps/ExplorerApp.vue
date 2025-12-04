@@ -39,7 +39,12 @@
         <div class="px-2 py-1 text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">
           Favorites
         </div>
-        <SidebarItem icon="fas fa-home" label="Home" :active="currentPath.length === 0" @click="goHome" />
+        <SidebarItem
+          icon="fas fa-home"
+          label="Home"
+          :active="currentPath.length === 0"
+          @click="goHome"
+        />
         <SidebarItem icon="fas fa-desktop" label="Desktop" />
         <SidebarItem icon="fas fa-download" label="Downloads" />
 
@@ -67,8 +72,11 @@
             :color="item.color"
             @dblclick="handleItemClick(item)"
           />
-          
-          <div v-if="currentItems.length === 0" class="col-span-full text-center text-gray-500 mt-10">
+
+          <div
+            v-if="currentItems.length === 0"
+            class="col-span-full text-center text-gray-500 mt-10"
+          >
             This folder is empty.
           </div>
         </div>
@@ -90,7 +98,7 @@ const searchQuery = ref('')
 const currentItems = computed(() => {
   if (currentPath.value.length === 0) {
     // Root: Show all projects as folders
-    return projects.map(p => ({
+    return projects.map((p) => ({
       id: p.id,
       name: p.title,
       type: 'folder',
@@ -99,19 +107,78 @@ const currentItems = computed(() => {
       data: p
     }))
   } else {
-    // Inside a project: Show files
     const projectName = currentPath.value[0]
-    const project = projects.find(p => p.title === projectName)
-    if (project) {
-      return project.files.map((f, i) => ({
-        id: `file-${i}`,
-        name: f.name,
-        type: f.type,
-        icon: f.icon,
-        color: f.color,
-        data: project // Pass project data for context
-      }))
+    const project = projects.find((p) => p.title === projectName)
+
+    if (!project) return []
+
+    // Level 1: Inside a Project Folder
+    if (currentPath.value.length === 1) {
+      const files = []
+
+      // README.md
+      files.push({
+        id: 'readme',
+        name: 'README.md',
+        type: 'file',
+        icon: 'fas fa-file-alt',
+        color: 'text-gray-400',
+        data: project
+      })
+
+      // Source Code Link
+      if (project.displayGithubUrl && project.githubUrl) {
+        files.push({
+          id: 'source',
+          name: 'Source Code.url',
+          type: 'link',
+          icon: 'fab fa-github',
+          color: 'text-white',
+          data: { url: project.githubUrl }
+        })
+      }
+
+      // Live Demo Link
+      if (project.displayLiveUrl && project.liveUrl) {
+        files.push({
+          id: 'demo',
+          name: 'Live Demo.url',
+          type: 'link',
+          icon: 'fas fa-globe',
+          color: 'text-green-400',
+          data: { url: project.liveUrl }
+        })
+      }
+
+      // Gallery Folder (if has images)
+      if (project.gallery && project.gallery.length > 0) {
+        files.push({
+          id: 'gallery',
+          name: 'Gallery',
+          type: 'folder',
+          icon: 'fas fa-images',
+          color: 'text-purple-400',
+          data: project
+        })
+      }
+
+      return files
     }
+
+    // Level 2: Inside Gallery
+    if (currentPath.value.length === 2 && currentPath.value[1] === 'Gallery') {
+      if (project.gallery) {
+        return project.gallery.map((img, i) => ({
+          id: `img-${i}`,
+          name: img.caption || `Image ${i + 1}`,
+          type: 'image',
+          icon: 'fas fa-image',
+          color: 'text-purple-300',
+          data: img
+        }))
+      }
+    }
+
     return []
   }
 })
@@ -125,16 +192,18 @@ const handleItemClick = (item) => {
     currentPath.value.push(item.name)
   } else if (item.type === 'link') {
     // Open Link
-    if (item.name.includes('source')) {
-      window.open(item.data.githubUrl, '_blank')
-    } else {
-      window.open(item.data.liveUrl, '_blank')
+    if (item.data && item.data.url) {
+      window.open(item.data.url, '_blank')
     }
   } else if (item.type === 'file' && item.name === 'README.md') {
-    alert(`README for ${item.data.title}:\n\n${item.data.fullDescription}\n\nTech Stack: ${item.data.technologies.join(', ')}`)
+    alert(
+      `README for ${item.data.title}:\n\n${item.data.fullDescription}\n\nTech Stack: ${item.data.technologies.join(', ')}`
+    )
   } else if (item.type === 'image') {
-    // Simple image preview (could be a modal in future)
-    alert('Image preview coming soon!')
+    // Simple image preview
+    // In a real app, this would open an image viewer window
+    // For now, we'll just show the caption
+    alert(`Viewing Image: ${item.name}`)
   }
 }
 

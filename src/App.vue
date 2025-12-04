@@ -13,7 +13,7 @@ const { locale } = useI18n()
 
 onMounted(() => {
   // Set initial locale if needed, or let browser detect
-  // locale.value = 'es' 
+  // locale.value = 'es'
 })
 </script>
 

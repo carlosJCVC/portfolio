@@ -22,7 +22,7 @@ export function useTypewriter(options = {}) {
 
   const type = () => {
     const currentRole = roles.value[currentRoleIndex.value]
-    
+
     if (isDeleting.value) {
       displayText.value = currentRole.substring(0, displayText.value.length - 1)
     } else {
