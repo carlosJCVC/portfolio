@@ -25,6 +25,12 @@ export const help = {
   }
 }
 
+export const question = {
+  name: '?',
+  description: 'Alias for help',
+  execute: help.execute
+}
+
 export const clear = {
   name: 'clear',
   description: 'Clear terminal',

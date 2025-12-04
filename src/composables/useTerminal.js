@@ -10,7 +10,7 @@ export function useTerminal() {
   const history = ref([
     {
       cmd: 'welcome',
-      output: WELCOME_BANNER + '\nType "help" to see available commands.'
+      output: WELCOME_BANNER + '\nType "?" or "help" to see available commands.'
     }
   ])
   const currentCmd = ref('')
