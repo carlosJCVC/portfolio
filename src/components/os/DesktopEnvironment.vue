@@ -10,10 +10,16 @@
     >
       <i class="fas fa-desktop text-4xl mb-4 text-blue-500"></i>
       <h2 class="text-xl font-bold mb-2">Desktop Experience Required</h2>
-      <p class="text-gray-400 text-sm">
+      <p class="text-gray-400 text-sm mb-6">
         DevOS is optimized for larger screens. Please visit on a desktop or tablet for the full
         experience.
       </p>
+      <button
+        @click="router.push({ name: 'classic' })"
+        class="px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full backdrop-blur-md transition-all duration-300 text-sm font-medium"
+      >
+        Go to Mobile Version
+      </button>
     </div>
 
     <!-- Boot Screen Overlay -->
@@ -88,6 +94,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useOSStore } from '@/store/useOSStore'
 import { apps } from '@/data/apps'
 import BootScreen from './system/BootScreen.vue'
@@ -100,6 +107,7 @@ import TaskBar from './desktop/TaskBar.vue'
 import StartMenu from './desktop/StartMenu.vue'
 
 const store = useOSStore()
+const router = useRouter()
 const isStartMenuOpen = ref(false)
 
 const openApp = (app) => {
