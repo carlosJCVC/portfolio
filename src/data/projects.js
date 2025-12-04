@@ -242,7 +242,7 @@ export const projects = [
   },
   {
     id: 3,
-    title: 'Cemetery ERP',
+    title: 'Parque de las memorias ERP',
     description: 'Custom ERP solution for cemetery management, sales, and invoicing.',
     fullDescription:
       'A specialized Enterprise Resource Planning (ERP) system built to manage the unique operations of a cemetery. The platform handles the sale of plots, flowers, and related products, complete with a custom invoicing module. It streamlines inventory management and provides administrative tools for tracking plot ownership and maintenance schedules.',

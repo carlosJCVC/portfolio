@@ -131,10 +131,17 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { profile } from '@/data/profile'
 
-const files = [
+const props = defineProps({
+  initialFile: {
+    type: Object,
+    default: null
+  }
+})
+
+const files = ref([
   {
     name: 'about.js',
     icon: 'fab fa-js',
@@ -187,13 +194,13 @@ and styling with <strong>Tailwind CSS</strong>.
 
 Feel free to explore the source code on GitHub.`
   }
-]
+])
 
-const openFiles = ref([...files])
-const activeFile = ref(files[0])
+const openFiles = ref([...files.value])
+const activeFile = ref(files.value[0])
 
 const lineCount = computed(() => {
-  return activeFile.value.content.split('\n').length
+  return activeFile.value ? activeFile.value.content.split('\n').length : 0
 })
 
 const openFile = (file) => {
@@ -211,5 +218,26 @@ const closeFile = (file) => {
       activeFile.value = openFiles.value[Math.max(0, index - 1)] || null
     }
   }
+}
+
+onMounted(() => {
+  if (props.initialFile) {
+    handleInitialFile(props.initialFile)
+  }
+})
+
+watch(() => props.initialFile, (newFile) => {
+  if (newFile) {
+    handleInitialFile(newFile)
+  }
+})
+
+const handleInitialFile = (file) => {
+  // Check if file already exists
+  const existingFile = files.value.find(f => f.name === file.name)
+  if (!existingFile) {
+    files.value.push(file)
+  }
+  openFile(file)
 }
 </script>

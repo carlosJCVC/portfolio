@@ -90,6 +90,10 @@ import { ref, computed } from 'vue'
 import SidebarItem from './components/SidebarItem.vue'
 import FileIcon from './components/FileIcon.vue'
 import { projects } from '@/data/projects'
+import { useOSStore } from '@/store/useOSStore'
+import CodeEditorApp from './CodeEditorApp.vue'
+
+const store = useOSStore()
 
 const currentPath = ref([]) // [] = root, ['Project Name'] = inside project
 const searchQuery = ref('')
@@ -200,9 +204,31 @@ const handleItemClick = (item) => {
       window.open(item.data.url, '_blank')
     }
   } else if (item.type === 'file' && item.name === 'README.md') {
-    alert(
-      `README for ${item.data.title}:\n\n${item.data.fullDescription}\n\nTech Stack: ${item.data.technologies.join(', ')}`
-    )
+    // Open in Code Editor
+    const content = `<span class="text-blue-400"># ${item.data.title}</span>
+
+${item.data.fullDescription}
+
+<span class="text-purple-400">## Tech Stack</span>
+${item.data.technologies.map((t) => `- ${t}`).join('\n')}
+
+<span class="text-purple-400">## Features</span>
+${
+  item.data.features
+    ? Object.entries(item.data.features)
+        .map(([key, value]) => `- <strong>${key}</strong>: ${value}`)
+        .join('\n')
+    : 'No specific features listed.'
+}`
+
+    store.openWindow('vscode', 'VS Code', CodeEditorApp, {
+      initialFile: {
+        name: `README-${item.data.id}.md`,
+        icon: 'fas fa-info-circle',
+        color: '#42b883',
+        content
+      }
+    })
   } else if (item.type === 'image') {
     // Simple image preview
     // In a real app, this would open an image viewer window

@@ -20,6 +20,10 @@ export const useOSStore = defineStore('os', () => {
       if (existingWindow.minimized) {
         existingWindow.minimized = false
       }
+      // Update props if provided (e.g. opening a new file in existing VS Code)
+      if (Object.keys(props).length > 0) {
+        existingWindow.props = { ...existingWindow.props, ...props }
+      }
       return
     }
 
