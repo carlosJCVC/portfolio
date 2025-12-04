@@ -12,6 +12,16 @@ export const useOSStore = defineStore('os', () => {
     'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'
   )
   const theme = ref('dark') // 'dark' | 'light'
+  
+  // System Dialog State
+  const isDialogOpen = ref(false)
+  const dialogOptions = ref({
+    title: '',
+    message: '',
+    type: 'info', // 'info', 'error', 'warning'
+    onConfirm: null,
+    onCancel: null
+  })
 
   const openWindow = (id, title, component, props = {}) => {
     const existingWindow = windows.value.find((w) => w.id === id)
@@ -111,6 +121,28 @@ export const useOSStore = defineStore('os', () => {
     }
   }
 
+  const openDialog = (options) => {
+    dialogOptions.value = {
+      title: options.title || 'System Alert',
+      message: options.message || '',
+      type: options.type || 'info',
+      onConfirm: options.onConfirm || null,
+      onCancel: options.onCancel || null
+    }
+    isDialogOpen.value = true
+  }
+
+  const closeDialog = () => {
+    isDialogOpen.value = false
+    dialogOptions.value = {
+      title: '',
+      message: '',
+      type: 'info',
+      onConfirm: null,
+      onCancel: null
+    }
+  }
+
   return {
     windows,
     activeWindowId,
@@ -128,6 +160,10 @@ export const useOSStore = defineStore('os', () => {
     initiateShutdown,
     completeShutdown,
     turnOn,
-    updateWindowPosition
+    updateWindowPosition,
+    isDialogOpen,
+    dialogOptions,
+    openDialog,
+    closeDialog
   }
 })

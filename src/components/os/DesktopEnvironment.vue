@@ -31,6 +31,11 @@
       <PowerOffScreen v-if="store.isPoweredOff" />
     </Transition>
 
+    <!-- System Dialog Overlay -->
+    <Transition name="fade">
+      <SystemDialog v-if="store.isDialogOpen" />
+    </Transition>
+
     <!-- Desktop Icons Area -->
     <div
       class="absolute inset-0 p-8 grid grid-flow-col grid-rows-6 gap-8 content-start items-start w-max"
@@ -85,6 +90,7 @@ import PowerOffScreen from './PowerOffScreen.vue'
 import WindowFrame from './WindowFrame.vue'
 import TaskBar from './TaskBar.vue'
 import StartMenu from './StartMenu.vue'
+import SystemDialog from './SystemDialog.vue'
 
 // Import App Components
 import TerminalApp from './apps/TerminalApp.vue'

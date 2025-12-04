@@ -23,7 +23,14 @@
         <i class="fas fa-folder text-yellow-500"></i>
         <span>{{ currentPathString }}</span>
       </div>
-      <div class="relative">
+      <div class="relative flex items-center gap-2">
+        <button
+          v-if="currentLocation === 'trash'"
+          class="bg-red-500/20 hover:bg-red-500/40 text-red-400 px-3 py-1 rounded text-xs border border-red-500/30 transition-colors"
+          @click="emptyTrash"
+        >
+          Empty Trash
+        </button>
         <input
           v-model="searchQuery"
           type="text"
@@ -61,8 +68,18 @@
         <div class="px-2 py-1 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">
           Locations
         </div>
-        <SidebarItem icon="fas fa-hdd" label="Macintosh HD" />
-        <SidebarItem icon="fab fa-google-drive" label="iCloud Drive" />
+        <SidebarItem
+          icon="fas fa-hdd"
+          label="Macintosh HD"
+          :active="currentLocation === 'macintosh'"
+          @click="goToLocation('macintosh')"
+        />
+        <SidebarItem
+          icon="fab fa-google-drive"
+          label="iCloud Drive"
+          :active="currentLocation === 'icloud'"
+          @click="goToLocation('icloud')"
+        />
 
         <div class="px-2 py-1 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">
           Tags
@@ -133,7 +150,7 @@ const currentItems = computed(() => {
       { id: 'term', name: 'Terminal', type: 'app', icon: 'fas fa-terminal', color: 'text-gray-300', action: 'terminal' },
       { id: 'code', name: 'VS Code', type: 'app', icon: 'fas fa-code', color: 'text-blue-400', action: 'vscode' },
       { id: 'chrome', name: 'Chrome', type: 'app', icon: 'fab fa-chrome', color: 'text-yellow-400', action: 'browser' },
-      { id: 'trash', name: 'Trash', type: 'system', icon: 'fas fa-trash', color: 'text-gray-500' }
+      { id: 'trash', name: 'Trash', type: 'system', icon: 'fas fa-trash', color: 'text-gray-500', action: 'trash' }
     ]
   }
   // 2. Downloads View
@@ -157,7 +174,110 @@ const currentItems = computed(() => {
       }
     ]
   }
-  // 3. Projects (Root, Important, Work)
+  // 3. Trash View (Creative)
+  else if (currentLocation.value === 'trash') {
+    items = [
+      {
+        id: 'jquery',
+        name: 'jquery_v1.0.js',
+        type: 'file',
+        icon: 'fab fa-js',
+        color: 'text-yellow-600',
+        data: { title: 'Legacy Code', fullDescription: 'An ancient artifact from a simpler time.', technologies: ['jQuery'] }
+      },
+      {
+        id: 'todo',
+        name: 'todo_list_2018.txt',
+        type: 'file',
+        icon: 'fas fa-file-alt',
+        color: 'text-gray-500',
+        data: { title: 'Old TODOs', fullDescription: '1. Learn React\n2. Fix CSS centering\n3. Buy Bitcoin (missed it)', technologies: [] }
+      },
+      {
+        id: 'final',
+        name: 'project_final_final_v2.zip',
+        type: 'file',
+        icon: 'fas fa-file-archive',
+        color: 'text-orange-400',
+        data: { title: 'The "Final" Project', fullDescription: 'It was never actually final.', technologies: [] }
+      },
+      {
+        id: 'ie6',
+        name: 'ie6_fixes.css',
+        type: 'file',
+        icon: 'fab fa-css3',
+        color: 'text-blue-300',
+        data: { title: 'IE6 Nightmares', fullDescription: '*zoom: 1; display: inline; /* I am sorry */', technologies: ['CSS Hacks'] }
+      }
+    ]
+  }
+  // 4. Macintosh HD View
+  else if (currentLocation.value === 'macintosh') {
+    if (currentPath.value.length === 0) {
+      items = [
+        { id: 'apps', name: 'Applications', type: 'folder', icon: 'fas fa-layer-group', color: 'text-blue-400', data: {} },
+        { id: 'system', name: 'System', type: 'folder', icon: 'fas fa-cogs', color: 'text-gray-400', data: {} },
+        { id: 'users', name: 'Users', type: 'folder', icon: 'fas fa-users', color: 'text-green-400', data: {} },
+        { id: 'library', name: 'Library', type: 'folder', icon: 'fas fa-book', color: 'text-purple-400', data: {} }
+      ]
+    } else {
+      const folder = currentPath.value[0]
+      if (folder === 'Applications') {
+        items = [
+          { id: 'term', name: 'Terminal', type: 'app', icon: 'fas fa-terminal', color: 'text-gray-300', action: 'terminal' },
+          { id: 'code', name: 'VS Code', type: 'app', icon: 'fas fa-code', color: 'text-blue-400', action: 'vscode' },
+          { id: 'chrome', name: 'Chrome', type: 'app', icon: 'fab fa-chrome', color: 'text-yellow-400', action: 'browser' },
+          { id: 'photos', name: 'Photos', type: 'app', icon: 'fas fa-image', color: 'text-purple-400', action: 'image-viewer' } // Added Photos app here too
+        ]
+      } else if (folder === 'System') {
+        items = [
+           { id: 'kernel', name: 'kernel_task', type: 'file', icon: 'fas fa-microchip', color: 'text-red-400', data: { title: 'Kernel', fullDescription: 'Do not touch.', technologies: [] } },
+           { id: 'drivers', name: 'Drivers', type: 'folder', icon: 'fas fa-hdd', color: 'text-gray-400', data: {} }
+        ]
+      } else if (folder === 'Users') {
+        items = [
+           { id: 'guest', name: 'Guest', type: 'folder', icon: 'fas fa-user', color: 'text-gray-300', data: {} },
+           { id: 'admin', name: 'Carlos Veizaga', type: 'folder', icon: 'fas fa-user-astronaut', color: 'text-blue-400', data: {} }
+        ]
+      }
+    }
+  }
+  // 5. iCloud Drive View
+  else if (currentLocation.value === 'icloud') {
+    if (currentPath.value.length === 0) {
+      items = [
+        { id: 'docs', name: 'Documents', type: 'folder', icon: 'fas fa-folder', color: 'text-blue-300', data: {} },
+        { id: 'photos', name: 'Photos', type: 'folder', icon: 'fas fa-images', color: 'text-purple-300', data: {} },
+        { id: 'backup', name: 'Backup_2024.zip', type: 'file', icon: 'fas fa-file-archive', color: 'text-gray-400', data: { title: 'Full Backup', fullDescription: 'Encrypted backup of all projects.', technologies: [] } }
+      ]
+    } else {
+       const folder = currentPath.value[0]
+       if (folder === 'Documents') {
+         items = [
+            {
+              id: 'resume',
+              name: 'Resume.pdf',
+              type: 'link',
+              icon: 'fas fa-file-pdf',
+              color: 'text-red-400',
+              data: { url: profile.resume }
+            },
+            { id: 'notes', name: 'Notes.txt', type: 'file', icon: 'fas fa-file-alt', color: 'text-gray-400', data: { title: 'Notes', fullDescription: 'Ideas for next project...', technologies: [] } }
+         ]
+       } else if (folder === 'Photos') {
+          // Show some random images from projects as "Cloud Photos"
+          items = projects.flatMap(p => p.gallery || []).slice(0, 4).map((img, i) => ({
+            id: `cloud-img-${i}`,
+            name: img.caption || `Photo ${i + 1}`,
+            type: 'image',
+            icon: 'fas fa-image',
+            color: 'text-purple-300',
+            data: img
+          }))
+       }
+    }
+  }
+  // 6. Projects (Root, Important, Work)
   else {
     let filteredProjects = projects
 
@@ -268,6 +388,12 @@ const currentPathString = computed(() => {
     base += 'Desktop'
   } else if (currentLocation.value === 'downloads') {
     base += 'Downloads'
+  } else if (currentLocation.value === 'trash') {
+    base += 'Trash'
+  } else if (currentLocation.value === 'macintosh') {
+    base += 'Macintosh HD'
+  } else if (currentLocation.value === 'icloud') {
+    base += 'iCloud Drive'
   } else if (currentLocation.value === 'root') {
     base += 'projects'
   } else if (currentLocation.value === 'important') {
@@ -295,7 +421,11 @@ const handleItemClick = (item) => {
       store.openWindow('vscode', 'VS Code', CodeEditorApp)
     } else if (item.action === 'browser') {
       store.openWindow('browser', 'Chrome', BrowserApp)
+    } else if (item.action === 'image-viewer') {
+      store.openWindow('image-viewer', 'Photos', ImageViewerApp)
     }
+  } else if (item.type === 'system' && item.action === 'trash') {
+    goToLocation('trash')
   } else if (item.type === 'file' && item.name === 'README.md') {
     // Open in Code Editor
     const content = `<span class="text-blue-400"># ${item.data.title}</span>
@@ -344,5 +474,13 @@ const goBack = () => {
 const goHome = () => {
   currentLocation.value = 'root'
   currentPath.value = []
+}
+
+const emptyTrash = () => {
+  store.openDialog({
+    title: 'Permission Denied: Emotional Attachment',
+    message: 'Error 418: I\'m a teapot. Also, these files are currently being used by your nostalgia. You spent weeks debugging them. You can\'t just throw them away.',
+    type: 'warning'
+  })
 }
 </script>
