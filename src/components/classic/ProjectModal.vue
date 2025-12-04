@@ -243,7 +243,25 @@ const getTechIcon = (tech) => {
     Drupal: 'fab fa-drupal',
     JQuery: 'fas fa-code',
     Vite: 'fas fa-bolt',
-    'Api Integration': 'fas fa-network-wired'
+    'Api Integration': 'fas fa-network-wired',
+    'React Native': 'fab fa-react',
+    Webpack: 'fas fa-box-open',
+    'Payment APIs': 'fas fa-credit-card',
+    'E-Invoicing': 'fas fa-file-invoice-dollar',
+    'Shopify API': 'fab fa-shopify',
+    Ajax: 'fas fa-sync',
+    Materialize: 'fab fa-css3-alt',
+    'Materialize CSS': 'fab fa-css3-alt',
+    PWA: 'fas fa-mobile-alt',
+    RapidAPI: 'fas fa-network-wired',
+    'Chart.js': 'fas fa-chart-bar',
+    CodeIgniter: 'fas fa-fire',
+    WordPress: 'fab fa-wordpress',
+    Scrapy: 'fas fa-spider',
+    Magento: 'fab fa-magento',
+    Security: 'fas fa-shield-alt',
+    'SEO Recovery': 'fas fa-search-dollar',
+    jQuery: 'fas fa-code'
   }
   return map[tech] || 'fas fa-code'
 }
