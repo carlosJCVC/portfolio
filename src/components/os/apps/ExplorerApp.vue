@@ -92,6 +92,7 @@ import FileIcon from './components/FileIcon.vue'
 import { projects } from '@/data/projects'
 import { useOSStore } from '@/store/useOSStore'
 import CodeEditorApp from './CodeEditorApp.vue'
+import ImageViewerApp from './ImageViewerApp.vue'
 
 const store = useOSStore()
 
@@ -230,10 +231,10 @@ ${
       }
     })
   } else if (item.type === 'image') {
-    // Simple image preview
-    // In a real app, this would open an image viewer window
-    // For now, we'll just show the caption
-    alert(`Viewing Image: ${item.name}`)
+    // Open in Image Viewer
+    store.openWindow('image-viewer', 'Photos', ImageViewerApp, {
+      image: item.data
+    })
   }
 }
 

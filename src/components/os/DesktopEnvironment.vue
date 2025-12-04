@@ -93,6 +93,7 @@ import MessengerApp from './apps/MessengerApp.vue'
 import SettingsApp from './apps/SettingsApp.vue'
 import BrowserApp from './apps/BrowserApp.vue'
 import CodeEditorApp from './apps/CodeEditorApp.vue'
+import ImageViewerApp from './apps/ImageViewerApp.vue'
 
 const store = useOSStore()
 const isStartMenuOpen = ref(false)
@@ -104,7 +105,8 @@ const apps = [
   { id: 'vscode', title: 'VS Code', icon: 'fas fa-code', component: CodeEditorApp },
   { id: 'contact', title: 'Contact', icon: 'fas fa-envelope', component: MessengerApp },
   { id: 'settings', title: 'Settings', icon: 'fas fa-cog', component: SettingsApp },
-  { id: 'browser', title: 'Chrome', icon: 'fab fa-chrome', component: BrowserApp }
+  { id: 'browser', title: 'Chrome', icon: 'fab fa-chrome', component: BrowserApp },
+  { id: 'image-viewer', title: 'Photos', icon: 'fas fa-image', component: ImageViewerApp }
 ]
 
 const openApp = (app) => {
