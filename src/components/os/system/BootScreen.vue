@@ -20,12 +20,11 @@ const store = useOSStore()
 const lines = ref([])
 
 const bootSequence = [
-  { text: 'Initializing Kernel...', status: 'OK' },
-  { text: 'Loading Vue.js Core...', status: 'OK' },
-  { text: 'Mounting File System...', status: 'OK' },
+  { text: 'Initializing Portfolio Kernel...', status: 'OK' },
+  { text: 'Loading Projects & Experience...', status: 'OK' },
+  { text: 'Mounting Skills Database...', status: 'OK' },
   { text: 'Starting Graphical Interface...', status: 'OK' },
-  { text: 'Loading Portfolio Assets...', status: 'OK' },
-  { text: 'Welcome, Guest User.', status: 'DONE' }
+  { text: 'Welcome to Carlos\'s Portfolio.', status: 'DONE' }
 ]
 
 onMounted(async () => {

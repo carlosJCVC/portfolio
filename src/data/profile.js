@@ -1,7 +1,9 @@
 import ResumeFile from '@/assets/Carlos_Veizaga_Resume.pdf'
+import AvatarImage from '@/assets/images/avatar.jpg'
 
 export const profile = {
   name: 'Carlos Veizaga',
+  avatar: AvatarImage,
   role: 'Full Stack Developer',
   location: 'Cochabamba, Bolivia',
   email: 'carlosveizaga.jcvc@gmail.com',

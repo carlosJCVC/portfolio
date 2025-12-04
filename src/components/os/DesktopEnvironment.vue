@@ -21,6 +21,11 @@
       <BootScreen v-if="store.isBooting" />
     </Transition>
 
+    <!-- Login Screen Overlay -->
+    <Transition name="fade">
+      <LoginScreen v-if="!store.isBooting && !store.isLoggedIn && !store.isShuttingDown && !store.isPoweredOff" />
+    </Transition>
+
     <!-- Shutdown Screen Overlay -->
     <Transition name="fade">
       <ShutdownScreen v-if="store.isShuttingDown" />
@@ -86,6 +91,7 @@ import { ref } from 'vue'
 import { useOSStore } from '@/store/useOSStore'
 import { apps } from '@/data/apps'
 import BootScreen from './system/BootScreen.vue'
+import LoginScreen from './system/LoginScreen.vue'
 import ShutdownScreen from './system/ShutdownScreen.vue'
 import PowerOffScreen from './system/PowerOffScreen.vue'
 import SystemDialog from './system/SystemDialog.vue'
