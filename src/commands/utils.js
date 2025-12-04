@@ -20,7 +20,7 @@ export const history = {
   name: 'history',
   description: 'Show command history',
   execute: (args, { history }) => {
-    return history.map((entry, i) => `${i + 1}  ${entry.command}`).join('\n')
+    return history.map((entry, i) => `${i + 1}  ${entry.cmd}`).join('\n')
   }
 }
 
