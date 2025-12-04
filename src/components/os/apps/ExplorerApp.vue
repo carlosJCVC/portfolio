@@ -162,7 +162,7 @@ const currentItems = computed(() => {
         type: 'link',
         icon: 'fas fa-file-pdf',
         color: 'text-red-400',
-        data: { url: profile.resume }
+        data: { url: profile.resume.url || '#' }
       },
       {
         id: 'installer',
@@ -220,14 +220,14 @@ const currentItems = computed(() => {
         { id: 'users', name: 'Users', type: 'folder', icon: 'fas fa-users', color: 'text-green-400', data: {} },
         { id: 'library', name: 'Library', type: 'folder', icon: 'fas fa-book', color: 'text-purple-400', data: {} }
       ]
-    } else {
+    } else if (currentPath.value.length === 1) {
       const folder = currentPath.value[0]
       if (folder === 'Applications') {
         items = [
           { id: 'term', name: 'Terminal', type: 'app', icon: 'fas fa-terminal', color: 'text-gray-300', action: 'terminal' },
           { id: 'code', name: 'VS Code', type: 'app', icon: 'fas fa-code', color: 'text-blue-400', action: 'vscode' },
           { id: 'chrome', name: 'Chrome', type: 'app', icon: 'fab fa-chrome', color: 'text-yellow-400', action: 'browser' },
-          { id: 'photos', name: 'Photos', type: 'app', icon: 'fas fa-image', color: 'text-purple-400', action: 'image-viewer' } // Added Photos app here too
+          { id: 'photos', name: 'Photos', type: 'app', icon: 'fas fa-image', color: 'text-purple-400', action: 'image-viewer' }
         ]
       } else if (folder === 'System') {
         items = [
@@ -240,6 +240,9 @@ const currentItems = computed(() => {
            { id: 'admin', name: 'Carlos Veizaga', type: 'folder', icon: 'fas fa-user-astronaut', color: 'text-blue-400', data: {} }
         ]
       }
+    } else {
+      // Deeper levels (e.g. Users/Guest) - Show empty for now to prevent recursion loop
+      items = []
     }
   }
   // 5. iCloud Drive View
@@ -250,7 +253,7 @@ const currentItems = computed(() => {
         { id: 'photos', name: 'Photos', type: 'folder', icon: 'fas fa-images', color: 'text-purple-300', data: {} },
         { id: 'backup', name: 'Backup_2024.zip', type: 'file', icon: 'fas fa-file-archive', color: 'text-gray-400', data: { title: 'Full Backup', fullDescription: 'Encrypted backup of all projects.', technologies: [] } }
       ]
-    } else {
+    } else if (currentPath.value.length === 1) {
        const folder = currentPath.value[0]
        if (folder === 'Documents') {
          items = [
@@ -260,7 +263,7 @@ const currentItems = computed(() => {
               type: 'link',
               icon: 'fas fa-file-pdf',
               color: 'text-red-400',
-              data: { url: profile.resume }
+              data: { url: profile.resume.url || '#' }
             },
             { id: 'notes', name: 'Notes.txt', type: 'file', icon: 'fas fa-file-alt', color: 'text-gray-400', data: { title: 'Notes', fullDescription: 'Ideas for next project...', technologies: [] } }
          ]
@@ -275,6 +278,8 @@ const currentItems = computed(() => {
             data: img
           }))
        }
+    } else {
+      items = []
     }
   }
   // 6. Projects (Root, Important, Work)

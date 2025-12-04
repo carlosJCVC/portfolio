@@ -1,3 +1,5 @@
+import ResumeFile from '@/assets/Carlos_Veizaga_Resume.pdf'
+
 export const profile = {
   name: 'Carlos Veizaga',
   role: 'Full Stack Developer',
@@ -11,7 +13,8 @@ export const profile = {
   },
   resume: {
     filename: 'Carlos_Veizaga_Resume.pdf',
-    downloadLabel: 'Download CV'
+    downloadLabel: 'Download CV',
+    url: ResumeFile
   },
   about: `I am a Senior Full-Stack Architect with 10+ years of experience. I specialize in building enterprise-grade platforms, cross-platform mobile apps, and high-performance web systems.
 
