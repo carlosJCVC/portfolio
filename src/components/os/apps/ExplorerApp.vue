@@ -42,11 +42,21 @@
         <SidebarItem
           icon="fas fa-home"
           label="Home"
-          :active="currentPath.length === 0"
+          :active="currentLocation === 'root'"
           @click="goHome"
         />
-        <SidebarItem icon="fas fa-desktop" label="Desktop" />
-        <SidebarItem icon="fas fa-download" label="Downloads" />
+        <SidebarItem
+          icon="fas fa-desktop"
+          label="Desktop"
+          :active="currentLocation === 'desktop'"
+          @click="goToLocation('desktop')"
+        />
+        <SidebarItem
+          icon="fas fa-download"
+          label="Downloads"
+          :active="currentLocation === 'downloads'"
+          @click="goToLocation('downloads')"
+        />
 
         <div class="px-2 py-1 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">
           Locations
@@ -57,8 +67,18 @@
         <div class="px-2 py-1 text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">
           Tags
         </div>
-        <SidebarItem icon="fas fa-circle text-red-500" label="Important" />
-        <SidebarItem icon="fas fa-circle text-green-500" label="Work" />
+        <SidebarItem
+          icon="fas fa-circle text-red-500"
+          label="Important"
+          :active="currentLocation === 'important'"
+          @click="goToLocation('important')"
+        />
+        <SidebarItem
+          icon="fas fa-circle text-green-500"
+          label="Work"
+          :active="currentLocation === 'work'"
+          @click="goToLocation('work')"
+        />
       </div>
 
       <!-- Main Content (Grid View) -->
@@ -90,110 +110,173 @@ import { ref, computed } from 'vue'
 import SidebarItem from './components/SidebarItem.vue'
 import FileIcon from './components/FileIcon.vue'
 import { projects } from '@/data/projects'
+import { profile } from '@/data/profile'
 import { useOSStore } from '@/store/useOSStore'
 import CodeEditorApp from './CodeEditorApp.vue'
 import ImageViewerApp from './ImageViewerApp.vue'
+import TerminalApp from './TerminalApp.vue'
+import BrowserApp from './BrowserApp.vue'
 
 const store = useOSStore()
 
 const currentPath = ref([]) // [] = root, ['Project Name'] = inside project
+const currentLocation = ref('root') // 'root', 'desktop', 'downloads', 'important', 'work'
 const searchQuery = ref('')
 
 // Computed view of current directory
 const currentItems = computed(() => {
   let items = []
 
-  if (currentPath.value.length === 0) {
-    // Root: Show all projects as folders
-    items = projects.map((p) => ({
-      id: p.id,
-      name: p.title,
-      type: 'folder',
-      icon: 'fas fa-folder',
-      color: 'text-blue-400',
-      data: p
-    }))
-  } else {
-    const projectName = currentPath.value[0]
-    const project = projects.find((p) => p.title === projectName)
-
-    if (!project) return []
-
-    // Level 1: Inside a Project Folder
-    if (currentPath.value.length === 1) {
-      // README.md
-      items.push({
-        id: 'readme',
-        name: 'README.md',
+  // 1. Desktop View
+  if (currentLocation.value === 'desktop') {
+    items = [
+      { id: 'term', name: 'Terminal', type: 'app', icon: 'fas fa-terminal', color: 'text-gray-300', action: 'terminal' },
+      { id: 'code', name: 'VS Code', type: 'app', icon: 'fas fa-code', color: 'text-blue-400', action: 'vscode' },
+      { id: 'chrome', name: 'Chrome', type: 'app', icon: 'fab fa-chrome', color: 'text-yellow-400', action: 'browser' },
+      { id: 'trash', name: 'Trash', type: 'system', icon: 'fas fa-trash', color: 'text-gray-500' }
+    ]
+  }
+  // 2. Downloads View
+  else if (currentLocation.value === 'downloads') {
+    items = [
+      {
+        id: 'resume',
+        name: 'Resume.pdf',
+        type: 'link',
+        icon: 'fas fa-file-pdf',
+        color: 'text-red-400',
+        data: { url: profile.resume }
+      },
+      {
+        id: 'installer',
+        name: 'DevOS_Installer.dmg',
         type: 'file',
-        icon: 'fas fa-file-alt',
+        icon: 'fas fa-box-open',
         color: 'text-gray-400',
-        data: project
-      })
-
-      // Source Code Link
-      if (project.displayGithubUrl && project.githubUrl) {
-        items.push({
-          id: 'source',
-          name: 'Source Code.url',
-          type: 'link',
-          icon: 'fab fa-github',
-          color: 'text-white',
-          data: { url: project.githubUrl }
-        })
+        data: { title: 'DevOS Installer', fullDescription: 'This is a dummy installer file.', technologies: [] }
       }
+    ]
+  }
+  // 3. Projects (Root, Important, Work)
+  else {
+    let filteredProjects = projects
 
-      // Live Demo Link
-      if (project.displayLiveUrl && project.liveUrl) {
-        items.push({
-          id: 'demo',
-          name: 'Live Demo.url',
-          type: 'link',
-          icon: 'fas fa-globe',
-          color: 'text-green-400',
-          data: { url: project.liveUrl }
-        })
-      }
-
-      // Gallery Folder (if has images)
-      if (project.gallery && project.gallery.length > 0) {
-        items.push({
-          id: 'gallery',
-          name: 'Gallery',
-          type: 'folder',
-          icon: 'fas fa-images',
-          color: 'text-purple-400',
-          data: project
-        })
-      }
+    if (currentLocation.value === 'important') {
+      filteredProjects = projects.filter(p => p.featured)
+    }
+    // 'work' could be a specific category, for now let's show all or maybe 'Enterprise'
+    // Let's make 'work' show everything for now as a "All Projects" alias, or maybe filter by 'Web App'
+    // User asked for "Work" to show all or specific. Let's make it show all.
+    else if (currentLocation.value === 'work') {
+       // No filter, show all
     }
 
-    // Level 2: Inside Gallery
-    else if (currentPath.value.length === 2 && currentPath.value[1] === 'Gallery') {
-      if (project.gallery) {
-        items = project.gallery.map((img, i) => ({
-          id: `img-${i}`,
-          name: img.caption || `Image ${i + 1}`,
-          type: 'image',
-          icon: 'fas fa-image',
-          color: 'text-purple-300',
-          data: img
-        }))
+    if (currentPath.value.length === 0) {
+      // Root of Projects
+      items = filteredProjects.map((p) => ({
+        id: p.id,
+        name: p.title,
+        type: 'folder',
+        icon: 'fas fa-folder',
+        color: 'text-blue-400',
+        data: p
+      }))
+    } else {
+      // Inside a Project (same logic as before)
+      const projectName = currentPath.value[0]
+      const project = projects.find((p) => p.title === projectName)
+
+      if (!project) return []
+
+      // Level 1: Inside a Project Folder
+      if (currentPath.value.length === 1) {
+        // README.md
+        items.push({
+          id: 'readme',
+          name: 'README.md',
+          type: 'file',
+          icon: 'fas fa-file-alt',
+          color: 'text-gray-400',
+          data: project
+        })
+
+        // Source Code Link
+        if (project.displayGithubUrl && project.githubUrl) {
+          items.push({
+            id: 'source',
+            name: 'Source Code.url',
+            type: 'link',
+            icon: 'fab fa-github',
+            color: 'text-white',
+            data: { url: project.githubUrl }
+          })
+        }
+
+        // Live Demo Link
+        if (project.displayLiveUrl && project.liveUrl) {
+          items.push({
+            id: 'demo',
+            name: 'Live Demo.url',
+            type: 'link',
+            icon: 'fas fa-globe',
+            color: 'text-green-400',
+            data: { url: project.liveUrl }
+          })
+        }
+
+        // Gallery Folder (if has images)
+        if (project.gallery && project.gallery.length > 0) {
+          items.push({
+            id: 'gallery',
+            name: 'Gallery',
+            type: 'folder',
+            icon: 'fas fa-images',
+            color: 'text-purple-400',
+            data: project
+          })
+        }
+      }
+
+      // Level 2: Inside Gallery
+      else if (currentPath.value.length === 2 && currentPath.value[1] === 'Gallery') {
+        if (project.gallery) {
+          items = project.gallery.map((img, i) => ({
+            id: `img-${i}`,
+            name: img.caption || `Image ${i + 1}`,
+            type: 'image',
+            icon: 'fas fa-image',
+            color: 'text-purple-300',
+            data: img
+          }))
+        }
       }
     }
   }
 
-    // Apply Search Filter
-    if (searchQuery.value) {
-      const query = searchQuery.value.toLowerCase()
-      return items.filter((item) => item.name.toLowerCase().includes(query))
-    }
+  // Apply Search Filter
+  if (searchQuery.value) {
+    const query = searchQuery.value.toLowerCase()
+    return items.filter((item) => item.name.toLowerCase().includes(query))
+  }
 
-    return items
+  return items
 })
 
 const currentPathString = computed(() => {
-  return '~/projects' + (currentPath.value.length ? '/' + currentPath.value.join('/') : '')
+  let base = '~/'
+  if (currentLocation.value === 'desktop') {
+    base += 'Desktop'
+  } else if (currentLocation.value === 'downloads') {
+    base += 'Downloads'
+  } else if (currentLocation.value === 'root') {
+    base += 'projects'
+  } else if (currentLocation.value === 'important') {
+    base += 'projects/Important'
+  } else if (currentLocation.value === 'work') {
+    base += 'projects/Work'
+  }
+
+  return base + (currentPath.value.length ? '/' + currentPath.value.join('/') : '')
 })
 
 const handleItemClick = (item) => {
@@ -203,6 +286,15 @@ const handleItemClick = (item) => {
     // Open Link
     if (item.data && item.data.url) {
       window.open(item.data.url, '_blank')
+    }
+  } else if (item.type === 'app') {
+    // Launch App from Desktop view
+    if (item.action === 'terminal') {
+      store.openWindow('terminal', 'Terminal', TerminalApp)
+    } else if (item.action === 'vscode') {
+      store.openWindow('vscode', 'VS Code', CodeEditorApp)
+    } else if (item.action === 'browser') {
+      store.openWindow('browser', 'Chrome', BrowserApp)
     }
   } else if (item.type === 'file' && item.name === 'README.md') {
     // Open in Code Editor
@@ -238,6 +330,11 @@ ${
   }
 }
 
+const goToLocation = (loc) => {
+  currentLocation.value = loc
+  currentPath.value = []
+}
+
 const goBack = () => {
   if (currentPath.value.length > 0) {
     currentPath.value.pop()
@@ -245,6 +342,7 @@ const goBack = () => {
 }
 
 const goHome = () => {
+  currentLocation.value = 'root'
   currentPath.value = []
 }
 </script>
