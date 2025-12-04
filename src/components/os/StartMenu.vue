@@ -11,8 +11,8 @@
         class="w-10 h-10 rounded-full object-cover border border-gray-600"
       />
       <div>
-        <div class="text-white font-bold text-sm">Carlos Veizaga</div>
-        <div class="text-gray-400 text-xs">Full Stack Developer</div>
+        <div class="text-white font-bold text-sm">{{ profile.name }}</div>
+        <div class="text-gray-400 text-xs">{{ profile.role }}</div>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
       <div class="text-xs font-bold text-gray-500 uppercase mb-2">Recommended</div>
       <div class="space-y-1">
         <a
-          href="https://github.com/carlosJCVC"
+          :href="profile.social.github"
           target="_blank"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
@@ -52,7 +52,7 @@
         </a>
 
         <a
-          href="https:www.linkedin.com/in/jcarlos-veizaga"
+          :href="profile.social.linkedin"
           target="_blank"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
@@ -67,20 +67,20 @@
 
         <a
           :href="resumeUrl"
-          download="Carlos_Veizaga_Resume.pdf"
+          :download="profile.resume.filename"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
           <i
             class="fas fa-file-pdf text-red-400 group-hover:text-red-300 text-lg w-6 text-center"
           ></i>
           <div class="flex-grow">
-            <div class="text-gray-300 text-sm group-hover:text-white">Resume.pdf</div>
-            <div class="text-gray-500 text-[10px]">Download CV</div>
+            <div class="text-gray-300 text-sm group-hover:text-white">{{ profile.resume.filename }}</div>
+            <div class="text-gray-500 text-[10px]">{{ profile.resume.downloadLabel }}</div>
           </div>
         </a>
 
         <a
-          href="mailto:carlos.veizaga.c@gmail.com"
+          :href="`mailto:${profile.email}`"
           class="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors group"
         >
           <i
@@ -88,7 +88,7 @@
           ></i>
           <div class="flex-grow">
             <div class="text-gray-300 text-sm group-hover:text-white">Email Me</div>
-            <div class="text-gray-500 text-[10px]">carlos.veizaga.c@gmail.com</div>
+            <div class="text-gray-500 text-[10px]">{{ profile.email }}</div>
           </div>
         </a>
       </div>
@@ -117,6 +117,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useOSStore } from '@/store/useOSStore'
+import { profile } from '@/data/profile'
 import resumeUrl from '@/assets/Carlos_Veizaga_Resume.pdf'
 
 const props = defineProps({

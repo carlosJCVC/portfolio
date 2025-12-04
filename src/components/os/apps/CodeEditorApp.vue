@@ -132,6 +132,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { profile } from '@/data/profile'
 
 const files = [
   {
@@ -140,15 +141,14 @@ const files = [
     color: '#f7df1e',
     content: `<span class="text-purple-400">class</span> <span class="text-yellow-300">Developer</span> <span class="text-white">{</span>
   <span class="text-blue-400">constructor</span>() <span class="text-white">{</span>
-    <span class="text-blue-300">this</span>.<span class="text-blue-300">name</span> = <span class="text-green-300">'Carlos Veizaga'</span>;
-    <span class="text-blue-300">this</span>.<span class="text-blue-300">role</span> = <span class="text-green-300">'Full Stack Developer'</span>;
-    <span class="text-blue-300">this</span>.<span class="text-blue-300">location</span> = <span class="text-green-300">'Cochabamba, Bolivia'</span>;
+    <span class="text-blue-300">this</span>.<span class="text-blue-300">name</span> = <span class="text-green-300">'${profile.name}'</span>;
+    <span class="text-blue-300">this</span>.<span class="text-blue-300">role</span> = <span class="text-green-300">'${profile.role}'</span>;
+    <span class="text-blue-300">this</span>.<span class="text-blue-300">location</span> = <span class="text-green-300">'${profile.location}'</span>;
   <span class="text-white">}</span>
 
   <span class="text-yellow-300">getSkills</span>() <span class="text-white">{</span>
     <span class="text-purple-400">return</span> [
-      <span class="text-green-300">'Vue.js'</span>, <span class="text-green-300">'Node.js'</span>, <span class="text-green-300">'Tailwind CSS'</span>,
-      <span class="text-green-300">'Docker'</span>, <span class="text-green-300">'AWS'</span>, <span class="text-green-300">'Git'</span>
+      ${profile.skills.map((s) => `<span class="text-green-300">'${s}'</span>`).join(', ')}
     ];
   <span class="text-white">}</span>
 <span class="text-white">}</span>
@@ -160,10 +160,10 @@ const files = [
     icon: 'fas fa-code',
     color: '#e34c26',
     content: `<span class="text-white">{</span>
-  <span class="text-blue-300">"email"</span>: <span class="text-green-300">"carlos.veizaga.c@gmail.com"</span>,
-  <span class="text-blue-300">"github"</span>: <span class="text-green-300">"github.com/carlosJCVC"</span>,
-  <span class="text-blue-300">"linkedin"</span>: <span class="text-green-300">"linkedin.com/in/carlos-veizaga-c"</span>,
-  <span class="text-blue-300">"availableForHire"</span>: <span class="text-purple-400">true</span>
+  <span class="text-blue-300">"email"</span>: <span class="text-green-300">"${profile.email}"</span>,
+  <span class="text-blue-300">"github"</span>: <span class="text-green-300">"${profile.social.github.replace('https://', '')}"</span>,
+  <span class="text-blue-300">"linkedin"</span>: <span class="text-green-300">"${profile.social.linkedin.replace('https://', '')}"</span>,
+  <span class="text-blue-300">"availableForHire"</span>: <span class="text-purple-400">${profile.openToWork}</span>
 <span class="text-white">}</span>`
   },
   {

@@ -35,6 +35,7 @@
 <script setup>
 import { ref, onMounted, computed, nextTick } from 'vue'
 import { useOSStore } from '@/store/useOSStore'
+import { profile } from '@/data/profile'
 import { projects } from '@/data/projects'
 
 const history = ref([
@@ -85,16 +86,16 @@ const fileSystem = computed(() => {
     },
     'about.txt': {
       type: 'file',
-      content: `Carlos Veizaga - Senior Full-Stack Architect\n\n10+ years of experience specializing in enterprise-grade platforms (BTP), cross-platform mobile apps (React Native), and high-performance web systems.\n\nMy expertise lies in architecting scalable solutions that solve complex business challenges.`
+      content: profile.about
     },
     'skills.txt': {
       type: 'file',
-      content: `SKILLS & EXPERTISE\n\n[Backend & Architecture]\nLaravel, Node.js, Python, MySQL, PostgreSQL, AWS, Docker, Redis\n\n[Frontend & UI]\nVue.js, React, Angular, Tailwind CSS, Bootstrap, Sass\n\n[Mobile]\nReact Native, Flutter, Expo, Android, iOS\n\n[DevOps]\nGit, n8n, Linux, CI/CD`
+      content: `SKILLS & EXPERTISE\n\n${profile.skills.join('\n')}`
     },
     'contact.txt': {
       type: 'file',
       content:
-        'Email: carlos.veizaga.c@gmail.com\nLocation: Cochabamba, Bolivia\nOpen to Remote Work: Yes'
+        `Email: ${profile.email}\nLocation: ${profile.location}\nOpen to Remote Work: ${profile.openToWork ? 'Yes' : 'No'}`
     }
   }
 })
