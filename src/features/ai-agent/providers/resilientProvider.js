@@ -1,7 +1,14 @@
 import { ProviderError } from './providerError'
 
 export const createResilientProvider = ({ primary, fallback, startOnFallback = false, onSwitch = () => {} }) => {
+  let primaryDisabled = startOnFallback
   let active = startOnFallback ? fallback : primary
+
+  const use = (provider, reason) => {
+    if (active === provider) return
+    onSwitch({ from: active.id, to: provider.id, reason })
+    active = provider
+  }
 
   return {
     get id() {
@@ -9,7 +16,7 @@ export const createResilientProvider = ({ primary, fallback, startOnFallback = f
     },
 
     async *stream(request) {
-      if (active === fallback) {
+      if (primaryDisabled) {
         yield* fallback.stream(request)
         return
       }
@@ -17,15 +24,18 @@ export const createResilientProvider = ({ primary, fallback, startOnFallback = f
       let produced = false
       try {
         for await (const event of primary.stream(request)) {
-          if (event.type !== 'meta') produced = true
+          if (event.type !== 'meta') {
+            produced = true
+            use(primary)
+          }
           yield event
         }
       } catch (error) {
-        const canSwitch = error instanceof ProviderError && error.recoverable && !produced
-        if (!canSwitch) throw error
+        const canFallBack = error instanceof ProviderError && error.recoverable && !produced
+        if (!canFallBack) throw error
 
-        active = fallback
-        onSwitch({ from: primary.id, to: fallback.id, reason: error.code })
+        primaryDisabled = error.persistent
+        use(fallback, error.code)
         yield* fallback.stream(request)
       }
     }

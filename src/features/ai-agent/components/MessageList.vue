@@ -14,7 +14,7 @@
 
     <Transition name="fade">
       <button
-        v-if="!stickToBottom"
+        v-if="showJumpButton && !stickToBottom"
         type="button"
         class="fixed bottom-36 left-1/2 z-10 -translate-x-1/2 rounded-full border border-white/10 bg-slate-800/90 px-3 py-1.5 text-xs text-slate-200 shadow-lg backdrop-blur hover:bg-slate-700"
         aria-label="Scroll to latest"
@@ -31,7 +31,8 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import ChatMessage from './ChatMessage.vue'
 
 defineProps({
-  messages: { type: Array, required: true }
+  messages: { type: Array, required: true },
+  showJumpButton: { type: Boolean, default: true }
 })
 defineEmits(['suggest', 'retry'])
 

@@ -23,6 +23,7 @@ defineProps({
 })
 
 const AREA_ICONS = {
+  ai: 'fa-brain',
   backend: 'fa-server',
   frontend: 'fa-display',
   mobile: 'fa-mobile-screen',

@@ -9,9 +9,9 @@ export const TOOL_NAMES = Object.freeze({
   SHOW_CONTACT_OPTIONS: 'show_contact_options'
 })
 
-export const SKILL_AREAS = Object.freeze(['backend', 'frontend', 'mobile', 'tools'])
+export const SKILL_AREAS = Object.freeze(['ai', 'backend', 'frontend', 'mobile', 'tools'])
 
-export const PROJECT_CATEGORIES = Object.freeze(['Web App', 'Enterprise', 'Mobile App', 'Backend'])
+export const PROJECT_CATEGORIES = Object.freeze(['AI / SaaS', 'Web App', 'Enterprise', 'Mobile App', 'Backend'])
 
 const VISUAL_NOTE =
   'The visitor automatically sees a visual card with the full result, so do not repeat every detail in your reply — highlight what matters.'

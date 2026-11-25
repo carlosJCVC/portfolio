@@ -7,7 +7,7 @@ export const INTENTS = [
   },
   {
     tool: TOOL_NAMES.SEARCH_PROJECTS,
-    pattern: /\b(projects?|proyectos?|portfolio|portafolio|built|constru\w+|apps?|work samples|demos?)\b/i
+    pattern: /\b(projects?|proyectos?|portfolio|portafolio|built|constru\w+|apps?|work samples|demos?|interpreto|products?|productos?|startup|saas)\b/i
   },
   {
     tool: TOOL_NAMES.GET_EXPERIENCE,

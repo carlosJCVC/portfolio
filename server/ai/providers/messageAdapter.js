@@ -1,8 +1,31 @@
+import { VOICE_PREFIX } from '../../../shared/ai/conversation.js'
+
+const VOICE_REMINDER =
+  'Voice call: the reply is read aloud. Use at most three short plain sentences, no Markdown, no lists. The cards on screen already show the details.'
+
+
+const allowNull = (schema) => ({
+  ...schema,
+  type: [].concat(schema.type, 'null'),
+  ...(schema.enum && { enum: [...schema.enum, null] })
+})
+
+const withNullableOptionals = (schema) => {
+  if (schema.type !== 'object' || !schema.properties) return schema
+  const required = new Set(schema.required ?? [])
+  const properties = Object.fromEntries(
+    Object.entries(schema.properties).map(([key, property]) => {
+      const nested = property.type === 'array' && property.items ? { ...property, items: withNullableOptionals(property.items) } : property
+      return [key, required.has(key) ? nested : allowNull(nested)]
+    })
+  )
+  return { ...schema, properties }
+}
 
 export const toOpenAITools = (toolDefinitions) =>
   toolDefinitions.map(({ name, description, input_schema }) => ({
     type: 'function',
-    function: { name, description, parameters: input_schema }
+    function: { name, description, parameters: withNullableOptionals(input_schema) }
   }))
 
 const blocksOf = (content) => (typeof content === 'string' ? [{ type: 'text', text: content }] : content)
@@ -45,11 +68,21 @@ const fromAssistant = (blocks) => {
   ]
 }
 
+const isVisitorTurn = (message) => message.role === 'user' && Boolean(textOf(blocksOf(message.content)))
+
+export const trimHistory = (messages, maxTurns) => {
+  const turnStarts = messages.flatMap((message, index) => (isVisitorTurn(message) ? [index] : []))
+  return messages.slice(turnStarts.at(-maxTurns) ?? 0)
+}
+
+const lastVisitorText = (messages) => textOf(blocksOf(messages.findLast(isVisitorTurn)?.content ?? []))
+
 export const toOpenAIMessages = (systemPrompt, messages) => [
   { role: 'system', content: systemPrompt },
   ...messages.flatMap(({ role, content }) =>
     role === 'user' ? fromUser(blocksOf(content)) : fromAssistant(blocksOf(content))
-  )
+  ),
+  ...(lastVisitorText(messages).startsWith(VOICE_PREFIX) ? [{ role: 'system', content: VOICE_REMINDER }] : [])
 ]
 
 const STOP_REASONS = { tool_calls: 'tool_use', stop: 'end_turn', length: 'max_tokens', content_filter: 'refusal' }

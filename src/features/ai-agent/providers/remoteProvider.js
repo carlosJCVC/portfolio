@@ -2,6 +2,13 @@ import { parseSse } from './sseParser'
 import { ProviderError } from './providerError'
 
 const RECOVERABLE_CODES = new Set(['not_configured', 'quota_exhausted', 'upstream', 'internal', 'unreachable'])
+const PERSISTENT_CODES = new Set(['not_configured', 'unreachable'])
+
+const errorFor = (code, message, { forceUnavailable = false } = {}) =>
+  new ProviderError(code, message, {
+    recoverable: forceUnavailable || RECOVERABLE_CODES.has(code),
+    persistent: forceUnavailable || PERSISTENT_CODES.has(code)
+  })
 
 const readError = async (response) => {
   try {
@@ -26,20 +33,18 @@ export const createRemoteProvider = ({ endpoint = '/api/chat', fetchImpl = (...a
       })
     } catch (error) {
       if (error.name === 'AbortError') throw error
-      throw new ProviderError('unreachable', 'Could not reach the AI agent.', { recoverable: true })
+      throw errorFor('unreachable', 'Could not reach the AI agent.')
     }
 
     const isStream = response.headers.get('content-type')?.includes('text/event-stream')
     if (!response.ok || !isStream) {
       const { code = 'unreachable', message = 'The AI agent is unavailable.' } = await readError(response)
-      throw new ProviderError(code, message, {
-        recoverable: RECOVERABLE_CODES.has(code) || response.status === 404 || !isStream
-      })
+      throw errorFor(code, message, { forceUnavailable: response.status === 404 || (response.ok && !isStream) })
     }
 
     for await (const { event, data } of parseSse(response.body)) {
       if (event === 'error') {
-        throw new ProviderError(data.code, data.message, { recoverable: RECOVERABLE_CODES.has(data.code) })
+        throw errorFor(data.code, data.message)
       }
       yield { type: event, ...data }
     }

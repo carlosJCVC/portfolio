@@ -42,9 +42,10 @@
 </template>
 
 <script setup>
-import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAgentChat } from '@/features/ai-agent/composables/useAgentChat'
+import { useForcedDarkMode } from '@/features/ai-agent/composables/useForcedDarkMode'
 import { PROMPT_IDS } from '@/features/ai-agent/domain/suggestions'
 import AuroraBackground from '@/features/ai-agent/components/AuroraBackground.vue'
 import ChatHeader from '@/features/ai-agent/components/ChatHeader.vue'
@@ -78,13 +79,6 @@ const handleSend = ({ text, kind }) => {
   else send(text)
 }
 
-let hadDarkClass = false
-onMounted(() => {
-  hadDarkClass = document.documentElement.classList.contains('dark')
-  document.documentElement.classList.add('dark')
-  composer.value?.focus()
-})
-onBeforeUnmount(() => {
-  if (!hadDarkClass) document.documentElement.classList.remove('dark')
-})
+useForcedDarkMode()
+onMounted(() => composer.value?.focus())
 </script>

@@ -5,6 +5,7 @@ const toModelSummary = (project) => ({
   title: project.title,
   category: project.category,
   featured: project.featured,
+  flagship: Boolean(project.flagship),
   summary: project.description,
   technologies: project.technologies,
   key_features: (project.features ?? []).slice(0, 6),

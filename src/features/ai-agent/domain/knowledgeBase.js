@@ -52,6 +52,8 @@ export const createKnowledgeBase = (source = { profile, projects, experience, ed
       .map(([key, group]) => ({ area: key, title: group.title, items: group.items }))
   },
 
+  getFlagship: () => source.projects.find((project) => project.flagship),
+
   getEducation: () => ({ education: source.education, certifications: source.certifications }),
 
   findProjectsByTitle(titles = []) {

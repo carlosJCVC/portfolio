@@ -17,8 +17,10 @@ export const getAgentConfig = (env = process.env) =>
     groq: Object.freeze({
       apiKey: env.GROQ_API_KEY,
       baseUrl: env.GROQ_BASE_URL || 'https://api.groq.com/openai/v1',
-      model: env.AI_MODEL || 'openai/gpt-oss-120b',
-      label: env.AI_MODEL_LABEL || 'GPT-OSS 120B · Groq'
+      models: (env.AI_MODEL || 'openai/gpt-oss-120b,openai/gpt-oss-20b').split(',').map((model) => model.trim()),
+      reasoningEffort: env.AI_REASONING_EFFORT || 'low',
+      maxHistoryTurns: readInt(env.AI_MAX_HISTORY_TURNS, 4),
+      label: env.AI_MODEL_LABEL || 'GPT-OSS · Groq'
     }),
     anthropic: Object.freeze({
       model: env.AI_MODEL || 'claude-opus-5-5',

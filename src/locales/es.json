@@ -10,12 +10,12 @@
     "title": "{name} Desarrollador de Software",
     "greeting": "Hola, soy",
     "name": "Carlos Veizaga",
-    "role": "Desarrollador Full Stack",
+    "role": "Ingeniero Senior Full-Stack & IA",
     "roles": [
-      "Desarrollador Full Stack",
-      "Entusiasta de UI/UX",
-      "Solucionador de Problemas",
-      "Explorador Tecnológico"
+      "Ingeniero Senior Full-Stack & IA",
+      "Fundador de Interpreto",
+      "Sistemas de IA en tiempo real",
+      "Solucionador de Problemas"
     ],
     "contact": "Contacta me"
   },
@@ -328,6 +328,90 @@
       "title": "Agente IA",
       "text": "Chatea con un agente de IA que conoce mi trabajo. Pega una oferta y recibe un reporte de encaje honesto.",
       "badge": "Nuevo · IA"
+    }
+  },
+  "aiCall": {
+    "incoming": {
+      "label": "Llamada entrante",
+      "subtitle": "Asistente IA",
+      "hint": "Contesta para escuchar un pitch breve y luego pregúntale lo que quieras por voz.",
+      "answer": "Contestar",
+      "decline": "Rechazar",
+      "skip": "Prefiero ver el portafolio"
+    },
+    "status": {
+      "connected": "En llamada",
+      "speaking": "Hablando",
+      "listening": "Escuchando…",
+      "thinking": "Pensando…"
+    },
+    "pitch": {
+      "intro": "¡Hola! Soy el asistente de IA de {name}. Es {role} en {location} y desarrolla software profesionalmente desde {year}.",
+      "flagship": "Su proyecto estrella es {name}, su propio producto de IA: el ponente habla y cada asistente lo escucha en su idioma, en tiempo real.",
+      "stack": "Su stack principal: {stack}.",
+      "projects": "En total ha entregado {total} proyectos, entre ellos {featured}.",
+      "career": "Empezó como {first} y hoy trabaja como {current}.",
+      "cta": "¿Tienes una vacante? Escanea la oferta con tu cámara y en segundos te digo cómo encaja Carlos. O pregúntame lo que quieras."
+    },
+    "cta": {
+      "scanTitle": "Escanear una oferta",
+      "scanText": "Foto o captura → reporte de encaje al instante",
+      "askTitle": "Pregúntame por voz",
+      "askText": "Stack, proyectos, disponibilidad…"
+    },
+    "controls": {
+      "mute": "Silenciar",
+      "unmute": "Activar voz",
+      "skip": "Saltar",
+      "scan": "Escanear",
+      "end": "Colgar"
+    },
+    "voice": {
+      "listening": "Escuchando…",
+      "placeholder": "Escribe tu pregunta…",
+      "useVoice": "Usar voz",
+      "useKeyboard": "Usar teclado",
+      "talk": "Toca para hablar",
+      "stop": "Dejar de escuchar",
+      "hint": "Toca el micrófono y haz tu pregunta"
+    },
+    "scan": {
+      "title": "Escanear una oferta",
+      "subtitle": "Toma una foto o elige una captura. El texto se lee en tu dispositivo, no se sube nada.",
+      "camera": "Tomar foto",
+      "gallery": "Captura",
+      "paste": "Mejor pego el texto",
+      "reading": "Leyendo la oferta…",
+      "retake": "Empezar de nuevo",
+      "lowConfidence": "No pude leer mucho. Corrige el texto o pégalo.",
+      "failed": "No pude leer la imagen. Pega el texto."
+    },
+    "contact": {
+      "save": "Guardar a Carlos en contactos",
+      "email": "Email",
+      "share": "Compartir",
+      "shareText": "Mira el portafolio de {name}",
+      "linkCopied": "Enlace copiado"
+    },
+    "summary": {
+      "missed": "Llamada perdida",
+      "ended": "Llamada finalizada · {duration}",
+      "voicemail": "Te dejó un mensaje de voz",
+      "thanks": "¡Gracias por la llamada!",
+      "listen": "Escuchar el mensaje",
+      "callBack": "Devolver la llamada",
+      "chat": "Chat IA",
+      "classic": "Portafolio clásico"
+    },
+    "flagship": {
+      "badge": "Producto estrella",
+      "pipeline": "Cómo funciona Interpreto",
+      "steps": {
+        "voice": "Voz",
+        "text": "Texto",
+        "translate": "Traducción",
+        "speech": "Tu idioma"
+      }
     }
   }
 }

@@ -10,12 +10,12 @@
     "title": "{name} Software Developer",
     "greeting": "Hello, I'm",
     "name": "Carlos Veizaga",
-    "role": "Full Stack Developer",
+    "role": "Senior Full-Stack & AI Engineer",
     "roles": [
-      "Full Stack Developer",
-      "UI/UX Enthusiast",
-      "Problem Solver",
-      "Tech Explorer"
+      "Senior Full-Stack & AI Engineer",
+      "Founder of Interpreto",
+      "Real-time AI Systems",
+      "Problem Solver"
     ],
     "contact": "Contact Me"
   },
@@ -327,6 +327,90 @@
       "title": "AI Agent",
       "text": "Chat with an AI agent that knows my work. Paste a job post and get an honest fit report.",
       "badge": "New · AI"
+    }
+  },
+  "aiCall": {
+    "incoming": {
+      "label": "Incoming call",
+      "subtitle": "AI assistant",
+      "hint": "Answer to hear a short pitch, then ask anything by voice.",
+      "answer": "Answer",
+      "decline": "Decline",
+      "skip": "I'd rather see the portfolio"
+    },
+    "status": {
+      "connected": "On call",
+      "speaking": "Speaking",
+      "listening": "Listening…",
+      "thinking": "Thinking…"
+    },
+    "pitch": {
+      "intro": "Hi! I'm {name}'s AI assistant. He's a {role} based in {location}, building software professionally since {year}.",
+      "flagship": "His flagship is {name}, his own AI product: a speaker talks, and every attendee hears them in their own language, in real time.",
+      "stack": "His core stack: {stack}.",
+      "projects": "In total he has shipped {total} projects, including {featured}.",
+      "career": "He started as a {first}, and today he works as a {current}.",
+      "cta": "Got an open role? Scan the job post with your camera and I'll tell you in seconds how Carlos fits. Or just ask me anything."
+    },
+    "cta": {
+      "scanTitle": "Scan a job post",
+      "scanText": "Photo or screenshot → instant fit report",
+      "askTitle": "Ask me by voice",
+      "askText": "Stack, projects, availability…"
+    },
+    "controls": {
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "skip": "Skip",
+      "scan": "Scan job",
+      "end": "End"
+    },
+    "voice": {
+      "listening": "Listening…",
+      "placeholder": "Type your question…",
+      "useVoice": "Use voice",
+      "useKeyboard": "Use keyboard",
+      "talk": "Tap to talk",
+      "stop": "Stop listening",
+      "hint": "Tap the mic and ask your question"
+    },
+    "scan": {
+      "title": "Scan a job post",
+      "subtitle": "Take a photo or pick a screenshot. Text is read on your device, nothing is uploaded.",
+      "camera": "Take photo",
+      "gallery": "Screenshot",
+      "paste": "Paste the text instead",
+      "reading": "Reading the job post…",
+      "retake": "Start over",
+      "lowConfidence": "I couldn't read much. Fix the text below or paste it.",
+      "failed": "I couldn't read the image. Paste the text instead."
+    },
+    "contact": {
+      "save": "Save Carlos to contacts",
+      "email": "Email",
+      "share": "Share",
+      "shareText": "Take a look at {name}'s portfolio",
+      "linkCopied": "Link copied"
+    },
+    "summary": {
+      "missed": "Missed call",
+      "ended": "Call ended · {duration}",
+      "voicemail": "Left you a voice message",
+      "thanks": "Thanks for the call!",
+      "listen": "Listen to the message",
+      "callBack": "Call back",
+      "chat": "AI chat",
+      "classic": "Classic portfolio"
+    },
+    "flagship": {
+      "badge": "Flagship product",
+      "pipeline": "How Interpreto works",
+      "steps": {
+        "voice": "Voice",
+        "text": "Text",
+        "translate": "Translation",
+        "speech": "Your language"
+      }
     }
   }
 }

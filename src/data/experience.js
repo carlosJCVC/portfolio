@@ -1,5 +1,14 @@
 export const experience = [
   {
+    id: 0,
+    role: 'Founder & Lead Engineer',
+    company: 'Interpreto (own product)',
+    period: 'Jan 2026 - Present',
+    description:
+      'Designed, built and operate Interpreto, a SaaS for AI-powered live conference interpretation. Real-time AI pipeline (speech recognition, machine translation and voice synthesis) streamed to listeners over Socket.IO, with per-conference glossaries, private rehearsals, quotas and Stripe billing. Node.js/TypeScript backend with Clean Architecture, DDD and 1,600+ tests; Vue 3 + TypeScript frontend; Docker deployments on a hardened Linux VPS.',
+    skills: ['AI Pipelines', 'Node.js', 'TypeScript', 'Vue.js', 'Socket.IO', 'PostgreSQL', 'Clean Architecture']
+  },
+  {
     id: 1,
     role: 'Senior Full Stack Developer',
     company: 'Freelance (Upwork)',

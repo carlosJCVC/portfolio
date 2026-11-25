@@ -4,7 +4,7 @@ import AvatarImage from '@/assets/images/avatar.jpg'
 export const profile = {
   name: 'Carlos Veizaga',
   avatar: AvatarImage,
-  role: 'Full Stack Developer',
+  role: 'Senior Full-Stack & AI Engineer',
   location: 'Cochabamba, Bolivia',
   email: 'carlosveizaga.jcvc@gmail.com',
   openToWork: true,
@@ -18,11 +18,15 @@ export const profile = {
     downloadLabel: 'Download CV',
     url: ResumeFile
   },
-  about: `I am a Senior Full-Stack Architect with 10+ years of experience. I specialize in building enterprise-grade platforms, cross-platform mobile apps, and high-performance web systems.
+  about: `I am a Senior Full-Stack & AI Engineer with 10+ years of experience building enterprise-grade platforms, cross-platform mobile apps, and high-performance web systems.
 
-My expertise lies in architecting scalable solutions that solve complex business challenges while delivering a seamless user experience. From massive ERPs to engaging consumer apps, I deliver reliability and innovation.`,
-  roles: ["Full Stack Developer", "UI/UX Enthusiast", "Problem Solver", "Tech Explorer"],
+Today I focus on real-time AI products: I founded and built Interpreto, a live interpretation platform that turns a speaker's voice into every attendee's language as they speak. I architect scalable, well-tested solutions that solve complex business challenges while delivering a seamless user experience.`,
+  roles: ['Senior Full-Stack & AI Engineer', 'Founder of Interpreto', 'Real-time AI Systems', 'Problem Solver'],
   skills: {
+    ai: {
+      title: 'AI & Real-time',
+      items: ['LLM Agents & Tool Use', 'Speech-to-Text', 'Machine Translation', 'Text-to-Speech', 'WebSockets', 'Prompt Engineering']
+    },
     backend: {
       title: 'Backend & Architecture',
       items: ['Laravel', 'Node.js', 'Python', 'MySQL', 'PostgreSQL', 'AWS', 'Docker', 'Redis']

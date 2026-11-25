@@ -25,6 +25,12 @@ const router = createRouter({
       meta: { title: 'Carlos Veizaga - AI Agent' }
     },
     {
+      path: '/call',
+      name: 'ai-call',
+      component: () => import('../views/AICall.vue'),
+      meta: { title: 'Carlos Veizaga is calling…' }
+    },
+    {
       path: '/classic',
       name: 'classic',
       component: ClassicPortfolio,
@@ -37,7 +43,7 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'Carlos Veizaga'
 
   // Handle body overflow for OS vs Classic
-  if (['devos', 'landing', 'ai-agent'].includes(to.name)) {
+  if (['devos', 'landing', 'ai-agent', 'ai-call'].includes(to.name)) {
     document.body.style.overflow = 'hidden'
   } else {
     document.body.style.overflow = 'auto'

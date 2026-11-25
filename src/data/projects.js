@@ -1,3 +1,7 @@
+import InterpretoMain from '@/assets/images/projects/interpreto/main.webp'
+import InterpretoLiveSession from '@/assets/images/projects/interpreto/live-session.webp'
+import InterpretoDashboard from '@/assets/images/projects/interpreto/dashboard.webp'
+import InterpretoListener from '@/assets/images/projects/interpreto/listener-mobile.webp'
 import ElfecImage from '@/assets/images/projects/elfec.png'
 import EducertifyMain from '@/assets/images/projects/educertify/educertify.webp'
 import Educertify1 from '@/assets/images/projects/educertify/1.png'
@@ -22,6 +26,51 @@ import Hypervisor1 from '@/assets/images/projects/hypervisor/1.png'
 import Hypervisor2 from '@/assets/images/projects/hypervisor/2.png'
 
 export const projects = [
+  {
+    id: 12,
+    title: 'Interpreto',
+    description: 'AI-powered live interpretation for conferences: every attendee hears the speaker in their own language.',
+    fullDescription:
+      'My own SaaS product, designed, built and operated end to end. A speaker talks into the microphone and a real-time AI pipeline turns their voice into speech in other languages: speech recognition, machine translation and natural voice synthesis, streamed over WebSockets. Attendees join by scanning a QR code, pick their language and listen from their phone with live captions, no app required. Organizers prepare per-conference vocabulary and glossaries, rehearse privately before going live, run broadcast or multi-speaker debate sessions, and manage quotas and billing. The backend follows Clean Architecture and DDD with dependency injection and more than 1,600 automated tests, deployed with Docker on a hardened Linux VPS with webhook-driven releases.',
+    image: InterpretoMain,
+    technologies: [
+      'Node.js',
+      'TypeScript',
+      'Vue.js',
+      'Socket.IO',
+      'PostgreSQL',
+      'Prisma',
+      'Redis',
+      'Speech-to-Text',
+      'Machine Translation',
+      'Text-to-Speech',
+      'Stripe',
+      'Docker',
+      'Tailwind CSS'
+    ],
+    category: 'AI / SaaS',
+    liveUrl: 'https://interpreto.biz',
+    githubUrl: '#',
+    displayLiveUrl: true,
+    displayGithubUrl: false,
+    featured: true,
+    flagship: true,
+    features: [
+      'Real-time voice → text → translation → voice pipeline',
+      'Live captions and audio for every listener, joined by QR',
+      'Spanish, English, Portuguese, French and Mandarin',
+      'Per-conference vocabulary and translation glossaries',
+      'Private rehearsal before going live',
+      'Broadcast and multi-speaker debate modes',
+      'Quotas, wallet and Stripe billing',
+      'Clean Architecture, DDD and 1,600+ automated tests'
+    ],
+    gallery: [
+      { src: InterpretoLiveSession, caption: 'Live session: transcription and real-time translation' },
+      { src: InterpretoDashboard, caption: 'Speaker dashboard with session analytics' },
+      { src: InterpretoListener, caption: 'Listener joins from the phone and picks a language' }
+    ]
+  },
   {
     id: 11,
     title: 'EduCertify',

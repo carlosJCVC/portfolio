@@ -62,8 +62,7 @@ onMounted(() => {
 const checkMobile = () => {
   isMobile.value = window.innerWidth <= 768
   if (isMobile.value) {
-    // Auto-redirect to classic for better UX
-    router.push({ name: 'classic' })
+    router.push({ name: 'ai-call' })
   }
 }
 

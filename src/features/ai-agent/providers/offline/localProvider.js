@@ -1,4 +1,5 @@
 import { TOOL_NAMES } from '@shared/ai/toolDefinitions'
+import { stripVoicePrefix } from '@shared/ai/conversation'
 import { knowledgeBase } from '../../domain/knowledgeBase'
 import { detectIntent } from './intents'
 import { detectLanguage } from './language'
@@ -17,7 +18,7 @@ const sleep = (ms, signal) =>
 
 const textOf = (message) =>
   typeof message.content === 'string'
-    ? message.content
+    ? stripVoicePrefix(message.content)
     : message.content
         .filter((block) => block.type === 'text')
         .map((block) => block.text)
@@ -61,6 +62,8 @@ export const createLocalProvider = ({ kb = knowledgeBase, typingDelayMs = 14 } =
   const planToolCalls = (tools, text) =>
     tools.map((name) => {
       if (name !== TOOL_NAMES.SEARCH_PROJECTS) return toolUse(name)
+      const mentionedProject = kb.searchProjects({ limit: 100 }).items.find((project) => text.toLowerCase().includes(project.title.toLowerCase()))
+      if (mentionedProject) return toolUse(name, { query: mentionedProject.title })
       const [technology] = extractTechnologies(text, kb.allTechnologies())
       return toolUse(name, technology ? { technology } : {})
     })

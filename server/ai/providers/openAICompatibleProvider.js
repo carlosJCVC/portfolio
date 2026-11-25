@@ -1,7 +1,7 @@
 import { toolDefinitions } from '../../../shared/ai/toolDefinitions.js'
 import { SYSTEM_PROMPT } from '../systemPrompt.js'
 import { AgentError, AgentErrors } from '../agentError.js'
-import { toAnthropicContent, toOpenAIMessages, toOpenAITools, toStopReason } from './messageAdapter.js'
+import { toAnthropicContent, toOpenAIMessages, toOpenAITools, toStopReason, trimHistory } from './messageAdapter.js'
 
 const errorForStatus = (status, cause) => {
   if (status === 401 || status === 403) return AgentErrors.notConfigured(cause)
@@ -22,7 +22,9 @@ async function* readChunks(body) {
       if (!line.startsWith('data:')) continue
       const data = line.slice(5).trim()
       if (data === '[DONE]') return
-      yield JSON.parse(data)
+      const chunk = JSON.parse(data)
+      if (chunk.error) throw AgentErrors.upstream(new Error(`Stream error: ${JSON.stringify(chunk.error).slice(0, 300)}`))
+      yield chunk
     }
   }
 }
@@ -31,29 +33,40 @@ export const createOpenAICompatibleProvider = ({ config, maxTokens, fetchImpl = 
   if (!config.apiKey) throw AgentErrors.notConfigured()
   const tools = toOpenAITools(toolDefinitions)
 
+  const requestBody = (model, messages) => ({
+    model,
+    messages: toOpenAIMessages(SYSTEM_PROMPT, trimHistory(messages, config.maxHistoryTurns)),
+    tools,
+    tool_choice: 'auto',
+    max_completion_tokens: maxTokens,
+    stream: true,
+    ...(config.reasoningEffort && model.startsWith('openai/gpt-oss') && { reasoning_effort: config.reasoningEffort })
+  })
+
+  const openStream = async (messages, signal) => {
+    let lastError = null
+    for (const model of config.models) {
+      const response = await fetchImpl(`${config.baseUrl}/chat/completions`, {
+        method: 'POST',
+        signal,
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${config.apiKey}` },
+        body: JSON.stringify(requestBody(model, messages))
+      })
+      if (response.ok) return response
+
+      const detail = await response.text().catch(() => '')
+      lastError = errorForStatus(response.status, new Error(`${model} HTTP ${response.status}: ${detail.slice(0, 300)}`))
+      if (response.status !== 429) break
+    }
+    throw lastError
+  }
+
   return {
     label: config.label,
 
     async streamTurn({ messages, emit, signal }) {
       try {
-        const response = await fetchImpl(`${config.baseUrl}/chat/completions`, {
-          method: 'POST',
-          signal,
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${config.apiKey}` },
-          body: JSON.stringify({
-            model: config.model,
-            messages: toOpenAIMessages(SYSTEM_PROMPT, messages),
-            tools,
-            tool_choice: 'auto',
-            max_completion_tokens: maxTokens,
-            stream: true
-          })
-        })
-
-        if (!response.ok) {
-          const detail = await response.text().catch(() => '')
-          throw errorForStatus(response.status, new Error(`HTTP ${response.status}: ${detail.slice(0, 500)}`))
-        }
+        const response = await openStream(messages, signal)
 
         let text = ''
         let finishReason = null
