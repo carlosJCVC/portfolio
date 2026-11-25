@@ -154,5 +154,180 @@
     "hello": "¡Hola Mundo!",
     "welcome": "Bienvenido a {app}",
     "language": "Idioma"
+  },
+  "aiAgent": {
+    "title": "Agente IA de Carlos",
+    "status": {
+      "online": "En línea · {model}",
+      "offline": "Modo offline · motor local",
+      "working": "Trabajando…",
+      "defaultModel": "IA"
+    },
+    "header": {
+      "back": "Volver",
+      "newChat": "Nuevo chat",
+      "underTheHood": "Cómo funciona"
+    },
+    "welcome": {
+      "eyebrow": "Portafolio nativo con IA",
+      "title": "No leas mi CV. Pregúntale.",
+      "subtitle": "Soy un agente de IA con herramientas sobre los datos reales del portafolio de Carlos. Pregunta lo que quieras o pega una oferta de trabajo y te diré con honestidad cómo encaja.",
+      "capabilities": {
+        "projects": {
+          "title": "Explorar proyectos",
+          "text": "Filtra por tecnología y mira capturas"
+        },
+        "experience": {
+          "title": "Trayectoria",
+          "text": "Más de 10 años, de Junior a Senior"
+        },
+        "jobFit": {
+          "title": "Reporte de encaje",
+          "text": "Pega una oferta y recibe un análisis con puntaje"
+        },
+        "contact": {
+          "title": "Contacto",
+          "text": "Email, LinkedIn y CV en un clic"
+        }
+      }
+    },
+    "composer": {
+      "placeholder": "Pregunta por proyectos, stack, experiencia…",
+      "jobPlaceholder": "Pega aquí la descripción del puesto (título, requisitos, responsabilidades)…",
+      "jobMode": "Encaje laboral",
+      "jobModeTitle": "Analizar una oferta de trabajo",
+      "analyze": "Analizar encaje",
+      "cancel": "Cancelar",
+      "send": "Enviar",
+      "stop": "Detener",
+      "hint": "Enter para enviar · Shift + Enter para nueva línea"
+    },
+    "jobRequest": "Analiza cómo encaja Carlos en este puesto:\n\n{text}",
+    "jobBadge": "Oferta de trabajo",
+    "tools": {
+      "get_profile": "Leyendo perfil",
+      "search_projects": "Buscando proyectos",
+      "get_experience": "Cargando historial laboral",
+      "get_skills": "Mapeando habilidades",
+      "get_education": "Revisando formación",
+      "show_job_fit_report": "Generando reporte de encaje",
+      "show_contact_options": "Preparando tarjeta de contacto",
+      "failed": "falló"
+    },
+    "prompts": {
+      "who": {
+        "label": "¿Quién es Carlos?",
+        "prompt": "¿Quién es Carlos? Dame la versión de 30 segundos."
+      },
+      "featured": {
+        "label": "Mejores proyectos",
+        "prompt": "Muéstrame sus proyectos más impresionantes."
+      },
+      "experience": {
+        "label": "Experiencia",
+        "prompt": "Cuéntame su experiencia laboral."
+      },
+      "skills": {
+        "label": "Stack técnico",
+        "prompt": "¿Cuál es su stack tecnológico?"
+      },
+      "laravel": {
+        "label": "Proyectos Laravel",
+        "prompt": "¿Qué proyectos construyó con Laravel?"
+      },
+      "mobile": {
+        "label": "Apps móviles",
+        "prompt": "¿Ha construido apps móviles? Muéstrame."
+      },
+      "education": {
+        "label": "Formación",
+        "prompt": "¿Cuál es su formación y certificaciones?"
+      },
+      "contact": {
+        "label": "Contactar a Carlos",
+        "prompt": "Me gustaría contactar a Carlos para una entrevista."
+      },
+      "jobFit": {
+        "label": "Analizar una oferta",
+        "prompt": ""
+      }
+    },
+    "widgets": {
+      "openToWork": "Disponible",
+      "downloadCv": "Descargar CV",
+      "projects": "{count} proyecto | {count} proyectos",
+      "viewDetails": "Ver detalles",
+      "noProjects": "Sin proyectos que coincidan",
+      "experience": "Historial laboral",
+      "skills": "Habilidades",
+      "education": "Formación",
+      "certifications": "Certificaciones",
+      "fitReport": "Reporte de encaje",
+      "matchScore": "encaje",
+      "strengths": "Dónde encaja",
+      "gaps": "Brechas a considerar",
+      "noGaps": "No se detectaron brechas importantes",
+      "provenIn": "Demostrado en",
+      "contact": "Hablemos",
+      "contactHeadline": "Carlos está abierto a nuevas oportunidades.",
+      "copyEmail": "Copiar email",
+      "emailCopied": "Email copiado al portapapeles",
+      "sendEmail": "Enviar email",
+      "verdict": {
+        "strong": "Encaje fuerte",
+        "good": "Buen encaje",
+        "partial": "Encaje parcial"
+      }
+    },
+    "message": {
+      "stopped": "Detenido",
+      "retry": "Reintentar",
+      "you": "Tú"
+    },
+    "errors": {
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
+      "rateLimited": "Estás enviando mensajes muy rápido. Espera un minuto e inténtalo otra vez.",
+      "busy": "La IA está ocupada ahora mismo. Inténtalo en un momento.",
+      "badRequest": "No se pudo procesar esta conversación. Inicia un chat nuevo.",
+      "refusal": "No puedo ayudar con eso, pero con gusto te cuento sobre el trabajo de Carlos."
+    },
+    "underTheHood": {
+      "title": "Cómo funciona este agente",
+      "intro": "No es un chatbot con guion. Es un agente pequeño construido desde cero: un LLM decide qué herramientas usar, el navegador las ejecuta sobre los datos reales del portafolio y cada resultado se muestra como un widget interactivo.",
+      "steps": {
+        "visitor": {
+          "title": "Preguntas",
+          "text": "Tu mensaje se suma al historial de la conversación en el navegador."
+        },
+        "gateway": {
+          "title": "Gateway serverless",
+          "text": "Una función de Vercel valida y limita la petición, y la transmite al proveedor del modelo (Groq o Claude). La API key nunca llega al navegador."
+        },
+        "model": {
+          "title": "El modelo razona",
+          "text": "El LLM transmite su respuesta y decide cuáles de las 7 herramientas necesita, muchas veces en paralelo."
+        },
+        "tools": {
+          "title": "Las herramientas corren en tu navegador",
+          "text": "Se ejecutan localmente sobre los mismos datos que usa el resto del portafolio: una sola fuente de verdad."
+        },
+        "ui": {
+          "title": "UI generativa",
+          "text": "Cada resultado se muestra como un componente (proyectos, línea de tiempo, reporte de encaje) y el ciclo continúa hasta completar la respuesta."
+        }
+      },
+      "resilience": "Resiliencia: si el servicio de IA no está disponible o se agota su cuota gratuita, un motor local con la misma interfaz toma el control de forma transparente.",
+      "session": "Esta sesión",
+      "steps_count": "pasos del modelo",
+      "tool_calls": "llamadas a herramientas",
+      "engine": "motor",
+      "stack": "Stack",
+      "source": "Ver código en GitHub"
+    },
+    "landing": {
+      "title": "Agente IA",
+      "text": "Chatea con un agente de IA que conoce mi trabajo. Pega una oferta y recibe un reporte de encaje honesto.",
+      "badge": "Nuevo · IA"
+    }
   }
 }

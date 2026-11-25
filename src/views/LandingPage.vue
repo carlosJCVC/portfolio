@@ -18,6 +18,18 @@
           <div class="card-bg"></div>
         </div>
 
+        <div class="card ai-card" @click="navigateTo('ai-agent')">
+          <div class="card-content">
+            <div class="icon-wrapper ai-icon">
+              <span class="material-icons">auto_awesome</span>
+            </div>
+            <h2>{{ $t('aiAgent.landing.title') }}</h2>
+            <p>{{ $t('aiAgent.landing.text') }}</p>
+            <div class="badge ai-badge">{{ $t('aiAgent.landing.badge') }}</div>
+          </div>
+          <div class="card-bg"></div>
+        </div>
+
         <!-- Classic Experience Card -->
         <div class="card classic-card" @click="navigateTo('classic')">
           <div class="card-content">
@@ -234,6 +246,50 @@ p {
 
 .classic-card .card-bg {
   background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.15), transparent 60%);
+}
+
+.ai-card {
+  border-color: transparent;
+  background:
+    linear-gradient(rgba(23, 26, 38, 0.92), rgba(23, 26, 38, 0.92)) padding-box,
+    linear-gradient(var(--ai-angle, 135deg), #6366f1, #2dd4bf, #a855f7, #6366f1) border-box;
+  animation: ai-border 6s linear infinite;
+}
+
+@property --ai-angle {
+  syntax: '<angle>';
+  initial-value: 135deg;
+  inherits: false;
+}
+
+@keyframes ai-border {
+  to {
+    --ai-angle: 495deg;
+  }
+}
+
+.ai-card .card-bg {
+  background: radial-gradient(circle at top right, rgba(45, 212, 191, 0.18), transparent 60%);
+}
+
+.ai-card:hover .card-bg {
+  opacity: 1;
+}
+
+.ai-icon {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(45, 212, 191, 0.2));
+}
+
+.ai-badge {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.15), rgba(45, 212, 191, 0.15));
+  color: #5eead4;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-card {
+    animation: none;
+  }
 }
 
 @media (max-width: 768px) {

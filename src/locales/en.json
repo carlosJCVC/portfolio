@@ -11,7 +11,12 @@
     "greeting": "Hello, I'm",
     "name": "Carlos Veizaga",
     "role": "Full Stack Developer",
-    "roles": ["Full Stack Developer", "UI/UX Enthusiast", "Problem Solver", "Tech Explorer"],
+    "roles": [
+      "Full Stack Developer",
+      "UI/UX Enthusiast",
+      "Problem Solver",
+      "Tech Explorer"
+    ],
     "contact": "Contact Me"
   },
   "info": {
@@ -148,5 +153,180 @@
     "hello": "Hello World!",
     "welcome": "Welcome to {app}",
     "language": "Language"
+  },
+  "aiAgent": {
+    "title": "Carlos's AI Agent",
+    "status": {
+      "online": "Online · {model}",
+      "offline": "Offline mode · local engine",
+      "working": "Working…",
+      "defaultModel": "AI"
+    },
+    "header": {
+      "back": "Back",
+      "newChat": "New chat",
+      "underTheHood": "Under the hood"
+    },
+    "welcome": {
+      "eyebrow": "AI-native portfolio",
+      "title": "Don't read my CV. Ask it.",
+      "subtitle": "I'm an AI agent with tools over Carlos's real portfolio data. Ask anything, or paste a job description and I'll tell you honestly how he fits.",
+      "capabilities": {
+        "projects": {
+          "title": "Explore projects",
+          "text": "Filter by technology, see screenshots"
+        },
+        "experience": {
+          "title": "Career timeline",
+          "text": "10+ years, from Junior to Senior"
+        },
+        "jobFit": {
+          "title": "Job match report",
+          "text": "Paste a job post, get a scored analysis"
+        },
+        "contact": {
+          "title": "Get in touch",
+          "text": "Email, LinkedIn and CV in one click"
+        }
+      }
+    },
+    "composer": {
+      "placeholder": "Ask about projects, stack, experience…",
+      "jobPlaceholder": "Paste the job description here (title, requirements, responsibilities)…",
+      "jobMode": "Job match",
+      "jobModeTitle": "Analyze a job description",
+      "analyze": "Analyze fit",
+      "cancel": "Cancel",
+      "send": "Send",
+      "stop": "Stop",
+      "hint": "Enter to send · Shift + Enter for a new line"
+    },
+    "jobRequest": "Analyze how Carlos fits this role:\n\n{text}",
+    "jobBadge": "Job description",
+    "tools": {
+      "get_profile": "Reading profile",
+      "search_projects": "Searching projects",
+      "get_experience": "Loading work history",
+      "get_skills": "Mapping skills",
+      "get_education": "Checking education",
+      "show_job_fit_report": "Building fit report",
+      "show_contact_options": "Preparing contact card",
+      "failed": "failed"
+    },
+    "prompts": {
+      "who": {
+        "label": "Who is Carlos?",
+        "prompt": "Who is Carlos? Give me the 30-second version."
+      },
+      "featured": {
+        "label": "Best projects",
+        "prompt": "Show me his most impressive projects."
+      },
+      "experience": {
+        "label": "Work experience",
+        "prompt": "Walk me through his work experience."
+      },
+      "skills": {
+        "label": "Tech stack",
+        "prompt": "What is his tech stack?"
+      },
+      "laravel": {
+        "label": "Laravel projects",
+        "prompt": "Which projects did he build with Laravel?"
+      },
+      "mobile": {
+        "label": "Mobile apps",
+        "prompt": "Has he built mobile apps? Show me."
+      },
+      "education": {
+        "label": "Education",
+        "prompt": "What is his education and certifications?"
+      },
+      "contact": {
+        "label": "Contact Carlos",
+        "prompt": "I'd like to contact Carlos for an interview."
+      },
+      "jobFit": {
+        "label": "Match a job post",
+        "prompt": ""
+      }
+    },
+    "widgets": {
+      "openToWork": "Open to work",
+      "downloadCv": "Download CV",
+      "projects": "{count} project | {count} projects",
+      "viewDetails": "View details",
+      "noProjects": "No matching projects",
+      "experience": "Work history",
+      "skills": "Skills",
+      "education": "Education",
+      "certifications": "Certifications",
+      "fitReport": "Job match report",
+      "matchScore": "match",
+      "strengths": "Where he fits",
+      "gaps": "Gaps to consider",
+      "noGaps": "No significant gaps detected",
+      "provenIn": "Proven in",
+      "contact": "Let's talk",
+      "contactHeadline": "Carlos is open to new opportunities.",
+      "copyEmail": "Copy email",
+      "emailCopied": "Email copied to clipboard",
+      "sendEmail": "Send email",
+      "verdict": {
+        "strong": "Strong fit",
+        "good": "Good fit",
+        "partial": "Partial fit"
+      }
+    },
+    "message": {
+      "stopped": "Stopped",
+      "retry": "Retry",
+      "you": "You"
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "rateLimited": "You're sending messages very fast. Please wait a minute and try again.",
+      "busy": "The AI is busy right now. Please try again in a moment.",
+      "badRequest": "This conversation couldn't be processed. Please start a new chat.",
+      "refusal": "I can't help with that one, but I'm happy to talk about Carlos's work."
+    },
+    "underTheHood": {
+      "title": "How this agent works",
+      "intro": "This isn't a scripted chatbot. It's a small agent built from scratch: an LLM decides which tools to call, the browser runs them over the real portfolio data, and each result renders as an interactive widget.",
+      "steps": {
+        "visitor": {
+          "title": "You ask",
+          "text": "Your message joins the conversation history in the browser."
+        },
+        "gateway": {
+          "title": "Serverless gateway",
+          "text": "A Vercel function validates and rate-limits the request, then streams it to the model provider (Groq or Claude). The API key never reaches the browser."
+        },
+        "model": {
+          "title": "The model reasons",
+          "text": "The LLM streams its answer and decides which of the 7 tools it needs, often several in parallel."
+        },
+        "tools": {
+          "title": "Tools run in your browser",
+          "text": "Tool calls run locally over the same data the rest of the portfolio uses, so there's one source of truth."
+        },
+        "ui": {
+          "title": "Generative UI",
+          "text": "Each tool result renders as a component (project cards, timeline, fit report), and the loop continues until the answer is complete."
+        }
+      },
+      "resilience": "Resilience: if the AI service is unavailable or its free quota runs out, a local engine with the same interface takes over transparently.",
+      "session": "This session",
+      "steps_count": "model steps",
+      "tool_calls": "tool calls",
+      "engine": "engine",
+      "stack": "Stack",
+      "source": "View source on GitHub"
+    },
+    "landing": {
+      "title": "AI Agent",
+      "text": "Chat with an AI agent that knows my work. Paste a job post and get an honest fit report.",
+      "badge": "New · AI"
+    }
   }
 }
